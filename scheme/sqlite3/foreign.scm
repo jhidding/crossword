@@ -7,7 +7,9 @@
           sqlite3-column-text)
 
   (import (rnrs (6))
-          (only (system foreign) dynamic-link dynamic-func pointer->procedure int))
+          (only (guile) dynamic-link dynamic-func)
+          (system foreign))
+          ;(only (system foreign) dynamic-link dynamic-func pointer->procedure int))
 
   (define libsqlite3 (dynamic-link "libsqlite3"))
 
