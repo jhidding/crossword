@@ -65,6 +65,15 @@
   (define sqlite3-bind-text
     (pointer->procedure int (dynamic-func "sqlite3_bind_text" libsqlite3)
                         (list '* int '* int '*)))
+
+  (define sqlite3-bind-int
+    (pointer->procedure int (dynamic-func "sqlite3_bind_int" libsqlite3)
+                        (list '* int int)))
+
+  (define sqlite3-bind-double
+    (pointer->procedure int (dynamic-func "sqlite3_bind_double" libsqlite3)
+                        (list '* int double)))
+
   #|
     int sqlite3_bind_blob(sqlite3_stmt*, int, const void*, int n, void(*)(void*));
     int sqlite3_bind_blob64(sqlite3_stmt*, int, const void*, sqlite3_uint64,
@@ -95,6 +104,15 @@
   (define sqlite3-column-text
     (pointer->procedure '* (dynamic-func "sqlite3_column_text" libsqlite3)
                         (list '* int)))
+
+  (define sqlite3-column-int
+    (pointer->procedure int (dynamic-func "sqlite3_column_int" libsqlite3)
+                        (list '* int)))
+
+  (define sqlite3-column-double
+    (pointer->procedure double (dynamic-func "sqlite3_column_double" libsqlite3)
+                        (list '* int)))
+
   #|
     const void *sqlite3_column_blob(sqlite3_stmt*, int iCol);
     int sqlite3_column_bytes(sqlite3_stmt*, int iCol);

@@ -4,6 +4,7 @@
   (import (rnrs (6))
           (system foreign)
           (ice-9 format)
+          (sqlite3 defines)
           (sqlite3 foreign))
 
   (define-wrapped-pointer-type
@@ -38,4 +39,53 @@
 
   (define (sqlite-finalize statement)
     (sqlite3-finalize (unwrap-sqlite-statement statement)))
+
+  (define (sqlite-step statement)
+    (sqlite3-step (unwrap-sqlite-statement statement)))
+
+  (define (sqlite-column-string stmt index)
+    (pointer->string (sqlite3-column-text
+                       (unwrap-sqlite-statement stmt) index)))
+
+  (define (sqlite-column-int stmt index)
+    (sqlite3-column-int (unwrap-sqlite-statement stmt) index))
+
+  (define (sqlite-column-double stmt index)
+    (sqlite3-column-double (unwrap-sqlite-statement stmt) index))
+
+  (define (sqlite-column stmt index)
+    (let ((type (sqlite3-column-type stmt index)))
+      (cond
+        ((= type SQLITE_TEXT)    (sqlite-column-text stmt index))
+        ((= type SQLITE_FLOAT)   (sqlite-column-double stmt index))
+        ((= type SQLITE_INTEGER) (sqlite-column-int stmt index)))))
+
+  (define (sqlite-bind-string stmt index value)
+    (sqlite3-bind-text (unwrap-sqlite-statement stmt)
+                       index (string->pointer value) 0 SQLITE_TRANSIENT))
+
+  (define (sqlite-bind-int stmt index value)
+    (sqlite3-bind-int (unwrap-sqlite-statement stmt)
+                      index value))
+
+  (define (sqlite-bind-double stmt index value)
+    (sqlite3-bind-double (unwrap-sqlite-statement stmt)
+                         index value))
+
+  (define sqlite-bind
+    (case-lambda
+      ((stmt index value)
+       (cond
+         ((string? value)
+          (sqlite-bind-string stmt index value))
+         ((and (number? value) (exact? value) (integer? value))
+          (sqlite-bind-int stmt index value))
+         ((number? value)
+          (sqlite-bind-double stmt index value))))
+
+      ((stmt index value type)
+       (case type
+         (('string) (sqlite-bind-string stmt index value))
+         (('int)    (sqlite-bind-int stmt index value))
+         (('double) (sqlite-bind-double stmt index value))))))
 )

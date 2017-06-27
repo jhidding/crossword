@@ -5,7 +5,13 @@
           SQLITE_FULL SQLITE_CANTOPEN SQLITE_PROTOCOL SQLITE_EMPTY
           SQLITE_SCHEMA SQLITE_TOOBIG SQLITE_CONSTRAINT SQLITE_MISMATCH
           SQLITE_MISUSE SQLITE_NOLFS SQLITE_AUTH SQLITE_FORMAT SQLITE_RANGE
-          SQLITE_NOTADB SQLITE_NOTICE SQLITE_WARNING SQLITE_ROW SQLITE_DONE)
+          SQLITE_NOTADB SQLITE_NOTICE SQLITE_WARNING SQLITE_ROW SQLITE_DONE
+
+          SQLITE_INTEGER SQLITE_FLOAT SQLITE_BLOB SQLITE_NULL SQLITE_TEXT
+
+          SQLITE_STATIC SQLITE_TRANSIENT)
+
+  (import (only (system foreign) make-pointer))
 
   (define SQLITE_OK            0)  ;; /* Successful result */
   (define SQLITE_ERROR         1)  ;; /* SQL error or missing database */
@@ -38,6 +44,15 @@
   (define SQLITE_WARNING      28)  ;; /* Warnings from sqlite3_log() */
   (define SQLITE_ROW         100)  ;; /* sqlite3_step() has another row ready */
   (define SQLITE_DONE        101)  ;; /* sqlite3_step() has finished executing */
+
+  (define SQLITE_INTEGER  1)
+  (define SQLITE_FLOAT    2)
+  (define SQLITE_BLOB     4)
+  (define SQLITE_NULL     5)
+  (define SQLITE_TEXT     3)
+
+  (define SQLITE_STATIC        (make-pointer 0))
+  (define SQLITE_TRANSIENT     (make-pointer #xffffffffffffffff))
 )
 
 #|
