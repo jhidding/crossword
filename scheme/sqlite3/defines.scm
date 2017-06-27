@@ -11,7 +11,8 @@
 
           SQLITE_STATIC SQLITE_TRANSIENT)
 
-  (import (only (system foreign) make-pointer))
+  (import (rnrs (6))
+          (only (system foreign) make-pointer))
 
   (define SQLITE_OK            0)  ;; /* Successful result */
   (define SQLITE_ERROR         1)  ;; /* SQL error or missing database */

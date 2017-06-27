@@ -2,9 +2,15 @@
 
   (export sqlite3-open sqlite3-prepare sqlite3-step
           sqlite3-finalize sqlite3-close
-          sqlite3-bind-text
+
           sqlite3-column-type
-          sqlite3-column-text)
+          sqlite3-column-text
+          sqlite3-column-double
+          sqlite3-column-int
+
+          sqlite3-bind-text
+          sqlite3-bind-double
+          sqlite3-bind-int)
 
   (import (rnrs (6))
           (only (guile) dynamic-link dynamic-func)

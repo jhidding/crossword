@@ -1,5 +1,8 @@
 (library (sqlite3 wrapped)
-  (export sqlite-open sqlite-close)
+  (export sqlite-open sqlite-close
+          sqlite-db? sqlite-statement?
+          sqlite-prepare sqlite-step sqlite-finalize
+          sqlite-bind sqlite-column)
 
   (import (rnrs (6))
           (system foreign)
@@ -22,8 +25,11 @@
   (define (sqlite-open filename)
     (let* ((db-ptr-data (make-bytevector 8))
            (db-ptr-ptr  (bytevector->pointer db-ptr-data)))
-      (sqlite3-open (string->pointer filename "UTF-8") db-ptr-ptr)
-      (wrap-sqlite-db (dereference-pointer db-ptr-ptr))))
+      (let ((error-code (sqlite3-open (string->pointer filename "UTF-8") db-ptr-ptr)))
+        (display "DB: ") (display error-code) (newline)
+        (unless (zero? error-code)
+          (raise (make-error)))
+        (wrap-sqlite-db (dereference-pointer db-ptr-ptr)))))
 
   (define (sqlite-close db)
     (sqlite3-close (unwrap-sqlite-db db)))
@@ -34,8 +40,14 @@
            (src-ptr       (string->pointer source "UTF-8"))
            (stop-ptr-data (make-bytevector 8))
            (stop-ptr-ptr  (bytevector->pointer stop-ptr-data)))
-      (sqlite3-prepare (unwrap-sqlite-db db) src-ptr -1 stmt-ptr-ptr stop-ptr-ptr)
-      (wrap-sqlite-statement (dereference-pointer stmt-ptr-ptr))))
+      (let ((error-code (sqlite3-prepare
+                          (unwrap-sqlite-db db)
+                          src-ptr -1 stmt-ptr-ptr stop-ptr-ptr)))
+        (display "STMT: ") (display error-code) (newline)
+        (display (pointer->string (dereference-pointer stop-ptr-ptr))) (newline)
+        (unless (zero? error-code)
+          (raise (make-error)))
+        (wrap-sqlite-statement (dereference-pointer stmt-ptr-ptr)))))
 
   (define (sqlite-finalize statement)
     (sqlite3-finalize (unwrap-sqlite-statement statement)))
@@ -56,7 +68,7 @@
   (define (sqlite-column stmt index)
     (let ((type (sqlite3-column-type stmt index)))
       (cond
-        ((= type SQLITE_TEXT)    (sqlite-column-text stmt index))
+        ((= type SQLITE_TEXT)    (sqlite-column-string stmt index))
         ((= type SQLITE_FLOAT)   (sqlite-column-double stmt index))
         ((= type SQLITE_INTEGER) (sqlite-column-int stmt index)))))
 
@@ -85,7 +97,7 @@
 
       ((stmt index value type)
        (case type
-         (('string) (sqlite-bind-string stmt index value))
-         (('int)    (sqlite-bind-int stmt index value))
-         (('double) (sqlite-bind-double stmt index value))))))
+         ((string) (sqlite-bind-string stmt index value))
+         ((int)    (sqlite-bind-int stmt index value))
+         ((double) (sqlite-bind-double stmt index value))))))
 )
