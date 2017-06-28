@@ -21,7 +21,10 @@
     (make <database> #:handle (sqlite-open filename)))
 
   (define-method (*exit* (db <database>) (error <top>))
-    (sqlite-close (handle db)))
+    (format #t "Closing database.~%")
+    (sqlite-close (handle db))
+    (when error
+      (raise-continuable error)))
 
   (define-method (*exit* (stmt <statement>) (error <top>))
     (sqlite-finalize (handle stmt)))
@@ -30,31 +33,24 @@
   (define-generic step)
   (define-generic column)
   (define-generic bind)
+  (define-generic prepare-all)
+  (define-generic execute-script)
 
   (define-method (prepare (db <database>) (source <string>))
     (receive (errc stmt rest) (sqlite-prepare (handle db) source)
       (if (= errc SQLITE_OK)
-        (values errc (make <statement> #:handle stmt) rest)
-        (values errc #f rest))))
-
-  (define-method (prepare-all (db <database>) (source <string>))
-    (let loop ((stmts '())
-               (source source))
-      (if (string-null? source)
-        (reverse stmts)
-        (receive (errc stmt rest) (prepare db source)
-          (format #t "~a ### ~a\n" source rest)
-          (if (= errc SQLITE_OK)
-            (loop (cons stmt stmts) rest)
-            (error 'prepare-all "Error preparing SQL statement." errc rest))))))
+        (make <statement> #:handle stmt)
+        (error 'prepare "Error preparing SQL statement." errc source))))
 
   (define-method (execute-script (db <database>) (source <string>))
-    (for-each
-      (lambda (stmt)
-        (let ((errc (step stmt)))
-          (unless (= errc SQLITE_DONE)
-            (error 'execute-script "Error executing SQL script." errc))))
-      (prepare-all db source)))
+    (unless (string-null? source)
+      (receive (errc stmt rest) (sqlite-prepare (handle db) source)
+        (if (= errc SQLITE_OK)
+          (begin
+            (with (stmt (make <statement> #:handle stmt))
+              (step stmt))
+            (execute-script db rest))
+          (error 'prepare-all "Error preparing SQL statement." errc source)))))
 
   (define-method (step (stmt <statement>))
     (sqlite-step (handle stmt)))

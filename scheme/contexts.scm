@@ -21,7 +21,7 @@
                     (<@> (lambda (method . args)
                            (apply method <name> args))))
                (*enter* <name>)
-               (guard (x ((error? x) (*exit* #f x)))
+               (guard (x ((error? x) (*exit* <name> x)))
                  <body> ...
                  (*exit* <name> #f))))))))
 )
