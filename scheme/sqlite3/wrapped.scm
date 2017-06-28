@@ -7,6 +7,7 @@
   (import (rnrs (6))
           (system foreign)
           (ice-9 format)
+          (only (guile) string-trim-both)
           (sqlite3 defines)
           (sqlite3 foreign))
 
@@ -26,9 +27,8 @@
     (let* ((db-ptr-data (make-bytevector 8))
            (db-ptr-ptr  (bytevector->pointer db-ptr-data)))
       (let ((error-code (sqlite3-open (string->pointer filename "UTF-8") db-ptr-ptr)))
-        (display "DB: ") (display error-code) (newline)
         (unless (zero? error-code)
-          (raise (make-error)))
+          (error 'sqlite-open "Error opening database" filename))
         (wrap-sqlite-db (dereference-pointer db-ptr-ptr)))))
 
   (define (sqlite-close db)
@@ -43,11 +43,13 @@
       (let ((error-code (sqlite3-prepare
                           (unwrap-sqlite-db db)
                           src-ptr -1 stmt-ptr-ptr stop-ptr-ptr)))
-        (display "STMT: ") (display error-code) (newline)
-        (display (pointer->string (dereference-pointer stop-ptr-ptr))) (newline)
-        (unless (zero? error-code)
-          (raise (make-error)))
-        (wrap-sqlite-statement (dereference-pointer stmt-ptr-ptr)))))
+        (values
+          error-code
+          (if (= error-code SQLITE_OK)
+            (wrap-sqlite-statement (dereference-pointer stmt-ptr-ptr))
+            #f)
+          (string-trim-both
+            (pointer->string (dereference-pointer stop-ptr-ptr)))))))
 
   (define (sqlite-finalize statement)
     (sqlite3-finalize (unwrap-sqlite-statement statement)))

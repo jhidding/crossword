@@ -43,7 +43,7 @@
    |                    (**char: source-ptr))
    |#
   (define sqlite3-prepare
-    (pointer->procedure int (dynamic-func "sqlite3_prepare" libsqlite3)
+    (pointer->procedure int (dynamic-func "sqlite3_prepare_v2" libsqlite3)
                         (list '* '* int '* '*)))
 
   #| Destroy a statement
