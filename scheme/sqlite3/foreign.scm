@@ -1,16 +1,20 @@
 (library (sqlite3 foreign)
 
-  (export sqlite3-open sqlite3-prepare sqlite3-step
-          sqlite3-finalize sqlite3-close
+  (export sqlite3-open sqlite3-close sqlite3-errmsg
 
-          sqlite3-column-type
+          sqlite3-prepare sqlite3-step sqlite3-reset sqlite3-finalize
+
+          sqlite3-column-count sqlite3-column-type sqlite3-column-name
           sqlite3-column-text
           sqlite3-column-double
           sqlite3-column-int
 
           sqlite3-bind-text
           sqlite3-bind-double
-          sqlite3-bind-int)
+          sqlite3-bind-int
+
+          sqlite3-bind-parameter-index
+          sqlite3-bind-parameter-count)
 
   (import (rnrs (6))
           (only (guile) dynamic-link dynamic-func)
@@ -35,6 +39,10 @@
     (pointer->procedure int (dynamic-func "sqlite3_close" libsqlite3)
                         (list '*)))
 
+  (define sqlite3-errmsg
+    (pointer->procedure '* (dynamic-func "sqlite3_errmsg" libsqlite3)
+                        (list '*)))
+
   #| Prepare a SQL statement
    |   (sqlite3-prepare (*sqlite3: db)
    |                    (string: source)
@@ -45,6 +53,10 @@
   (define sqlite3-prepare
     (pointer->procedure int (dynamic-func "sqlite3_prepare_v2" libsqlite3)
                         (list '* '* int '* '*)))
+
+  (define sqlite3-reset
+    (pointer->procedure int (dynamic-func "sqlite3_reset" libsqlite3)
+                        (list '*)))
 
   #| Destroy a statement
    |   (sqlite3-finalize (*sqlite3-statement: statement))
@@ -80,6 +92,14 @@
     (pointer->procedure int (dynamic-func "sqlite3_bind_double" libsqlite3)
                         (list '* int double)))
 
+  (define sqlite3-bind-parameter-count
+    (pointer->procedure int (dynamic-func "sqlite3_bind_parameter_count" libsqlite3)
+                        (list '*)))
+
+  (define sqlite3-bind-parameter-index
+    (pointer->procedure int (dynamic-func "sqlite3_bind_parameter_index" libsqlite3)
+                        (list '* '*)))
+
   #|
     int sqlite3_bind_blob(sqlite3_stmt*, int, const void*, int n, void(*)(void*));
     int sqlite3_bind_blob64(sqlite3_stmt*, int, const void*, sqlite3_uint64,
@@ -99,6 +119,14 @@
 
   (define sqlite3-column-type
     (pointer->procedure int (dynamic-func "sqlite3_column_type" libsqlite3)
+                        (list '* int)))
+
+  (define sqlite3-column-count
+    (pointer->procedure int (dynamic-func "sqlite3_column_count" libsqlite3)
+                        (list '*)))
+
+  (define sqlite3-column-name
+    (pointer->procedure '* (dynamic-func "sqlite3_column_name" libsqlite3)
                         (list '* int)))
 
   #| Read value from column

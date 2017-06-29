@@ -1,8 +1,16 @@
 (library (sqlite3 wrapped)
-  (export sqlite-open sqlite-close
-          sqlite-db? sqlite-statement?
-          sqlite-prepare sqlite-step sqlite-finalize
-          sqlite-bind sqlite-column)
+  (export sqlite-db?
+          sqlite-open sqlite-close sqlite-errmsg
+
+          sqlite-statement?
+          sqlite-prepare sqlite-step sqlite-reset sqlite-finalize
+
+          sqlite-bind
+          sqlite-bind-paramater-count sqlite-bind-parameter-index
+          sqlite-bind-text sqlite-bind-int sqlite-bind-double
+
+          sqlite-column sqlite-column-count sqlite-column-name
+          sqlite-column-text sqlite-column-int sqlite-column-double)
 
   (import (rnrs (6))
           (system foreign)
@@ -34,6 +42,9 @@
   (define (sqlite-close db)
     (sqlite3-close (unwrap-sqlite-db db)))
 
+  (define (sqlite-errmsg db)
+    (pointer->string (sqlite3-errmsg (unwrap-sqlite-db db))))
+
   (define (sqlite-prepare db source)
     (let* ((stmt-ptr-data (make-bytevector 8))
            (stmt-ptr-ptr  (bytevector->pointer stmt-ptr-data))
@@ -57,7 +68,25 @@
   (define (sqlite-step statement)
     (sqlite3-step (unwrap-sqlite-statement statement)))
 
-  (define (sqlite-column-string stmt index)
+  (define (sqlite-reset statement)
+    (sqlite3-reset (unwrap-sqlite-statement statement)))
+
+  (define (sqlite-bind-parameter-count statement)
+    (sqlite3-bind-parameter-count (unwrap-sqlite-statement statement)))
+
+  (define (sqlite-bind-parameter-index statement name)
+    (sqlite3-bind-parameter-index
+      (unwrap-sqlite-statement statement)
+      (string->pointer name "UTF-8")))
+
+  (define (sqlite-column-count stmt)
+    (sqlite3-column-count (unwrap-sqlite-statement stmt)))
+
+  (define (sqlite-column-name stmt index)
+    (pointer->string (sqlite3-column-name
+                       (unwrap-sqlite-statement stmt) index)))
+
+  (define (sqlite-column-text stmt index)
     (pointer->string (sqlite3-column-text
                        (unwrap-sqlite-statement stmt) index)))
 
@@ -68,13 +97,13 @@
     (sqlite3-column-double (unwrap-sqlite-statement stmt) index))
 
   (define (sqlite-column stmt index)
-    (let ((type (sqlite3-column-type stmt index)))
+    (let ((type (sqlite3-column-type (unwrap-sqlite-statement stmt) index)))
       (cond
-        ((= type SQLITE_TEXT)    (sqlite-column-string stmt index))
+        ((= type SQLITE_TEXT)    (sqlite-column-text stmt index))
         ((= type SQLITE_FLOAT)   (sqlite-column-double stmt index))
         ((= type SQLITE_INTEGER) (sqlite-column-int stmt index)))))
 
-  (define (sqlite-bind-string stmt index value)
+  (define (sqlite-bind-text stmt index value)
     (sqlite3-bind-text (unwrap-sqlite-statement stmt)
                        index (string->pointer value) 0 SQLITE_TRANSIENT))
 
@@ -91,7 +120,7 @@
       ((stmt index value)
        (cond
          ((string? value)
-          (sqlite-bind-string stmt index value))
+          (sqlite-bind-text stmt index value))
          ((and (number? value) (exact? value) (integer? value))
           (sqlite-bind-int stmt index value))
          ((number? value)
@@ -99,7 +128,7 @@
 
       ((stmt index value type)
        (case type
-         ((string) (sqlite-bind-string stmt index value))
+         ((string) (sqlite-bind-text stmt index value))
          ((int)    (sqlite-bind-int stmt index value))
          ((double) (sqlite-bind-double stmt index value))))))
 )

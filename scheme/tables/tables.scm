@@ -1,0 +1,23 @@
+(library (tables tables)
+  (export <table> header data print)
+  (import (rnrs (6))
+          (oop goops)
+          (ice-9 format)
+          (tables vector-tools))
+
+  (define-class <table> ()
+    (header #:accessor header #:init-keyword #:header)
+    (data #:accessor data #:init-keyword #:data))
+
+  (define-generic print)
+
+  (define-method (print (t <table>) (port <file-output-port>))
+    (let ((print-row (lambda (v)
+                       (vector-for-each (lambda (i)
+                                          (format port "~16a" i))
+                                        v)
+                       (newline port))))
+      (print-row (header t))
+      (display (make-string (* 16 (vector-length (header t))) #\-) port) (newline port)
+      (for-each print-row (data t))))
+)

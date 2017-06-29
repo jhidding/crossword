@@ -13,15 +13,11 @@
     #f)
 
   (define-syntax with
-    (lambda (x)
-      (syntax-case x ()
-        ((with (<name> <obj>) <body> ...)
-         (with-syntax ((<@> (datum->syntax #'with '@)))
-           #'(let* ((<name> <obj>)
-                    (<@> (lambda (method . args)
-                           (apply method <name> args))))
-               (*enter* <name>)
-               (guard (x ((error? x) (*exit* <name> x)))
-                 <body> ...
-                 (*exit* <name> #f))))))))
+    (syntax-rules ()
+      ((_ (<name> <obj>) <body> ...)
+       (let* ((<name> <obj>))
+         (*enter* <name>)
+         (guard (x ((error? x) (*exit* <name> x)))
+           <body> ...
+           (*exit* <name> #f))))))
 )
