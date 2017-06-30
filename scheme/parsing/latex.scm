@@ -111,6 +111,6 @@
   (define latex-expression
     (choice latex-comment latex-text latex-block latex-bracketed
             latex-escaped-char latex-inline-math latex-math-block
-            latex-environment (span latex-command)))
+            (span latex-environment) (span latex-command)))
 )
 
