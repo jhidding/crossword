@@ -2,39 +2,52 @@
   (export failed? *failed* parse item return failure >>= seq <-
           choice alphabetic-char numeric-char whitespace-char
           is-char is-string sattisfies ends-with
-          many some
+          many some span
           space number token)
 
   (import (rnrs (6))
           (ice-9 format)
+          (text-streams)
           (functional)
           (aux-keyword))
 
   (define-record-type failed)
   (define *failed* (make-failed))
 
-  (define (parse p port)
-    (p port))
+  (define (parse p cur)
+    (p cur))
 
-  (define (item port)
-    (let ((c (get-char port)))
+  (define (span p)
+    (lambda (cur)
+      (receive (v cur2) (parse p cur)
+        (if (failed? v)
+          (values v cur2)
+          (values
+            (list 'span
+              (cons (cursor-line cur) (cursor-col cur))
+              (cons (cursor-line cur2) (cursor-col cur2))
+              v)
+            cur2)))))
+
+  (define (item cur)
+    (let ((c (cursor-char cur)))
       (if (eof-object? c)
-        (values *failed* port)
-        (values c port))))
+        (values *failed* cur)
+        (values c (cursor-advance cur)))))
 
   (define (return x)
-    (lambda (port)
-      (values x port)))
+    (lambda (cur)
+      (values x cur)))
 
-  (define (failure port)
-    (values *failed* port))
+  (define (failure cur)
+    (values *failed* cur))
 
   (define (>>= p f)
-    (lambda (port)
-      (receive (v port) (parse p port)
+    (lambda (cur)
+      (receive (v cur) (parse p cur)
         (if (failed? v)
-          (values v port)
-          (parse (f v) port)))))
+          (values v cur)
+          (parse (f v) cur)))))
 
   (define-auxiliary-keyword <-)
 
@@ -47,13 +60,11 @@
        (>>= <parser> (lambda (x) (seq <rest> ...))))))
 
   (define (choice2 p1 p2)
-    (lambda (port)
-      (let ((pos (port-position port)))
-        (receive (v port) (parse p1 port)
-          (if (failed? v)
-            (begin (set-port-position! port pos)
-                   (parse p2 port))
-            (values v port))))))
+    (lambda (cur1)
+      (receive (v cur2) (parse p1 cur1)
+        (if (failed? v)
+          (parse p2 cur1)
+          (values v cur2)))))
 
   (define (choice p . ps)
     (fold-left choice2 p ps))
