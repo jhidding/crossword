@@ -19,31 +19,23 @@
          (is-char close-char)
          (return v)))
 
-  (define (char-not-in . set)
-    (sattisfies
-      (lambda (c)
-        (not (memq c set)))))
-
-  (define (char-in . set)
-    (sattisfies
-      (lambda (c)
-        (memq c set))))
-
   (define (math-env? s)
     (or (string=? s "equation")
-        (string=? s "align")))
+        (string=? s "align")
+        (string=? s "eqnarray")))
 
   (define latex-environment
     (seq (is-string "\\begin{")
          (v <- latex-identifyer)
          (is-string "}")
+         (many (enclosed #\[ (many latex-expression) #\]))
          (w <- (if (math-env? v)
                  (seq
                    (x <- (ends-with (format #f "\\end{~a}" v) item))
-                   (return (list->string x)))
+                   (return (list (list->string x))))
                  (ends-with (format #f "\\end{~a}" v)
                             latex-expression)))
-         (return (list 'environment v w))))
+         (return (cons* 'environment v w))))
 
   (define latex-comment
     (seq (is-char #\%)
@@ -56,8 +48,17 @@
          (return (list 'special-char c))))
 
   (define latex-text
-    (seq (chars <- (some (char-not-in #\{ #\} #\\ #\$ #\% #\] #\[)))
+    (seq (chars <- (some (char-not-in #\{ #\} #\\ #\$ #\% #\] #\[ #\newline)))
          (return (list->string chars))))
+
+  (define latex-newline
+    (seq (is-char #\newline)
+         (return 'newline)))
+
+  (define latex-paragraph
+    (seq (is-char #\newline)
+         (some (is-char #\newline))
+         (return 'paragraph)))
 
   (define latex-block
     (seq (is-char #\{)
@@ -109,7 +110,8 @@
          (return (cons* 'command name args))))
 
   (define latex-expression
-    (choice latex-comment latex-text latex-block latex-bracketed
+    (choice (span latex-paragraph) latex-newline
+            latex-comment latex-text latex-block latex-bracketed
             latex-escaped-char latex-inline-math latex-math-block
             (span latex-environment) (span latex-command)))
 )

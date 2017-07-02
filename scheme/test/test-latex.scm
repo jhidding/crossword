@@ -2,9 +2,9 @@
         (ice-9 pretty-print)
         (text-streams)
         (parsing parsing)
-        (parsing latex))
+        (parsing latex)
+        (db-builder latex))
 
-(let ((text (make-cursor (open-file-input-port "test/introduction.tex")))
-      (p    (many latex-expression)))
-  (pretty-print (p text)))
+(let ((data (munge-latex "test/introduction.tex")))
+  (pretty-print data))
 

@@ -2,7 +2,7 @@
   (export failed? *failed* parse item return failure >>= seq <-
           choice alphabetic-char numeric-char whitespace-char
           is-char is-string sattisfies ends-with
-          many some span
+          many some span char-in char-not-in
           space number token)
 
   (import (rnrs (6))
@@ -118,4 +118,14 @@
          (v <- p)
          space
          (return v)))
+
+  (define (char-not-in . set)
+    (sattisfies
+      (lambda (c)
+        (not (memq c set)))))
+
+  (define (char-in . set)
+    (sattisfies
+      (lambda (c)
+        (memq c set))))
 )
