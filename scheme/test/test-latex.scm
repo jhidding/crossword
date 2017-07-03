@@ -1,10 +1,8 @@
 (import (rnrs (6))
         (ice-9 pretty-print)
-        (text-streams)
-        (parsing parsing)
-        (parsing latex)
+        (sqlite3 oop)
         (db-builder latex))
 
-(let ((data (munge-latex "test/introduction.tex")))
-  (pretty-print data))
-
+(let ((data (munge-latex "data/introduction.tex")))
+  (pretty-print data)
+  (with (open-database "introduction-cw.db")))
