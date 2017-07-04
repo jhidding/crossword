@@ -4,45 +4,50 @@
 pragma foreign_keys = on;
 
 -- =============================================================== --
+-- database metadata; anticipating future layout changes           --
+-- =============================================================== --
+create table "info" (
+        "field"         text,
+        "content"       text );
+
+insert into "info" values
+        ("application", "crossword"),
+        ("version",     "0.1.0");
+
+-- =============================================================== --
 -- abstract nodes                                                  --
 -- =============================================================== --
 create table "nodes" (
         "id"            integer primary key,
-        "type"          integer );
+
+        -- i.e. paragraph, section, chapter etc.
+        "type"          integer references "node_types"("id")
+                        on delete restrict,
+
+        -- relative path to file
+        "filename"      text,
+
+        -- git commit of current info
+        "commit"        text,
+
+        -- line numbers
+        "line_begin"    integer,
+        "line_end"      integer );
 
 create table "node_types" (
         "id"            integer primary key,
         "name"          text );
 
-insert into "node_types" values
-        (0, 'paragraph'),
-        (1, 'heading');
+-- =============================================================== --
+-- grades; assesses quality of text                                --
+-- =============================================================== --
+create table "grades" (
+        "node_id"       integer references "nodes"("id")
+                        on delete cascade,
+        "grade"         integer );
 
 -- =============================================================== --
--- paragraphs                                                      --
--- =============================================================== --
-create table "paragraphs" (
-        "node_id"       integer primary key references "nodes"("id")
-                        on delete restrict,
-        "filename"      text,
-        "line_begin"    integer,
-        "line_end"      integer,
-        "subtext"       text );
-
-create trigger "paragraph_insert_trigger"
-before insert on "paragraphs"
-begin
-        insert into "nodes" values(new."node_id", 0);
-end;
-
-create trigger "paragraph_delete_trigger"
-after delete on "paragraphs"
-begin
-        delete from "nodes" where "id"=old."node_id";
-end;
-
--- =============================================================== --
--- paragraph properties                                            --
+-- triple store; semantic data on your text                        --
 -- =============================================================== --
 create table "rdf" (
         "id"            integer primary key,
@@ -50,44 +55,47 @@ create table "rdf" (
         "predicate"     text,
         "object"        text );
 
+create table "node_rdf" (
+        "node_id"       integer references "nodes"("id")
+                        on delete cascade,
+        "rdf_id"        integer references "rdf"("id")
+                        on delete restrict );
+
+-- =============================================================== --
+-- keywords; make your text searchable                             --
+-- =============================================================== --
 create table "keywords" (
         "id"            integer primary key,
         "name"          text );
 
 create table "node_keywords" (
-        "node_id"       integer references "nodes"("id"),
-        "keyword_id"    integer references "keywords"("id") );
+        "node_id"       integer references "nodes"("id")
+                        on delete cascade,
+        "keyword_id"    integer references "keywords"("id")
+                        on delete restrict );
 
-create table "node_rdf" (
-        "node_id"       integer references "nodes"("id"),
-        "rdf_id"        integer references "rdf"("id") );
+-- =============================================================== --
+-- remarks; full sentences: editor comments, subtext etc.          --
+-- =============================================================== --
+create table "remarks" (
+        "id"            integer primary key,
+        "type"          text,
+        "content"       text );
+
+create table "node_remarks" (
+        "node_id"       integer references "nodes"("id")
+                        on delete cascade,
+        "remark_id"     integer references "remarks"("id")
+                        on delete restrict );
 
 -- =============================================================== --
 -- headings                                                        --
 -- =============================================================== --
 create table "headings" (
-        "node_id"       integer primary key references "node"("id")
-                        on delete restrict,
-        "title"         text,
-        "level"         integer );
+        "parent"        integer references "node"("id")
+                        on delete cascade,
+        "member"        integer references "node"("id")
+                        on delete cascade,
+        "title"         text );
 
-create trigger "headings_insert_trigger"
-before insert on "headings"
-begin
-        insert into "nodes" values(new."node_id", 1);
-end;
-
-create trigger "headings_delete_trigger"
-after delete on "headings"
-begin
-        delete from "nodes" where "id"=old."node_id";
-end;
-
-create table "memberships" (
-        "heading"       integer,
-        "member"        integer,
-        foreign key ("heading") references "node"("id"),
-        foreign key ("member") references "node"("id") );
-
-
--- vim:ft=mysql
+-- vim:ft=mysql:ts=8:sw=8

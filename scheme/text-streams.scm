@@ -13,7 +13,7 @@
     (protocol
       (lambda (new)
         (case-lambda
-          ((port) (new (get-lines port) 0 0))
+          ((port) (new (get-lines port) 1 1))
           ((text line col) (new text line col))))))
 
   (define (cursor-advance c)
@@ -23,7 +23,7 @@
           (let ((b (+ 1 line)))
             (if (= b (vector-length text))
               (make-cursor text #f #f)
-              (make-cursor text b 0)))
+              (make-cursor text b 1)))
           (make-cursor text line a)))))
 
   (define (cursor-char c)
