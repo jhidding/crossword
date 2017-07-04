@@ -42,23 +42,31 @@ create table "node_types" (
 -- grades; assesses quality of text                                --
 -- =============================================================== --
 create table "grades" (
-        "node_id"       integer references "nodes"("id")
+        "node_id"       integer not null references "nodes"("id")
                         on delete cascade,
         "grade"         integer );
 
 -- =============================================================== --
 -- triple store; semantic data on your text                        --
 -- =============================================================== --
-create table "rdf" (
+create table "objects" (
         "id"            integer primary key,
-        "subject"       text,
-        "predicate"     text,
-        "object"        text );
+        "description"   text,
+        "triple_id"     integer references "triples"("id")
+                        on delete restrict );
 
-create table "node_rdf" (
-        "node_id"       integer references "nodes"("id")
+create table "triples" (
+        "id"            integer primary key,
+        "subject"       integer not null references "objects"("id")
+                        on delete restrict,
+        "predicate"     text,
+        "object"        integer not null references "objects"("id")
+                        on delete restrict );
+
+create table "node_triples" (
+        "node_id"       integer not null references "nodes"("id")
                         on delete cascade,
-        "rdf_id"        integer references "rdf"("id")
+        "triple_id"     integer not null references "triples"("id")
                         on delete restrict );
 
 -- =============================================================== --
@@ -66,12 +74,12 @@ create table "node_rdf" (
 -- =============================================================== --
 create table "keywords" (
         "id"            integer primary key,
-        "name"          text );
+        "name"          text not null );
 
 create table "node_keywords" (
-        "node_id"       integer references "nodes"("id")
+        "node_id"       integer not null references "nodes"("id")
                         on delete cascade,
-        "keyword_id"    integer references "keywords"("id")
+        "keyword_id"    integer not null references "keywords"("id")
                         on delete restrict );
 
 -- =============================================================== --
@@ -79,22 +87,18 @@ create table "node_keywords" (
 -- =============================================================== --
 create table "remarks" (
         "id"            integer primary key,
+        "node_id"       integer not null references "nodes"("id")
+                        on delete cascade,
         "type"          text,
         "content"       text );
-
-create table "node_remarks" (
-        "node_id"       integer references "nodes"("id")
-                        on delete cascade,
-        "remark_id"     integer references "remarks"("id")
-                        on delete restrict );
 
 -- =============================================================== --
 -- headings                                                        --
 -- =============================================================== --
 create table "headings" (
-        "parent"        integer references "node"("id")
+        "parent"        integer not null references "nodes"("id")
                         on delete cascade,
-        "member"        integer references "node"("id")
+        "member"        integer not null references "nodes"("id")
                         on delete cascade,
         "title"         text );
 
