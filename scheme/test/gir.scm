@@ -1,138 +1,31 @@
 (import (rnrs (6))
         (ice-9 format)
         (functional)
-        (only (guile) dynamic-link dynamic-func)
-        (system foreign))
+        (gir foreign)
+        (gir info)
+        (gir functions)
+        (gir callables))
 
-(define libgirepository (dynamic-link "libgirepository-1.0"))
-(define libglib (dynamic-link "libglib-2.0"))
-
-(define (GList->list p)
-  (let loop ((result '())
-             (p p))
-    (if (null-pointer? p)
-      (reverse result)
-      (let ((r (lambda (data next prev)
-                 (loop (cons data result) next))))
-        (apply r (parse-c-struct p (list '* '* '*)))))))
-
-(define g_irepository_prepend_search_path
-  (let ((p (pointer->procedure
-             void
-             (dynamic-func "g_irepository_prepend_search_path"
-                           libgirepository)
-             (list '*))))
-    (lambda (s)
-      (p (string->pointer s)))))
-
-(define g_irepository_get_search_path
-  (let ((p (pointer->procedure
-             '*
-             (dynamic-func "g_irepository_get_search_path"
-                           libgirepository)
-             '())))
-    (lambda ()
-      (map pointer->string (GList->list (p))))))
-
-(define g_irepository_get_default
-  (pointer->procedure
-    '*
-    (dynamic-func "g_irepository_get_default"
-                  libgirepository)
-    '()))
-
-(define g_irepository_require
-  (let ((p (pointer->procedure
-             '*
-             (dynamic-func "g_irepository_require"
-                           libgirepository)
-             (list '*   ; repository
-                   '*   ; namespace (string)
-                   '*   ; version (string), null for newest
-                   int  ; flags
-                   '*))))   ; **GError
-    (case-lambda
-      ((namespace) (g_irepository_require namespace #f))
-      ((namespace version)
-       (p %null-pointer
-         (string->pointer namespace)
-         (if version (string->pointer version) %null-pointer)
-         0
-         %null-pointer)))))
-
-(define (pointer->list-of-strings p)
-  (let loop ((result  '())
-             (address (pointer-address p)))
-    (let ((nts (dereference-pointer (make-pointer address))))
-      (if (null-pointer? nts)
-        (reverse result)
-        (loop (cons (pointer->string nts) result)
-              (+ address (sizeof '*)))))))
-
-(define g_irepository_get_loaded_namespaces
-  (let ((p (pointer->procedure
-             '* (dynamic-func "g_irepository_get_loaded_namespaces" libgirepository)
-             (list '*))))
-    (lambda ()
-      (pointer->list-of-strings (p %null-pointer)))))
-
-(define g_irepository_get_dependencies
-  (let ((p (pointer->procedure
-             '* (dynamic-func "g_irepository_get_dependencies" libgirepository)
-             (list '* '*))))
-    (lambda (namespace)
-      (pointer->list-of-strings (p %null-pointer (string->pointer namespace))))))
-
-(define g_irepository_get_c_prefix
-  (let ((p (pointer->procedure
-             '* (dynamic-func "g_irepository_get_c_prefix" libgirepository)
-             (list '* '*))))
-    (lambda (namespace)
-      (pointer->string (p %null-pointer (string->pointer namespace))))))
-
-(define g_irepository_get_version
-  (let ((p (pointer->procedure
-             '* (dynamic-func "g_irepository_get_version" libgirepository)
-             (list '* '*))))
-    (lambda (namespace)
-      (pointer->string (p %null-pointer (string->pointer namespace))))))
-
-(define g_irepository_get_n_infos
-  (let ((p (pointer->procedure
-             int (dynamic-func "g_irepository_get_n_infos" libgirepository)
-             (list '* '*))))
-    (lambda (namespace)
-      (p %null-pointer (string->pointer namespace)))))
-
-(define g_irepository_get_info
-  (let ((p (pointer->procedure
-             '* (dynamic-func "g_irepository_get_info" libgirepository)
-             (list '* '* int))))
-    (lambda (namespace index)
-      (p %null-pointer (string->pointer namespace) index))))
-
-(define g_base_info_get_type
-  (pointer->procedure int (dynamic-func "g_base_info_get_type" libgirepository) (list '*)))
-
-(define g_base_info_get_name
-  (let ((p (pointer->procedure '* (dynamic-func "g_base_info_get_name" libgirepository) (list '*))))
-    (lambda (info)
-      (pointer->string (p info)))))
-
-(let ((d   (g_irepository_get_default))
-      (gtk (g_irepository_require "Gtk" "3.0")))
-  (format #t "GIRepository search path: ~s~%" (g_irepository_get_search_path))
-  (format #t "loaded namespaces: ~s~%" (g_irepository_get_loaded_namespaces))
-  (format #t "Gtk version: ~s~%" (g_irepository_get_version "Gtk"))
-  (format #t "Gtk dependencies: ~s~%" (g_irepository_get_dependencies "Gtk"))
-  (format #t "Gtk #infos: ~s~%" (g_irepository_get_n_infos "Gtk"))
-  (format #t "Gtk prefix: ~s~%" (g_irepository_get_c_prefix "Gtk"))
+(let ((d   (gir-get-default))
+      (gtk (gir-require "Gtk" "3.0")))
+  (format #t "GIRepository search path: ~s~%" (gir-get-search-path))
+  (format #t "loaded namespaces: ~s~%" (gir-get-loaded-namespaces))
+  (format #t "Gtk version: ~s~%" (gir-get-version "Gtk"))
+  (format #t "Gtk dependencies: ~s~%" (gir-get-dependencies "Gtk"))
+  (format #t "Gtk #infos: ~s~%" (gir-get-n-infos "Gtk"))
+  (format #t "Gtk prefix: ~s~%" (gir-get-c-prefix "Gtk"))
   (for-each (lambda (idx)
-    (let ((info (g_irepository_get_info "Gtk" idx)))
-      (format #t "~a type: ~a~%"
-        (g_base_info_get_name info)
-        (g_base_info_get_type info))))
-    (iota (g_irepository_get_n_infos "Gtk")))
+    (let ((info (gir-get-info "Gtk" idx)))
+      (format #t "~a type: ~s ~a ~a~%"
+        (gir-info-get-name info)
+        (gir-info-get-type info)
+        (if (eq? 'function (gir-info-get-type info))
+          (gir-function-info-get-symbol info)
+          "-")
+        (if (eq? 'function (gir-info-get-type info))
+          (gir-callable-info-get-n-args info)
+          "-"))))
+    (iota (gir-get-n-infos "Gtk")))
 )
 
 
