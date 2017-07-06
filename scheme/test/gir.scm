@@ -1,5 +1,6 @@
 (import (rnrs (6))
         (ice-9 format)
+        (functional)
         (only (guile) dynamic-link dynamic-func)
         (system foreign))
 
@@ -96,12 +97,42 @@
     (lambda (namespace)
       (pointer->string (p %null-pointer (string->pointer namespace))))))
 
+(define g_irepository_get_n_infos
+  (let ((p (pointer->procedure
+             int (dynamic-func "g_irepository_get_n_infos" libgirepository)
+             (list '* '*))))
+    (lambda (namespace)
+      (p %null-pointer (string->pointer namespace)))))
+
+(define g_irepository_get_info
+  (let ((p (pointer->procedure
+             '* (dynamic-func "g_irepository_get_info" libgirepository)
+             (list '* '* int))))
+    (lambda (namespace index)
+      (p %null-pointer (string->pointer namespace) index))))
+
+(define g_base_info_get_type
+  (pointer->procedure int (dynamic-func "g_base_info_get_type" libgirepository) (list '*)))
+
+(define g_base_info_get_name
+  (let ((p (pointer->procedure '* (dynamic-func "g_base_info_get_name" libgirepository) (list '*))))
+    (lambda (info)
+      (pointer->string (p info)))))
+
 (let ((d   (g_irepository_get_default))
       (gtk (g_irepository_require "Gtk" "3.0")))
   (format #t "GIRepository search path: ~s~%" (g_irepository_get_search_path))
   (format #t "loaded namespaces: ~s~%" (g_irepository_get_loaded_namespaces))
   (format #t "Gtk version: ~s~%" (g_irepository_get_version "Gtk"))
   (format #t "Gtk dependencies: ~s~%" (g_irepository_get_dependencies "Gtk"))
-  (format #t "Gtk prefix: ~s~%" (g_irepository_get_c_prefix "Gtk")))
+  (format #t "Gtk #infos: ~s~%" (g_irepository_get_n_infos "Gtk"))
+  (format #t "Gtk prefix: ~s~%" (g_irepository_get_c_prefix "Gtk"))
+  (for-each (lambda (idx)
+    (let ((info (g_irepository_get_info "Gtk" idx)))
+      (format #t "~a type: ~a~%"
+        (g_base_info_get_name info)
+        (g_base_info_get_type info))))
+    (iota (g_irepository_get_n_infos "Gtk")))
+)
 
 
