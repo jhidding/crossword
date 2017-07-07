@@ -1,9 +1,20 @@
 (library (gir foreign)
-  (export libgirepository gir-get-default gir-require
-          gir-get-n-infos gir-get-info
-          gir-prepend-search-path gir-get-search-path
-          gir-get-loaded-namespaces gir-get-dependencies
-          gir-get-c-prefix gir-get-version)
+  (export libgirepository gir-define
+
+          g-irepository-get-info g-irepository-get-n-infos
+          g-irepository-get-default g-irepository-require
+          g-irepository-get-dependencies g-irepository-get-version
+          g-irepository-get-loaded-namespaces
+
+          g-base-info-ref g-base-info-unref g-base-info-get-type
+          g-base-info-get-name g-base-info-equal g-base-info-iterate-attributes
+
+          g-callable-info-can-throw-gerror g-callable-info-get-n-args
+          g-callable-info-get-caller-owns g-callable-info-get-return-attribute
+          g-callable-info-is-method g-callable-info-iterate-return-attributes
+          g-callable-info-load-arg g-callable-info-load-return-type
+          g-callable-info-may-return-null g-callable-info-skip-return
+          g-callable-info-get-arg g-callable-info-get-return-type)
 
   (import (rnrs (6))
           (gir conversions)
@@ -12,83 +23,60 @@
 
   (define libgirepository (dynamic-link "libgirepository-1.0"))
 
-  (define gir-get-default
-    (pointer->procedure
-      '* (dynamic-func "g_irepository_get_default" libgirepository)
-      '()))
+  (define-syntax gir-define
+    (lambda (x)
+      (define (dashes->underscores s)
+        (list->string (map (lambda (c)
+                             (if (char=? c #\-) #\_ c))
+                           (string->list s))))
 
-  (define gir-require
-    (let ((p (pointer->procedure
-               '* (dynamic-func "g_irepository_require"
-                                libgirepository)
-               (list '* '* '* int '*))))
-      (case-lambda
-        ((namespace) (g_irepository_require namespace #f))
-        ((namespace version)
-         (p %null-pointer
-            (string->pointer namespace)
-            (if version (string->pointer version) %null-pointer)
-            0
-            %null-pointer)))))
+      (define (c-func-name name)
+        (dashes->underscores (symbol->string (syntax->datum name))))
 
-  (define gir-get-n-infos
-    (let ((p (pointer->procedure
-               int (dynamic-func "g_irepository_get_n_infos"
-                                 libgirepository)
-               (list '* '*))))
-      (lambda (namespace)
-        (p %null-pointer (string->pointer namespace)))))
+      (syntax-case x ()
+        ((_ <name> <ret-type> <arg-list> ...)
+         #`(define <name>
+             (pointer->procedure
+               <ret-type> (dynamic-func #,(c-func-name #'<name>) libgirepository)
+               (list <arg-list> ...)))))))
 
-  (define gir-get-info
-    (let ((p (pointer->procedure
-               '* (dynamic-func "g_irepository_get_info"
-                                libgirepository)
-               (list '* '* int))))
-      (lambda (namespace index)
-        (p %null-pointer (string->pointer namespace) index))))
+  (gir-define g-irepository-get-default '*)
+  (gir-define g-irepository-require '* '* '* '* int '*)
+  (gir-define g-irepository-get-n-infos int '* '*)
+  (gir-define g-irepository-get-info '* '* '* int)
+  (gir-define g-irepository-get-version '* '* '*)
+  (gir-define g-irepository-get-dependencies '* '* '*)
+  (gir-define g-irepository-get-loaded-namespaces '* '*)
 
-  (define gir-prepend-search-path
-    (let ((p (pointer->procedure
-               void (dynamic-func "g_irepository_prepend_search_path"
-                                  libgirepository)
-               (list '*))))
-      (lambda (s)
-        (p (string->pointer s)))))
+  (gir-define g-base-info-ref '* '*)
+  (gir-define g-base-info-unref void '*)
+  (gir-define g-base-info-equal int '* '*)
+  (gir-define g-base-info-get-type int '*)
+  (gir-define g-base-info-get-name '* '*)
+  (gir-define g-base-info-iterate-attributes int '* '* '* '*)
 
-  (define gir-get-search-path
-    (let ((p (pointer->procedure
-               '*
-               (dynamic-func "g_irepository_get_search_path"
-                             libgirepository)
-               '())))
-      (lambda ()
-        (map pointer->string (GList->list (p))))))
+  (gir-define g-callable-info-can-throw-gerror int '*)
+  (gir-define g-callable-info-get-n-args int '*)
+  (gir-define g-callable-info-get-arg '* '* int)
+  (gir-define g-callable-info-get-caller-owns int '*)
+  (gir-define g-callable-info-get-return-attribute '* '* '*)
+  (gir-define g-callable-info-get-return-type '* '*)
+  (gir-define g-callable-info-is-method int '*)
+  (gir-define g-callable-info-iterate-return-attributes int '* '* '* '*)
+  (gir-define g-callable-info-load-arg void '* int '*)
+  (gir-define g-callable-info-load-return-type void '* '*)
+  (gir-define g-callable-info-may-return-null int '*)
+  (gir-define g-callable-info-skip-return int '*)
 
-  (define gir-get-loaded-namespaces
-    (let ((p (pointer->procedure
-               '* (dynamic-func "g_irepository_get_loaded_namespaces" libgirepository)
-               (list '*))))
-      (lambda ()
-        (map pointer->string (pointer-pointer->list (p %null-pointer))))))
-
-  (define gir-get-dependencies
-    (let ((p (pointer->procedure
-               '* (dynamic-func "g_irepository_get_dependencies" libgirepository)
-               (list '* '*))))
-      (lambda (namespace)
-        (map pointer->string (pointer-pointer->list (p %null-pointer (string->pointer namespace)))))))
-
-  (define gir-get-c-prefix
-    (let ((p (pointer->procedure
-               '* (dynamic-func "g_irepository_get_c_prefix" libgirepository)
-               (list '* '*))))
-      (lambda (namespace)
-        (pointer->string (p %null-pointer (string->pointer namespace))))))
-
-  (define gir-get-version
-    (let ((p (pointer->procedure
-               '* (dynamic-func "g_irepository_get_version" libgirepository)
-               (list '* '*))))
-      (lambda (namespace)
-        (pointer->string (p %null-pointer (string->pointer namespace))))))
+  (gir-define g-arg-info-get-closure int '*)
+  (gir-define g-arg-info-get-destroy int '*)
+  (gir-define g-arg-info-get-direction int '*)
+  (gir-define g-arg-info-get-ownership-transfer int '*)
+  (gir-define g-arg-info-get-scope int '*)
+  (gir-define g-arg-info-get-type '* '*)
+  (gir-define g-arg-info-may-be-null int '*)
+  (gir-define g-arg-info-is-caller-allocates int '*)
+  (gir-define g-arg-info-is-optional int '*)
+  (gir-define g-arg-info-is-return-value int '*)
+  (gir-define g-arg-info-is-skip int '*)
 )
