@@ -10,6 +10,7 @@
 
           (gir conversions)
           (gir foreign)
+          (gir generics)
           (gir arg))
 
   (define-enum-transformer gi-info-type->symbol
@@ -24,9 +25,6 @@
     make-info (ptr) #:finalizer info-unref)
 
   (define (get-ptr info) (make-pointer (ptr info)))
-
-  (define-generic get-type)
-  (define-generic get-name)
 
   (define-method (get-type (info <info>))
     (gi-info-type->symbol (g-base-info-get-type (get-ptr info))))

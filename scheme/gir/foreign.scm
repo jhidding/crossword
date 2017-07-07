@@ -14,7 +14,19 @@
           g-callable-info-is-method g-callable-info-iterate-return-attributes
           g-callable-info-load-arg g-callable-info-load-return-type
           g-callable-info-may-return-null g-callable-info-skip-return
-          g-callable-info-get-arg g-callable-info-get-return-type)
+          g-callable-info-get-arg g-callable-info-get-return-type
+
+          g-arg-info-get-closure g-arg-info-get-destroy
+          g-arg-info-get-direction g-arg-info-get-ownership-transfer
+          g-arg-info-get-scope g-arg-info-get-type g-arg-info-may-be-null
+          g-arg-info-is-caller-allocates g-arg-info-is-optional
+          g-arg-info-is-return-value g-arg-info-is-skip
+
+          g-type-tag-to-string g-info-type-to-string g-type-info-is-pointer
+          g-type-info-get-tag g-type-info-get-param-type
+          g-type-info-get-interface g-type-info-get-array-length
+          g-type-info-get-array-fixed-size g-type-info-is-zero-terminated
+          g-type-info-get-array-type)
 
   (import (rnrs (6))
           (gir conversions)
@@ -79,4 +91,15 @@
   (gir-define g-arg-info-is-optional int '*)
   (gir-define g-arg-info-is-return-value int '*)
   (gir-define g-arg-info-is-skip int '*)
+
+  (gir-define g-type-tag-to-string '* int)
+  (gir-define g-info-type-to-string '* int)
+  (gir-define g-type-info-is-pointer int '*)
+  (gir-define g-type-info-get-tag int '*)
+  (gir-define g-type-info-get-param-type '* '* int)
+  (gir-define g-type-info-get-interface '* '*)
+  (gir-define g-type-info-get-array-length int '*)
+  (gir-define g-type-info-get-array-fixed-size int '*)
+  (gir-define g-type-info-is-zero-terminated int '*)
+  (gir-define g-type-info-get-array-type int '*)
 )
