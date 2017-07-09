@@ -16,6 +16,10 @@
           g-callable-info-may-return-null g-callable-info-skip-return
           g-callable-info-get-arg g-callable-info-get-return-type
 
+          g-function-info-get-flags g-function-info-get-property
+          g-function-info-get-symbol g-function-info-get-vfunc
+          g-function-info-invoke
+
           g-arg-info-get-closure g-arg-info-get-destroy
           g-arg-info-get-direction g-arg-info-get-ownership-transfer
           g-arg-info-get-scope g-arg-info-get-type g-arg-info-may-be-null
@@ -79,6 +83,12 @@
   (gir-define g-callable-info-load-return-type void '* '*)
   (gir-define g-callable-info-may-return-null int '*)
   (gir-define g-callable-info-skip-return int '*)
+
+  (gir-define g-function-info-get-flags int '*)
+  (gir-define g-function-info-get-property '* '*)
+  (gir-define g-function-info-get-symbol '* '*)
+  (gir-define g-function-info-get-vfunc '* '*)
+  (gir-define g-function-info-invoke int '* '* int '* int '* '*)
 
   (gir-define g-arg-info-get-closure int '*)
   (gir-define g-arg-info-get-destroy int '*)

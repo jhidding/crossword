@@ -14,6 +14,7 @@
 
           (gir conversions)
           (gir foreign)
+          (gir generics)
 
           (gir info))
 
@@ -37,8 +38,8 @@
 
   (define (gir-get-info namespace index)
     (make-info
-      (pointer-address (g-irepository-get-info
-        %null-pointer (string->pointer namespace) index))))
+      (g-irepository-get-info
+        %null-pointer (string->pointer namespace) index)))
 
   (define (gir-get-loaded-namespaces)
     (map pointer->string

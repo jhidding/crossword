@@ -1,5 +1,5 @@
 (library (enums)
-  (export define-enum define-enum-transformer)
+  (export define-enum define-enum-transformer define-bitflags)
   (import (rnrs (6))
           (rename (cut) (cut $))
           (functional))
@@ -25,6 +25,21 @@
         ((_ <T> <as> ...)
          #'(define (<T> i)
              (vector-ref #(<as> ...) i))))))
+
+  (define-syntax define-bitflags
+    (lambda (x)
+      (syntax-case x ()
+        ((_ <name> <flags> ...)
+         #'(define <name>
+             (let* ((alist   (map (lambda (f i) (cons f (expt 2 i)))
+                                  '(<flags> ...) (iota (length '(<flags> ...)))))
+                    (get-bit (lambda (sym)
+                               (let ((p (assq sym alist)))
+                                 (unless p (error '<name> "Symbol not in flags." sym '(<flags> ...)))
+                                 (cdr p)))))
+               (lambda (value)
+                 (lambda (flag)
+                   (not (zero? (bitwise-and value (get-bit flag))))))))))))
 
   #| way too complicated
   (define-syntax define-enum-transformer

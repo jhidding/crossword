@@ -5,16 +5,13 @@
           (oop goops)
           (gir conversions)
           (gir foreign)
-          (gir generics))
-
-  (define-class <arg> (<info>))
-
-  (define (make-arg ptr)
-    (make <arg> #:ptr ptr))
+          (gir generics)
+          (gir info)
+          (gir type))
 
   (define-method (get-closure (arg <arg>))
     (g-arg-info-get-closure (get-ptr arg)))
 
   (define-method (get-type (arg <arg>))
-    (g-arg-info-get-type (get-ptr arg)))
+    (make-type (g-arg-info-get-type (get-ptr arg))))
 )
