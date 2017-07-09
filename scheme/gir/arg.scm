@@ -1,5 +1,5 @@
 (library (gir arg)
-  (export <arg> make-arg)
+  (export)
   (import (rnrs (6))
           (system foreign-object)
           (oop goops)

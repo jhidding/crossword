@@ -29,7 +29,7 @@
   (for-each (lambda (idx)
     (let ((info (gir-get-info "GIRepository" idx)))
       (if (eq? (get-type info) 'function)
-        (format #t "~a ~s~%" (get-name info) (get-type-list info))
+        (format #t "~a ~s~%" (get-symbol info) (get-type-list info))
         (format #t "~a type: ~s~%"
           (get-name info)
           (get-type info)))))

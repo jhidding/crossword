@@ -1,9 +1,9 @@
 (library (gir functions)
-  (export gir-function-info-get-symbol)
+  (export)
   (import (rnrs (6))
+          (oop goops)
+          (enums)
           (system foreign)
-          (only (guile) dynamic-link dynamic-func)
-
           (gir conversions)
           (gir foreign)
           (gir generics))
@@ -16,4 +16,7 @@
 
   (define-method (get-symbol (info <function>))
     (pointer->string (g-function-info-get-symbol (get-ptr info))))
+
+  (define-method (get-property (info <function>))
+    (make-info (g-function-info-get-property (get-ptr info))))
 )

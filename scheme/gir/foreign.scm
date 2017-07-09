@@ -112,4 +112,12 @@
   (gir-define g-type-info-get-array-fixed-size int '*)
   (gir-define g-type-info-is-zero-terminated int '*)
   (gir-define g-type-info-get-array-type int '*)
+
+  (gir-define g-enum-info-get-n-values int '*)
+  (gir-define g-enum-info-get-value '* '* int)
+  (gir-define g-enum-info-get-n-methods int '*)
+  (gir-define g-enum-info-get-method '* '* int)
+  (gir-define g-enum-info-get-storage-type int '*)
+  (gir-define g-enum-info-get-error-domain '* '*)
+  (gir-define g-enum-info-get-value int64 '*)
 )

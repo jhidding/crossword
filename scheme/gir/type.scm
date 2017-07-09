@@ -1,7 +1,6 @@
 (library (gir type)
-  (export <type> make-type)
-          ;pointer? get-tag get-param-type get-interface get-array-length
-          ;get-array-fixed-size zero-terminated?  get-array-type)
+  (export)
+
   (import (rnrs (6))
           (except (system foreign) pointer?)
           (oop goops)
@@ -10,13 +9,6 @@
           (gir conversions)
           (gir foreign)
           (gir info))
-
-  (define-enum-transformer gi-type-tag->symbol
-    void boolean int8 uint8 int16 uint16 int32 uint32 int64 uint64 float double
-    gtype utf8 filename array interface glist gslist ghash error unichar)
-
-  (define-enum-transformer gi-array-type->symbol
-    c array ptr_array byte_array)
 
   (define-method (pointer? (type <type>))
     (int->bool (g-type-info-is-pointer (get-ptr type))))
