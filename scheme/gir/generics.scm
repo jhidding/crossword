@@ -16,9 +16,11 @@
           <enum> <value> make-enum make-value get-value get-error-domain
           get-storage-type get-method get-n-methods get-n-values
 
-          <struct> make-struct
+          <struct> make-struct get-alignment get-size gtype-struct? foreign?
+          get-n-fields get-field find-method
 
-          <union> make-union)
+          <union> make-union define-generics discriminated?
+          get-discriminator-offset get-discriminator-type get-discriminator)
 
   (import (rnrs (6))
           (oop goops)
@@ -85,6 +87,14 @@
   (define (make-struct ptr)
     (make <struct> #:ptr (pointer-address ptr)))
 
+  (define-class <field> (<info>))
+  (define (make-field ptr)
+    (make <field> #:ptr (pointer-address ptr)))
+
+  (define-class <constant> (<info>))
+  (define (make-constant ptr)
+    (make <constant> #:ptr (pointer-address ptr)))
+
   (define (make-info ptr)
     (let ((type (gi-info-type->symbol (g-base-info-get-type ptr))))
       (cond
@@ -93,6 +103,10 @@
         ((eq? type 'arg)      (make-arg ptr))
         ((eq? type 'enum)     (make-enum ptr))
         ((eq? type 'value)    (make-value ptr))
+        ((eq? type 'union)    (make-union ptr))
+        ((eq? type 'struct)   (make-struct ptr))
+        ((eq? type 'field)    (make-field ptr))
+        ((eq? type 'constant) (make-constant ptr))
         (else                 (make <info> #:ptr (pointer-address ptr))))))
 
   ;;; base-info
@@ -115,4 +129,13 @@
   ;;; enum-info
   (define-generics get-value get-error-domain get-storage-type get-method
                    get-n-methods get-n-values)
+
+  ;;; struct-info
+  (define-generics get-alignment get-size gtype-struct? foreign?
+                   get-n-fields get-field
+                   find-method)
+
+  ;;; union-info
+  (define-generics discriminated? get-discriminator-offset
+                   get-discriminator-type get-discriminator)
 )
