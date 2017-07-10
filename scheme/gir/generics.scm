@@ -1,9 +1,9 @@
 (library (gir generics)
   (export gi-info-type->symbol gi-type-tag->symbol gi-array-type->symbol
 
-          <info> make-info get-ptr get-type get-name
+          <info> make-info get-ptr get-type get-name get-namespace
 
-          <callable> method? get-caller-owns get-n-args get-arg
+          <callable> method? get-caller-owns get-n-args get-arg get-return-type
 
           <arg> make-arg get-closure
 
@@ -102,6 +102,7 @@
         ((eq? type 'type)     (make-type ptr))
         ((eq? type 'arg)      (make-arg ptr))
         ((eq? type 'enum)     (make-enum ptr))
+        ((eq? type 'flags)    (make-enum ptr))
         ((eq? type 'value)    (make-value ptr))
         ((eq? type 'union)    (make-union ptr))
         ((eq? type 'struct)   (make-struct ptr))
@@ -110,10 +111,10 @@
         (else                 (make <info> #:ptr (pointer-address ptr))))))
 
   ;;; base-info
-  (define-generics get-type get-name)
+  (define-generics get-type get-name get-namespace)
 
   ;;; callable-info
-  (define-generics method? get-caller-owns get-n-args get-arg)
+  (define-generics method? get-caller-owns get-n-args get-arg get-return-type)
 
   ;;; arg-info
   (define-generics get-closure)

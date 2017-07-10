@@ -16,6 +16,9 @@
   (define-method (get-caller-owns (info <info>))
     (g-callable-info-get-caller-owns (get-ptr info)))
 
+  (define-method (get-return-type (info <info>))
+    (make-type (g-callable-info-get-return-type (get-ptr info))))
+
   (define-method (get-n-args (info <info>))
     (g-callable-info-get-n-args (get-ptr info)))
 

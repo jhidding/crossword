@@ -13,4 +13,7 @@
 
   (define-method (get-name (info <info>))
     (pointer->string (g-base-info-get-name (get-ptr info))))
+
+  (define-method (get-namespace (info <info>))
+    (pointer->string (g-base-info-get-namespace (get-ptr info))))
 )
