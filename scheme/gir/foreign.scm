@@ -4,7 +4,7 @@
           g-irepository-get-info g-irepository-get-n-infos
           g-irepository-get-default g-irepository-require
           g-irepository-get-dependencies g-irepository-get-version
-          g-irepository-get-loaded-namespaces
+          g-irepository-get-loaded-namespaces g-irepository-get-shared-library
 
           g-base-info-ref g-base-info-unref g-base-info-get-type
           g-base-info-get-name g-base-info-equal g-base-info-iterate-attributes
@@ -30,7 +30,7 @@
           g-enum-info-get-n-values g-enum-info-get-value
           g-enum-info-get-n-methods g-enum-info-get-method
           g-enum-info-get-storage-type g-enum-info-get-error-domain
-          g-enum-info-get-value
+          g-value-info-get-value
 
           g-type-tag-to-string g-info-type-to-string g-type-info-is-pointer
           g-type-info-get-tag g-type-info-get-param-type
@@ -55,7 +55,7 @@
   (define-from-girepository g-irepository-get-version '* '* '*)
   (define-from-girepository g-irepository-get-dependencies '* '* '*)
   (define-from-girepository g-irepository-get-loaded-namespaces '* '*)
-  (define-from-girepository g-irepository-
+  (define-from-girepository g-irepository-get-shared-library '* '* '*)
 
   (define-from-girepository g-base-info-ref '* '*)
   (define-from-girepository g-base-info-unref void '*)

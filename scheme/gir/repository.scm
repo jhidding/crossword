@@ -2,7 +2,7 @@
   (export gir-get-default gir-require
           gir-get-n-infos gir-get-info
           gir-get-loaded-namespaces gir-get-dependencies
-          gir-get-version)
+          gir-get-version gir-get-shared-library)
 
   (import (rnrs (6))
           (ice-9 format)
@@ -56,4 +56,8 @@
   (define (gir-get-version namespace)
     (pointer->string
       (g-irepository-get-version %null-pointer (string->pointer namespace))))
+
+  (define (gir-get-shared-library namespace)
+    (pointer->string
+      (g-irepository-get-shared-library %null-pointer (string->pointer namespace))))
 )

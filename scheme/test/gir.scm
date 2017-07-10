@@ -1,8 +1,9 @@
 (import (rnrs (6))
+        (oop goops)
+        (only (guile) string-contains)
         (ice-9 format) (ice-9 pretty-print)
         (functional)
         (rename (cut) (cut $))
-        (oop goops)
         (gir info)
         (gir generics)
         (gir repository)
@@ -55,6 +56,27 @@
 
     `(,def ,sym ,ret . ,arg)))
 
+(define (export-list namespace)
+  (map (compose string->symbol
+                (string-replace #\_ #\-)
+                get-symbol)
+       (filter (lambda (f)
+                 (eq? 'function (get-type f)))
+               (map ($ gir-get-info namespace <>)
+                    (iota (gir-get-n-infos namespace))))))
+
+(define (foreign-function-definitions namespace)
+  (map function-wrapper
+       (filter (lambda (f)
+                 (eq? 'function (get-type f)))
+               (map ($ gir-get-info namespace <>)
+                    (iota (gir-get-n-infos namespace))))))
+
+(define (get-library-name namespace)
+  (let* ((name (gir-get-shared-library namespace))
+         (x    (string-contains name ".so")))
+    (substring name 0 x)))
+
 (define (print-foreign-namespace port namespace version)
   (gir-require namespace version)
   (format port ";;; namespace: ~a ~a~%"
@@ -63,38 +85,24 @@
           (gir-get-dependencies namespace))
   (pretty-print
     `(library (,(pipe namespace string-downcase string->symbol) foreign)
-       (export ,(export-list namespace))
+       (export ,@(export-list namespace))
        (import (rnrs (6))
                (system foreign)
                (gir support)
                (only (guile) dynamic-link))
 
        (define ,(pipe namespace string-downcase
-                      (string-append "lib" <>) string->symbol)
+                      ($ string-append "lib" <>) string->symbol)
          (dynamic-link ,(get-library-name namespace)))
 
        (define-foreign-function-factory
          ,namespace
          ,(pipe namespace
                 string-downcase
-                (string-append "lib" <>) string->symbol))
+                ($ string-append "lib" <>) string->symbol))
 
        ,@(foreign-function-definitions namespace))
-    port #:width 100 #:max-expr-width 80))
+    port #:width 200 #:max-expr-width 200))
 
-(let ((d   (gir-get-default))
-      (gtk (gir-require "GIRepository" "2.0")))
-  (format #t ";;; loaded namespaces: ~s~%" (gir-get-loaded-namespaces))
-  (format #t ";;; version: ~s~%" (gir-get-version "GIRepository"))
-  (format #t ";;; #infos: ~a~%" (gir-get-n-infos "GIRepository"))
-  (for-each (lambda (idx)
-    (let ((info (gir-get-info "GIRepository" idx)))
-      (when (eq? (get-type info) 'function)
-        (pretty-print (function-wrapper info) #:width 200 #:max-expr-width 200))
-        (format #t "~a type: ~s~%"
-          (get-name info)
-          (get-type info)))))
-    (iota (gir-get-n-infos "GIRepository")))
-)
-
+(print-foreign-namespace (standard-output-port) "Gtk" "3.0")
 
