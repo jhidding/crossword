@@ -38,6 +38,12 @@
           g-type-info-get-array-fixed-size g-type-info-is-zero-terminated
           g-type-info-get-array-type
 
+          g-struct-info-get-alignment g-struct-info-get-size
+          g-struct-info-is-gtype-struct g-struct-info-is-foreign
+          g-struct-info-get-n-fields g-struct-info-get-field
+          g-struct-info-get-n-methods g-struct-info-get-method
+          g-struct-info-find-method
+
           g-object-info-get-abstract g-object-info-get-fundamental
           g-object-info-get-parent g-object-info-get-type-name
           g-object-info-get-type-init g-object-info-get-n-constants

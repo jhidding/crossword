@@ -1,6 +1,7 @@
 (library (gir object)
-  (export)
+  (export get-method-list get-field-list)
   (import (rnrs (6))
+          (functional)
           (oop goops)
           (system foreign)
           (gir generics)
@@ -45,6 +46,14 @@
 
   (define-method (get-method (info <object-info>) (n <integer>))
     (make-function (g-object-info-get-method (get-ptr info) n)))
+
+  (define (get-method-list info)
+    (map (lambda (n) (get-method info n))
+         (iota (get-n-methods info))))
+
+  (define (get-field-list info)
+    (map (lambda (n) (get-field info n))
+         (iota (get-n-fields info))))
 
   (define-method (find-method (info <object-info>) (name <string>))
     (make-function (g-object-info-get-method

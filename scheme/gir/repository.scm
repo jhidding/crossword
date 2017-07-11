@@ -1,10 +1,11 @@
 (library (gir repository)
   (export gir-get-default gir-require
-          gir-get-n-infos gir-get-info
+          gir-get-n-infos gir-get-info gir-get-info-list
           gir-get-loaded-namespaces gir-get-dependencies
           gir-get-version gir-get-shared-library)
 
   (import (rnrs (6))
+          (functional)
           (ice-9 format)
 
           (system foreign)
@@ -40,6 +41,10 @@
     (make-info
       (g-irepository-get-info
         %null-pointer (string->pointer namespace) index)))
+
+  (define (gir-get-info-list namespace)
+    (map (lambda (n) (gir-get-info namespace n))
+         (iota (gir-get-n-infos namespace))))
 
   (define (gir-get-loaded-namespaces)
     (map pointer->string
