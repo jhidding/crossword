@@ -9,6 +9,8 @@
         (gir repository)
         (gir functions)
         (gir callables)
+        (gir object)
+        (gir interface)
         (gir arg)
         (gir enum)
         (gir type))

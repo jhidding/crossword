@@ -36,8 +36,48 @@
           g-type-info-get-tag g-type-info-get-param-type
           g-type-info-get-interface g-type-info-get-array-length
           g-type-info-get-array-fixed-size g-type-info-is-zero-terminated
-          g-type-info-get-array-type)
+          g-type-info-get-array-type
 
+          g-object-info-get-abstract g-object-info-get-fundamental
+          g-object-info-get-parent g-object-info-get-type-name
+          g-object-info-get-type-init g-object-info-get-n-constants
+          g-object-info-get-constant g-object-info-get-n-fields
+          g-object-info-get-field g-object-info-get-n-interfaces
+          g-object-info-get-interface g-object-info-get-n-methods
+          g-object-info-get-method g-object-info-find-method
+          g-object-info-find-method-using-interfaces
+          g-object-info-get-n-properties g-object-info-get-property
+          g-object-info-get-n-signals g-object-info-get-signal
+          g-object-info-find-signal g-object-info-get-n-vfuncs
+          g-object-info-get-vfunc g-object-info-find-vfunc
+          g-object-info-find-vfunc-using-interfaces
+          g-object-info-get-class-struct g-object-info-get-ref-function
+          g-object-info-get-ref-function-pointer
+          g-object-info-get-unref-function
+          g-object-info-get-unref-function-pointer
+          g-object-info-get-set-value-function
+          g-object-info-get-set-value-function-pointer
+          g-object-info-get-get-value-function
+          g-object-info-get-get-value-function-pointer
+
+          g-interface-info-get-n-prerequisites
+          g-interface-info-get-prerequisite g-interface-info-get-n-properties
+          g-interface-info-get-property g-interface-info-get-n-methods
+          g-interface-info-get-method g-interface-info-find-method
+          g-interface-info-get-n-signals g-interface-info-get-signal
+          g-interface-info-find-signal g-interface-info-get-n-vfuncs
+          g-interface-info-get-vfunc g-interface-info-find-vfunc
+          g-interface-info-get-n-constants g-interface-info-get-constant
+          g-interface-info-get-iface-struct
+
+          g-field-info-get-field g-field-info-set-field g-field-info-get-flags
+          g-field-info-get-offset g-field-info-get-size g-field-info-get-type
+
+          g-constant-info-free-value g-constant-info-get-type
+          g-constant-info-get-value
+
+          g-property-info-get-flags g-property-info-get-ownership-transfer
+          g-property-info-get-type)
 
   (import (rnrs (6))
           (system foreign)
@@ -135,4 +175,70 @@
   (define-from-girepository g-struct-info-get-n-methods int '*)
   (define-from-girepository g-struct-info-get-method '* '* int)
   (define-from-girepository g-struct-info-find-method '* '* '*)
+
+  (define-from-girepository g-object-info-get-abstract int '*)
+  (define-from-girepository g-object-info-get-fundamental int '*)
+  (define-from-girepository g-object-info-get-parent '* '*)
+  (define-from-girepository g-object-info-get-type-name '* '*)
+  (define-from-girepository g-object-info-get-type-init '* '*)
+  (define-from-girepository g-object-info-get-n-constants int '*)
+  (define-from-girepository g-object-info-get-constant '* '* int)
+  (define-from-girepository g-object-info-get-n-fields int '*)
+  (define-from-girepository g-object-info-get-field '* '* int)
+  (define-from-girepository g-object-info-get-n-interfaces int '*)
+  (define-from-girepository g-object-info-get-interface '* '* int)
+  (define-from-girepository g-object-info-get-n-methods int '*)
+  (define-from-girepository g-object-info-get-method '* '* int)
+  (define-from-girepository g-object-info-find-method '* '* '*)
+  (define-from-girepository g-object-info-find-method-using-interfaces '* '* '* '*)
+  (define-from-girepository g-object-info-get-n-properties int '*)
+  (define-from-girepository g-object-info-get-property '* '* int)
+  (define-from-girepository g-object-info-get-n-signals int '*)
+  (define-from-girepository g-object-info-get-signal '* '* int)
+  (define-from-girepository g-object-info-find-signal '* '* '*)
+  (define-from-girepository g-object-info-get-n-vfuncs int '*)
+  (define-from-girepository g-object-info-get-vfunc '* '* int)
+  (define-from-girepository g-object-info-find-vfunc '* '* '*)
+  (define-from-girepository g-object-info-find-vfunc-using-interfaces '* '* '* '*)
+  (define-from-girepository g-object-info-get-class-struct '* '*)
+  (define-from-girepository g-object-info-get-ref-function '* '*)
+  (define-from-girepository g-object-info-get-ref-function-pointer '* '*)
+  (define-from-girepository g-object-info-get-unref-function '* '*)
+  (define-from-girepository g-object-info-get-unref-function-pointer '* '*)
+  (define-from-girepository g-object-info-get-set-value-function '* '*)
+  (define-from-girepository g-object-info-get-set-value-function-pointer '* '*)
+  (define-from-girepository g-object-info-get-get-value-function '* '*)
+  (define-from-girepository g-object-info-get-get-value-function-pointer '* '*)
+
+  (define-from-girepository g-interface-info-get-n-prerequisites int '*)
+  (define-from-girepository g-interface-info-get-prerequisite '* '* int)
+  (define-from-girepository g-interface-info-get-n-properties int '*)
+  (define-from-girepository g-interface-info-get-property '* '* int)
+  (define-from-girepository g-interface-info-get-n-methods int '*)
+  (define-from-girepository g-interface-info-get-method '* '* int)
+  (define-from-girepository g-interface-info-find-method '* '* '*)
+  (define-from-girepository g-interface-info-get-n-signals int '*)
+  (define-from-girepository g-interface-info-get-signal '* '* int)
+  (define-from-girepository g-interface-info-find-signal '* '* '*)
+  (define-from-girepository g-interface-info-get-n-vfuncs int '*)
+  (define-from-girepository g-interface-info-get-vfunc '* '* int)
+  (define-from-girepository g-interface-info-find-vfunc '* '* '*)
+  (define-from-girepository g-interface-info-get-n-constants int '*)
+  (define-from-girepository g-interface-info-get-constant '* '* int)
+  (define-from-girepository g-interface-info-get-iface-struct '* '*)
+
+  (define-from-girepository g-constant-info-free-value void '* '*)
+  (define-from-girepository g-constant-info-get-type '* '*)
+  (define-from-girepository g-constant-info-get-value int '* '*)
+
+  (define-from-girepository g-field-info-get-field int '* '* '*)
+  (define-from-girepository g-field-info-set-field int '* '* '*)
+  (define-from-girepository g-field-info-get-flags int '*)
+  (define-from-girepository g-field-info-get-offset int '*)
+  (define-from-girepository g-field-info-get-size int '*)
+  (define-from-girepository g-field-info-get-type '* '*)
+
+  (define-from-girepository g-property-info-get-flags int '*)
+  (define-from-girepository g-property-info-get-ownership-transfer int '*)
+  (define-from-girepository g-property-info-get-type '* '*)
 )

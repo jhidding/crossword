@@ -20,7 +20,27 @@
           get-n-fields get-field find-method
 
           <union> make-union define-generics discriminated?
-          get-discriminator-offset get-discriminator-type get-discriminator)
+          get-discriminator-offset get-discriminator-type get-discriminator
+
+          <object-info> make-object-info abstract? fundamental? get-parent
+          get-type-name get-type-init get-n-constants get-constant get-n-fields
+          get-field get-n-interfaces get-interface get-n-methods get-method
+          find-method get-n-properties get-property get-n-signals get-signal
+          get-n-vfuncs get-vfunc find-vfunc get-class-struct get-unref-function
+          get-ref-function get-set-value-function get-get-value-function
+
+          <interface> make-interface get-n-prerequisites get-prerequisite
+          get-iface-struct
+
+          <constant> make-constant
+
+          <property> make-property
+
+          <signal> make-signal
+
+          <vfunc> make-vfunc
+
+          <field> make-field)
 
   (import (rnrs (6))
           (oop goops)
@@ -95,20 +115,38 @@
   (define (make-constant ptr)
     (make <constant> #:ptr (pointer-address ptr)))
 
+  (define-class <object-info> (<info>))
+  (define (make-object-info ptr)
+    (make <object-info> #:ptr (pointer-address ptr)))
+
+  (define-class <interface> (<info>))
+  (define (make-interface ptr)
+    (make <interface> #:ptr (pointer-address ptr)))
+
+  (define-class <vfunc> (<info>))
+  (define (make-vfunc ptr)
+    (make <vfunc> #:ptr (pointer-address ptr)))
+
+  (define-class <signal> (<info>))
+  (define (make-signal ptr)
+    (make <signal> #:ptr (pointer-address ptr)))
+
   (define (make-info ptr)
     (let ((type (gi-info-type->symbol (g-base-info-get-type ptr))))
       (cond
-        ((eq? type 'function) (make-function ptr))
-        ((eq? type 'type)     (make-type ptr))
-        ((eq? type 'arg)      (make-arg ptr))
-        ((eq? type 'enum)     (make-enum ptr))
-        ((eq? type 'flags)    (make-enum ptr))
-        ((eq? type 'value)    (make-value ptr))
-        ((eq? type 'union)    (make-union ptr))
-        ((eq? type 'struct)   (make-struct ptr))
-        ((eq? type 'field)    (make-field ptr))
-        ((eq? type 'constant) (make-constant ptr))
-        (else                 (make <info> #:ptr (pointer-address ptr))))))
+        ((eq? type 'function)  (make-function ptr))
+        ((eq? type 'type)      (make-type ptr))
+        ((eq? type 'arg)       (make-arg ptr))
+        ((eq? type 'enum)      (make-enum ptr))
+        ((eq? type 'flags)     (make-enum ptr))
+        ((eq? type 'value)     (make-value ptr))
+        ((eq? type 'union)     (make-union ptr))
+        ((eq? type 'struct)    (make-struct ptr))
+        ((eq? type 'field)     (make-field ptr))
+        ((eq? type 'constant)  (make-constant ptr))
+        ((eq? type 'object)    (make-object-info ptr))
+        ((eq? type 'interface) (make-interface ptr))
+        (else                  (make <info> #:ptr (pointer-address ptr))))))
 
   ;;; base-info
   (define-generics get-type get-name get-namespace)
@@ -139,4 +177,17 @@
   ;;; union-info
   (define-generics discriminated? get-discriminator-offset
                    get-discriminator-type get-discriminator)
+
+  ;;; object-info
+  (define-generics abstract? fundamental? get-parent get-type-name
+                   get-type-init get-n-constants get-constant
+                   get-n-fields get-field get-n-interfaces get-interface
+                   get-n-methods get-method find-method
+                   get-n-properties get-property get-n-signals get-signal
+                   get-n-vfuncs get-vfunc find-vfunc get-class-struct
+                   get-unref-function get-ref-function
+                   get-set-value-function get-get-value-function)
+
+  ;;; interface-info
+  (define-generics get-n-prerequisites get-prerequisite get-iface-struct)
 )
