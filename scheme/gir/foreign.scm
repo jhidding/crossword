@@ -159,7 +159,7 @@
   (define-from-girepository g-enum-info-get-method '* '* int)
   (define-from-girepository g-enum-info-get-storage-type int '*)
   (define-from-girepository g-enum-info-get-error-domain '* '*)
-  (define-from-girepository g-enum-info-get-value int64 '*)
+  (define-from-girepository g-value-info-get-value int64 '*)
 
   (define-from-girepository g-union-info-get-n-fields int '*)
   (define-from-girepository g-union-info-get-field '* '* int)

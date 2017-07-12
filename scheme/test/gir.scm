@@ -74,6 +74,16 @@
                        (string-replace #\_ #\-)
                        get-symbol)
               (get-method-list info)))
+        ((eq? (get-type info) 'enum)
+         (cons (string->symbol (string-append (get-name info) "->symbol"))
+               (map (compose string->symbol
+                             get-symbol)
+                    (get-method-list info))))
+        ((eq? (get-type info) 'flags)
+         (cons (string->symbol (string-append "make-" (get-name info)))
+               (map (compose string->symbol
+                             get-symbol)
+                    (get-method-list info))))
         ((eq? (get-type info) 'constant)
          (pipe info get-name string->symbol list))
         (else '())))
@@ -99,6 +109,48 @@
 (define (print-object-info port info)
   (format port "  ;;; begin ~s ~a~%" (get-type info) (get-name info))
   (format port "  ;;; fields: ~s~%" (map get-name (get-field-list info)))
+  (for-each (lambda (f) (print-function-info port f))
+            (get-method-list info))
+  (format port "  ;;; end ~a~%~%" (get-name info)))
+
+(define (enum-sequential? info)
+  (letrec ((v    (map get-value (get-value-list info)))
+           (seq? (lambda (s)
+                   (cond
+                     ((null? (cdr s)) #t)
+                     ((= (cadr s) (+ 1 (car s))) (seq? (cdr s)))
+                     (else #f)))))
+    (and (zero? (car v)) (seq? v))))
+
+(define (enum-exponential? info)
+  (letrec ((v    (map get-value (get-value-list info)))
+           (exp? (lambda (s)
+                   (cond
+                     ((null? (cdr s)) #t)
+                     ((= (cadr s) (* 2 (car s))) (exp? (cdr s)))
+                     (else #f)))))
+    (and (= 1 (car v)) (exp? v))))
+
+(define (print-enum-info port info)
+  (format port "  ;;; begin ~s ~a~%" (get-type info) (get-name info))
+  (format port "  ;;; series: ~s~%"
+    (cond ((enum-sequential? info) 'sequence)
+          ((enum-exponential? info) 'bitmasks)
+          (else 'unordered)))
+  (when (enum-sequential? info)
+    (pretty-print
+      `(define-enum-transformer
+         ,(string->symbol (string-append (get-name info) "->symbol"))
+         ,@(map (compose string->symbol get-name)
+                (get-value-list info)))
+      port #:per-line-prefix "  " #:width 100 #:max-expr-width 100))
+  (when (enum-exponential? info)
+    (pretty-print
+      `(define-bitflags
+         ,(string->symbol (string-append "make-" (get-name info)))
+         ,@(map (compose string->symbol get-name)
+                (get-value-list info)))
+      port #:per-line-prefix "  " #:width 100 #:max-expr-width 100))
   (for-each (lambda (f) (print-function-info port f))
             (get-method-list info))
   (format port "  ;;; end ~a~%~%" (get-name info)))
@@ -146,6 +198,8 @@
        (print-function-info port info))
       ((memq (get-type info) '(object struct))
        (print-object-info port info))
+      ((memq (get-type info) '(enum flags))
+       (print-enum-info port info))
       ((eq? 'constant (get-type info))
        (print-constant-info port info))
       (else
@@ -154,7 +208,9 @@
     (gir-get-info-list namespace))
   (format port ")~%"))
 
-;;(print-foreign-namespace (standard-output-port) "GIRepository" "2.0")
-(print-foreign-namespace (standard-output-port) "Gtk" "3.0")
-;;(print-foreign-namespace (standard-output-port) "cairo" "1.0")
+(let ((port (standard-output-port)))
+  (print-foreign-namespace port "GIRepository" "2.0")
+  ;;(print-foreign-namespace (standard-output-port) "Gtk" "3.0")
+  ;;(print-foreign-namespace port "cairo" "1.0")
+  )
 

@@ -1,7 +1,8 @@
 (library (gir enum)
-  (export)
+  (export get-value-list)
   (import (rnrs (6))
           (system foreign)
+          (functional)
           (oop goops)
           (gir conversions)
           (gir foreign)
@@ -18,6 +19,10 @@
 
   (define-method (get-method (info <enum>) (n <integer>))
     (make-function (g-enum-info-get-method (get-ptr info) n)))
+
+  (define (get-value-list info)
+    (map (lambda (n) (get-value info n))
+         (iota (get-n-values info))))
 
   (define-method (get-storage-type (info <enum>))
     (gi-type-tag->symbol (g-enum-info-get-storage-type (get-ptr info))))
