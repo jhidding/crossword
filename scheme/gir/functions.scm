@@ -8,7 +8,7 @@
           (gir foreign)
           (gir generics))
 
-  (define-bitflags function-flags
+  (define-flags-transformer function-flags
     method constructor getter setter wraps-vfunc throws)
 
   (define-method (get-flags (info <function>))

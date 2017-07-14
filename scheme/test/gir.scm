@@ -10,7 +10,7 @@
         (gir repository)
         (gir functions)
         (gir callables)
-        (gir object) (gir struct)
+        (gir object) (gir struct) (gir union)
         (gir interface)
         (gir arg)
         (gir enum)
@@ -27,8 +27,15 @@
     ((and (eq? 'interface (get-tag info))
           (is-a? (get-interface info) <struct>))
      ''*)
+    ((and
+       (eq? 'interface (get-tag info))
+       (eq? 'callback (get-type (get-interface info))))
+     ''*)
     ((eq? 'interface (get-tag info))
-     `(unknown ,(get-type (get-interface info))))
+     `(unknown-interface ,(get-type (get-interface info))))
+    ((eq? 'gtype (get-tag info)) 'size_t)
+    ((eq? 'unichar (get-tag info))
+     'uint32)
     (else (get-tag info))))
 
 (define (get-arg-types info)
@@ -69,21 +76,23 @@
                get-symbol
                (string-replace #\_ #\-)
                string->symbol list))
-        ((memq (get-type info) '(object struct))
+        ((memq (get-type info) '(object struct union))
          (map (compose string->symbol
                        (string-replace #\_ #\-)
                        get-symbol)
               (get-method-list info)))
         ((eq? (get-type info) 'enum)
-         (cons (string->symbol (string-append (get-name info) "->symbol"))
-               (map (compose string->symbol
-                             get-symbol)
-                    (get-method-list info))))
+         (cons* (string->symbol (string-append (get-name info) "->symbol"))
+                (string->symbol (string-append "symbol->" (get-name info)))
+                (map (compose string->symbol
+                              get-symbol)
+                     (get-method-list info))))
         ((eq? (get-type info) 'flags)
-         (cons (string->symbol (string-append "make-" (get-name info)))
-               (map (compose string->symbol
-                             get-symbol)
-                    (get-method-list info))))
+         (cons* (string->symbol (string-append (get-name info) "->symbols"))
+                (string->symbol (string-append "symbols->" (get-name info)))
+                (map (compose string->symbol
+                              get-symbol)
+                     (get-method-list info))))
         ((eq? (get-type info) 'constant)
          (pipe info get-name string->symbol list))
         (else '())))
@@ -140,14 +149,14 @@
   (when (enum-sequential? info)
     (pretty-print
       `(define-enum-transformer
-         ,(string->symbol (string-append (get-name info) "->symbol"))
+         ,(string->symbol (get-name info))
          ,@(map (compose string->symbol get-name)
                 (get-value-list info)))
       port #:per-line-prefix "  " #:width 100 #:max-expr-width 100))
   (when (enum-exponential? info)
     (pretty-print
-      `(define-bitflags
-         ,(string->symbol (string-append "make-" (get-name info)))
+      `(define-flags-transformer
+         ,(string->symbol (get-name info))
          ,@(map (compose string->symbol get-name)
                 (get-value-list info)))
       port #:per-line-prefix "  " #:width 100 #:max-expr-width 100))
@@ -165,7 +174,7 @@
   (format port ";;; dependencies: ~s~%"
           (gir-get-dependencies namespace))
   (format port "~%")
-  (format port "(library (~s format)~%"
+  (format port "(library (~s foreign)~%"
           (pipe namespace string-downcase string->symbol))
   (pretty-print
     `(export ,@(export-list namespace))
@@ -196,7 +205,7 @@
     (cond
       ((eq? 'function (get-type info))
        (print-function-info port info))
-      ((memq (get-type info) '(object struct))
+      ((memq (get-type info) '(object struct union))
        (print-object-info port info))
       ((memq (get-type info) '(enum flags))
        (print-enum-info port info))
@@ -208,9 +217,10 @@
     (gir-get-info-list namespace))
   (format port ")~%"))
 
-(let ((port (standard-output-port)))
-  (print-foreign-namespace port "GIRepository" "2.0")
-  ;;(print-foreign-namespace (standard-output-port) "Gtk" "3.0")
-  ;;(print-foreign-namespace port "cairo" "1.0")
-  )
+(let ((port (standard-output-port))
+      (namespace (cadr (command-line)))
+      (version   (if (not (null? (cddr (command-line))))
+                   (caddr (command-line)) #f)))
+  (print-foreign-namespace port namespace version)
+)
 

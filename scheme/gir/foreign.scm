@@ -44,6 +44,12 @@
           g-struct-info-get-n-methods g-struct-info-get-method
           g-struct-info-find-method
 
+          g-union-info-get-n-fields g-union-info-get-field
+          g-union-info-get-n-methods g-union-info-get-method
+          g-union-info-is-discriminated g-union-info-get-discriminator-offset
+          g-union-info-get-discriminator g-union-info-find-method
+          g-union-info-get-size g-union-info-get-alignment
+
           g-object-info-get-abstract g-object-info-get-fundamental
           g-object-info-get-parent g-object-info-get-type-name
           g-object-info-get-type-init g-object-info-get-n-constants

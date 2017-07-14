@@ -55,16 +55,16 @@
         ((_ <syms> ...)
          #'(begin (define-generic <syms>) ...)))))
 
-  (define-enum-transformer gi-info-type->symbol
+  (define-enum-transformer gi-info-type
     invalid function callback struct boxed enum flags object interface
     constant invalid_0 union value signal vfunc property field arg type
     unresolved)
 
-  (define-enum-transformer gi-type-tag->symbol
+  (define-enum-transformer gi-type-tag
     void boolean int8 uint8 int16 uint16 int32 uint32 int64 uint64 float double
     gtype utf8 filename array interface glist gslist ghash error unichar)
 
-  (define-enum-transformer gi-array-type->symbol
+  (define-enum-transformer gi-array-type
     c array ptr_array byte_array)
 
   (define (info-unref info)

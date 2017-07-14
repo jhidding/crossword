@@ -11,6 +11,8 @@
     (cond
       ((eq? type 'int32) (bytevector-s32-native-ref bv 0))
       ((eq? type 'uint32) (bytevector-u32-native-ref bv 0))
+      ((eq? type 'int64) (bytevector-s64-native-ref bv 0))
+      ((eq? type 'uint64) (bytevector-u64-native-ref bv 0))
       ((eq? type 'utf8) (pointer->string
                           (dereference-pointer
                             (bytevector->pointer bv))))

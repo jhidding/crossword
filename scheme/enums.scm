@@ -1,8 +1,10 @@
 (library (enums)
-  (export define-enum define-enum-transformer define-bitflags)
+  (export define-enum define-enum-transformer define-flags-transformer)
   (import (rnrs (6))
           (rename (cut) (cut $))
-          (functional))
+          (only (srfi srfi-43) vector-index)
+          (functional)
+          (gen-id))
 
   (define-syntax define-enum-helper
     (lambda (x)
@@ -22,36 +24,42 @@
   (define-syntax define-enum-transformer
     (lambda (x)
       (syntax-case x ()
-        ((_ <T> <as> ...)
-         #'(define (<T> i)
-             (vector-ref #(<as> ...) i))))))
+        ((y <T> <as> ...)
+         (with-syntax ((<T->symbol> (gen-id #'y #'<T> "->symbol"))
+                       (<symbol->T> (gen-id #'y "symbol->" #'<T>)))
+           #'(begin
+               (define (<T->symbol> i)
+                 (vector-ref #(<as> ...) i))
+               (define (<symbol->T> s)
+                 (vector-index (lambda (t) (eq? s t))
+                               #(<as> ...)))))))))
 
-  (define-syntax define-bitflags
+  (define-syntax define-flags-transformer
     (lambda (x)
       (syntax-case x ()
-        ((_ <name> <flags> ...)
-         #'(define <name>
-             (let* ((alist   (map (lambda (f i) (cons f (expt 2 i)))
-                                  '(<flags> ...) (iota (length '(<flags> ...)))))
-                    (get-bit (lambda (sym)
-                               (let ((p (assq sym alist)))
-                                 (unless p (error '<name> "Symbol not in flags." sym '(<flags> ...)))
-                                 (cdr p)))))
-               (lambda (value)
-                 (lambda (flag)
-                   (not (zero? (bitwise-and value (get-bit flag))))))))))))
+        ((y <T> <flags> ...)
+         (with-syntax ((<T->symbols> (gen-id #'y #'<T> "->symbols"))
+                       (<symbols->T> (gen-id #'y "symbols->" #'<T>)))
+           #'(begin
+               (define (<T->symbols> value)
+                 (let loop ((symbols '(<flags> ...))
+                            (i       1)
+                            (result  '()))
+                   (cond
+                     ((null? symbols) result)
+                     ((zero? (bitwise-and i value))
+                      (loop (cdr symbols) (* 2 i) result))
+                     (else
+                      (loop (cdr symbols) (* 2 i) (cons (car symbols) result))))))
 
-  #| way too complicated
-  (define-syntax define-enum-transformer
-    (lambda (x)
-      (define (case-clause i j q)
-        #`((= i #,j) #,q))
-      (syntax-case x ()
-        ((_ <T> <as> ...)
-         #`(define (<T> i)
-             (cond
-               #,@(map ($ case-clause #'i <> <>)
-                       (iota (length #'(<as> ...)))
-                       #'(<as> ...))))))))
-  |#
+               (define (<symbols->T> flags)
+                 (let loop ((symbols '(<flags> ...))
+                            (i       1)
+                            (result  0))
+                   (cond
+                     ((null? symbols) result)
+                     ((memq (car symbols) flags)
+                      (loop (cdr symbols) (* 2 i) (bitwise-ior result i)))
+                     (else
+                      (loop (cdr symbols) (* 2 i) result)))))))))))
 )
