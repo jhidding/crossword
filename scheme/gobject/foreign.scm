@@ -1,4 +1,4 @@
-;;; namespace: GObject #f
+;;; namespace: GObject 2.0
 ;;; dependencies: ("GLib-2.0")
 
 (library (gobject foreign)
@@ -377,6 +377,11 @@
   ;;; (callback "BaseInitFunc")
   ;;; begin object Binding
   ;;; fields: ()
+  ;;; object type name: GBinding
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "g_binding_get_type"
+  ;;; ---------------
   (define-from-gobject g-binding-get-flags uint32)
   (define-from-gobject g-binding-get-source '*)
   (define-from-gobject g-binding-get-source-property '*)
@@ -462,6 +467,15 @@
 
   ;;; begin object InitiallyUnowned
   ;;; fields: ("g_type_instance" "ref_count" "qdata")
+  ;;; object type name: GInitiallyUnowned
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "g_initially_unowned_get_type"
+  ;;; begin struct InitiallyUnownedClass
+  ;;; fields: ("g_type_class" "construct_properties" "constructor" "set_property" "get_property" "dispose" "finalize" "dispatch_properties_changed" "notify" "constructed" "flags" "pdummy")
+  ;;; end InitiallyUnownedClass
+
+  ;;; ---------------
   ;;; end InitiallyUnowned
 
   ;;; begin struct InitiallyUnownedClass
@@ -477,6 +491,21 @@
   ;;; (callback "InterfaceInitFunc")
   ;;; begin object Object
   ;;; fields: ("g_type_instance" "ref_count" "qdata")
+  ;;; object type name: GObject
+  ;;; parent: #f
+  ;;; vfuncs: ("constructed" "dispatch_properties_changed" "dispose" "finalize" "get_property" "notify" "set_property")
+  ;;; type-init: "g_object_get_type"
+  ;;; begin struct ObjectClass
+  ;;; fields: ("g_type_class" "construct_properties" "constructor" "set_property" "get_property" "dispose" "finalize" "dispatch_properties_changed" "notify" "constructed" "flags" "pdummy")
+  (define-from-gobject g-object-class-find-property '* '*)
+  (define-from-gobject g-object-class-install-properties void uint32 '*)
+  (define-from-gobject g-object-class-install-property void uint32 '*)
+  (define-from-gobject g-object-class-list-properties '* uint32)
+  (define-from-gobject g-object-class-override-property void uint32 '*)
+  ;;; end ObjectClass
+
+  ;;; ---------------
+  (define-from-gobject g-object-notify void '*)
   (define-from-gobject g-object-newv '* size_t uint32 '*)
   (define-from-gobject g-object-compat-control uint64 uint64 '*)
   (define-from-gobject g-object-interface-find-property '* '* '*)
@@ -531,6 +560,15 @@
 
   ;;; begin object ParamSpec
   ;;; fields: ("g_type_instance" "name" "flags" "value_type" "owner_type" "_nick" "_blurb" "qdata" "ref_count" "param_id")
+  ;;; object type name: GParam
+  ;;; parent: #f
+  ;;; vfuncs: ("finalize" "value_set_default" "value_validate" "values_cmp")
+  ;;; type-init: "intern"
+  ;;; begin struct ParamSpecClass
+  ;;; fields: ("g_type_class" "value_type" "finalize" "value_set_default" "value_validate" "values_cmp" "dummy")
+  ;;; end ParamSpecClass
+
+  ;;; ---------------
   (define-from-gobject g-param-spec-get-blurb '*)
   (define-from-gobject g-param-spec-get-default-value '*)
   (define-from-gobject g-param-spec-get-name '*)
@@ -545,14 +583,29 @@
 
   ;;; begin object ParamSpecBoolean
   ;;; fields: ("parent_instance" "default_value")
+  ;;; object type name: GParamBoolean
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecBoolean
 
   ;;; begin object ParamSpecBoxed
   ;;; fields: ("parent_instance")
+  ;;; object type name: GParamBoxed
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecBoxed
 
   ;;; begin object ParamSpecChar
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamChar
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecChar
 
   ;;; begin struct ParamSpecClass
@@ -561,50 +614,110 @@
 
   ;;; begin object ParamSpecDouble
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value" "epsilon")
+  ;;; object type name: GParamDouble
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecDouble
 
   ;;; begin object ParamSpecEnum
   ;;; fields: ("parent_instance" "enum_class" "default_value")
+  ;;; object type name: GParamEnum
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecEnum
 
   ;;; begin object ParamSpecFlags
   ;;; fields: ("parent_instance" "flags_class" "default_value")
+  ;;; object type name: GParamFlags
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecFlags
 
   ;;; begin object ParamSpecFloat
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value" "epsilon")
+  ;;; object type name: GParamFloat
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecFloat
 
   ;;; begin object ParamSpecGType
   ;;; fields: ("parent_instance" "is_a_type")
+  ;;; object type name: GParamGType
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecGType
 
   ;;; begin object ParamSpecInt
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamInt
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecInt
 
   ;;; begin object ParamSpecInt64
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamInt64
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecInt64
 
   ;;; begin object ParamSpecLong
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamLong
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecLong
 
   ;;; begin object ParamSpecObject
   ;;; fields: ("parent_instance")
+  ;;; object type name: GParamObject
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecObject
 
   ;;; begin object ParamSpecOverride
   ;;; fields: ("parent_instance" "overridden")
+  ;;; object type name: GParamOverride
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecOverride
 
   ;;; begin object ParamSpecParam
   ;;; fields: ("parent_instance")
+  ;;; object type name: GParamParam
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecParam
 
   ;;; begin object ParamSpecPointer
   ;;; fields: ("parent_instance")
+  ;;; object type name: GParamPointer
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecPointer
 
   ;;; begin struct ParamSpecPool
@@ -619,6 +732,11 @@
 
   ;;; begin object ParamSpecString
   ;;; fields: ("parent_instance" "default_value" "cset_first" "cset_nth" "substitutor" "null_fold_if_empty" "ensure_non_null")
+  ;;; object type name: GParamString
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecString
 
   ;;; begin struct ParamSpecTypeInfo
@@ -627,30 +745,65 @@
 
   ;;; begin object ParamSpecUChar
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamUChar
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecUChar
 
   ;;; begin object ParamSpecUInt
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamUInt
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecUInt
 
   ;;; begin object ParamSpecUInt64
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamUInt64
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecUInt64
 
   ;;; begin object ParamSpecULong
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
+  ;;; object type name: GParamULong
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecULong
 
   ;;; begin object ParamSpecUnichar
   ;;; fields: ("parent_instance" "default_value")
+  ;;; object type name: GParamUnichar
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecUnichar
 
   ;;; begin object ParamSpecValueArray
   ;;; fields: ("parent_instance" "element_spec" "fixed_n_elements")
+  ;;; object type name: GParamValueArray
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecValueArray
 
   ;;; begin object ParamSpecVariant
   ;;; fields: ("parent_instance" "type" "default_value" "padding")
+  ;;; object type name: GParamVariant
+  ;;; parent: "ParamSpec"
+  ;;; vfuncs: ()
+  ;;; type-init: "intern"
+  ;;; ---------------
   ;;; end ParamSpecVariant
 
   ;;; begin struct Parameter
@@ -753,6 +906,15 @@
   ;;; (callback "TypeInterfaceCheckFunc")
   ;;; begin object TypeModule
   ;;; fields: ("parent_instance" "use_count" "type_infos" "interface_infos" "name")
+  ;;; object type name: GTypeModule
+  ;;; parent: "Object"
+  ;;; vfuncs: ("load" "unload")
+  ;;; type-init: "g_type_module_get_type"
+  ;;; begin struct TypeModuleClass
+  ;;; fields: ("parent_class" "load" "unload" "reserved1" "reserved2" "reserved3" "reserved4")
+  ;;; end TypeModuleClass
+
+  ;;; ---------------
   (define-from-gobject g-type-module-add-interface void size_t size_t '*)
   (define-from-gobject g-type-module-register-enum size_t '* '*)
   (define-from-gobject g-type-module-register-flags size_t '* '*)
@@ -965,7 +1127,7 @@
   (define-from-gobject g-signal-parse-name int '* size_t uint32 uint32 int)
   (define-from-gobject g-signal-query void uint32 '*)
   (define-from-gobject g-signal-remove-emission-hook void uint32 uint64)
-  ;;; (define-from-gobject g-signal-set-va-marshaller void uint32 size_t (unknown-interface unresolved))
+  (define-from-gobject g-signal-set-va-marshaller void uint32 size_t (unknown-interface unresolved))
   (define-from-gobject g-signal-stop-emission void '* uint32 uint32)
   (define-from-gobject g-signal-stop-emission-by-name void '* '*)
   (define-from-gobject g-signal-type-cclosure-new '* size_t uint32)

@@ -5,6 +5,7 @@
           g-irepository-get-default g-irepository-require
           g-irepository-get-dependencies g-irepository-get-version
           g-irepository-get-loaded-namespaces g-irepository-get-shared-library
+          g-irepository-dump
 
           g-base-info-ref g-base-info-unref g-base-info-get-type
           g-base-info-get-name g-base-info-equal g-base-info-iterate-attributes
@@ -37,6 +38,10 @@
           g-type-info-get-interface g-type-info-get-array-length
           g-type-info-get-array-fixed-size g-type-info-is-zero-terminated
           g-type-info-get-array-type
+
+          g-registered-type-info-get-type-name
+          g-registered-type-info-get-type-init
+          g-registered-type-info-get-g-type
 
           g-struct-info-get-alignment g-struct-info-get-size
           g-struct-info-is-gtype-struct g-struct-info-is-foreign
@@ -71,6 +76,10 @@
           g-object-info-get-set-value-function-pointer
           g-object-info-get-get-value-function
           g-object-info-get-get-value-function-pointer
+
+          g-vfunc-info-get-flags g-vfunc-info-get-offset
+          g-vfunc-info-get-signal g-vfunc-info-get-invoker
+          g-vfunc-info-get-address ; g-vfunc-info-invoke
 
           g-interface-info-get-n-prerequisites
           g-interface-info-get-prerequisite g-interface-info-get-n-properties
@@ -108,6 +117,7 @@
   (define-from-girepository g-irepository-get-dependencies '* '* '*)
   (define-from-girepository g-irepository-get-loaded-namespaces '* '*)
   (define-from-girepository g-irepository-get-shared-library '* '* '*)
+  (define-from-girepository g-irepository-dump int '* '*)
 
   (define-from-girepository g-base-info-ref '* '*)
   (define-from-girepository g-base-info-unref void '*)
@@ -253,4 +263,15 @@
   (define-from-girepository g-property-info-get-flags int '*)
   (define-from-girepository g-property-info-get-ownership-transfer int '*)
   (define-from-girepository g-property-info-get-type '* '*)
+
+  (define-from-girepository g-registered-type-info-get-type-name '* '*)
+  (define-from-girepository g-registered-type-info-get-type-init '* '*)
+  (define-from-girepository g-registered-type-info-get-g-type size_t '*)
+
+  (define-from-girepository g-vfunc-info-get-flags int '*)
+  (define-from-girepository g-vfunc-info-get-offset int '*)
+  (define-from-girepository g-vfunc-info-get-signal '* '*)
+  (define-from-girepository g-vfunc-info-get-invoker '* '*)
+  (define-from-girepository g-vfunc-info-get-address '* '* '*)
+  ;;; (define-from-girepository g-vfunc-info-invoke)
 )

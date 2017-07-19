@@ -38,9 +38,11 @@
 
           <signal> make-signal
 
-          <vfunc> make-vfunc
+          <vfunc> make-vfunc get-invoker get-offset
 
-          <field> make-field)
+          <field> make-field
+
+          <registered-type> get-g-type)
 
   (import (rnrs (6))
           (oop goops)
@@ -99,11 +101,13 @@
   (define (make-enum ptr)
     (make <enum> #:ptr (pointer-address ptr)))
 
-  (define-class <union> (<info>))
+  (define-class <registered-type> (<info>))
+
+  (define-class <union> (<registered-type>))
   (define (make-union ptr)
     (make <union> #:ptr (pointer-address ptr)))
 
-  (define-class <struct> (<info>))
+  (define-class <struct> (<registered-type>))
   (define (make-struct ptr)
     (make <struct> #:ptr (pointer-address ptr)))
 
@@ -115,7 +119,7 @@
   (define (make-constant ptr)
     (make <constant> #:ptr (pointer-address ptr)))
 
-  (define-class <object-info> (<info>))
+  (define-class <object-info> (<registered-type>))
   (define (make-object-info ptr)
     (make <object-info> #:ptr (pointer-address ptr)))
 
@@ -169,6 +173,9 @@
   (define-generics get-value get-error-domain get-storage-type get-method
                    get-n-methods get-n-values)
 
+  ;;; registrered-type-info
+  (define-generics get-g-type get-type-name)
+
   ;;; struct-info
   (define-generics get-alignment get-size gtype-struct? foreign?
                    get-n-fields get-field
@@ -179,7 +186,7 @@
                    get-discriminator-type get-discriminator)
 
   ;;; object-info
-  (define-generics abstract? fundamental? get-parent get-type-name
+  (define-generics abstract? fundamental? get-parent
                    get-type-init get-n-constants get-constant
                    get-n-fields get-field get-n-interfaces get-interface
                    get-n-methods get-method find-method
@@ -190,4 +197,6 @@
 
   ;;; interface-info
   (define-generics get-n-prerequisites get-prerequisite get-iface-struct)
+
+  (define-generics get-offset get-invoker)
 )

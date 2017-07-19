@@ -1,5 +1,5 @@
 (library (gir object)
-  (export get-method-list get-field-list)
+  (export get-method-list get-field-list get-vfunc-list)
   (import (rnrs (6))
           (functional)
           (oop goops)
@@ -15,7 +15,8 @@
     (int->bool (g-object-info-get-fundamental (get-ptr info))))
 
   (define-method (get-parent (info <object-info>))
-    (make-object-info (g-object-info-get-parent (get-ptr info))))
+    (let ((p (g-object-info-get-parent (get-ptr info))))
+      (if (null-pointer? p) #f (make-object-info p))))
 
   (define-method (get-type-name (info <object-info>))
     (pointer->string (g-object-info-get-type-name (get-ptr info))))
@@ -77,12 +78,17 @@
   (define-method (get-vfunc (info <object-info>) (n <integer>))
     (make-vfunc (g-object-info-get-vfunc (get-ptr info) n)))
 
+  (define (get-vfunc-list info)
+    (map (lambda (n) (get-vfunc info n))
+         (iota (get-n-vfuncs info))))
+
   (define-method (find-vfunc (info <object-info>) (name <string>))
     (make-vfunc (g-object-info-find-vfunc (get-ptr info)
                                           (string->pointer name))))
 
   (define-method (get-class-struct (info <object-info>))
-    (make-struct (g-object-info-get-class-struct (get-ptr info))))
+    (let ((p (g-object-info-get-class-struct (get-ptr info))))
+      (if (null-pointer? p) #f (make-struct p))))
 
   (define-method (get-ref-function (info <object-info>))
     (pointer->string (g-object-info-get-ref-function (get-ptr info))))
@@ -95,4 +101,25 @@
 
   (define-method (get-get-value-function (info <object-info>))
     (pointer->string (g-object-info-get-get-value-function (get-ptr info))))
+
+  (define-method (get-type-name (info <registered-type>))
+    (pointer->string (g-registered-type-info-get-type-name (get-ptr info))))
+
+  (define-method (get-g-type (info <registered-type>))
+    (g-registered-type-info-get-g-type (get-ptr info)))
+
+  (define-method (get-invoker (info <vfunc>))
+    (let ((p (g-vfunc-info-get-invoker (get-ptr info))))
+      (if (null-pointer? p)
+        #f
+        (make-function p))))
+
+  (define-method (get-signal (info <vfunc>))
+    (let ((p (g-vfunc-info-get-signal (get-ptr info))))
+      (if (null-pointer? p)
+        #f
+        (make-signal p))))
+
+  (define-method (get-offset (info <vfunc>))
+    (g-vfunc-info-get-offset (get-ptr info)))
 )

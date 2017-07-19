@@ -1,4 +1,4 @@
-;;; namespace: Gtk #f
+;;; namespace: Gtk 3.0
 ;;; dependencies: ("Pango-1.0" "GObject-2.0" "xlib-2.0" "cairo-1.0" "Gdk-3.0" "Gio-2.0" "Atk-1.0" "GdkPixbuf-2.0" "GModule-2.0" "GLib-2.0")
 
 (library (gtk foreign)
@@ -4118,6 +4118,15 @@
 
   ;;; begin object AboutDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkAboutDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ("activate_link")
+  ;;; type-init: "gtk_about_dialog_get_type"
+  ;;; begin struct AboutDialogClass
+  ;;; fields: ("parent_class" "activate_link" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AboutDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-about-dialog-new '*)
   (define-from-gtk gtk-about-dialog-add-credit-section void '* '*)
   (define-from-gtk gtk-about-dialog-get-artists '*)
@@ -4166,6 +4175,15 @@
 
   ;;; begin object AccelGroup
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkAccelGroup
+  ;;; parent: "Object"
+  ;;; vfuncs: ("accel_changed")
+  ;;; type-init: "gtk_accel_group_get_type"
+  ;;; begin struct AccelGroupClass
+  ;;; fields: ("parent_class" "accel_changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AccelGroupClass
+
+  ;;; ---------------
   (define-from-gtk gtk-accel-group-new '*)
   (define-from-gtk gtk-accel-group-from-accel-closure '* '*)
   (define-from-gtk gtk-accel-group-activate int uint32 '* uint32 uint32)
@@ -4201,6 +4219,15 @@
 
   ;;; begin object AccelLabel
   ;;; fields: ("label" "priv")
+  ;;; object type name: GtkAccelLabel
+  ;;; parent: "Label"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_accel_label_get_type"
+  ;;; begin struct AccelLabelClass
+  ;;; fields: ("parent_class" "signal_quote1" "signal_quote2" "mod_name_shift" "mod_name_control" "mod_name_alt" "mod_separator" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AccelLabelClass
+
+  ;;; ---------------
   (define-from-gtk gtk-accel-label-new '* '*)
   (define-from-gtk gtk-accel-label-get-accel void uint32 uint32)
   (define-from-gtk gtk-accel-label-get-accel-widget '*)
@@ -4221,6 +4248,15 @@
 
   ;;; begin object AccelMap
   ;;; fields: ()
+  ;;; object type name: GtkAccelMap
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_accel_map_get_type"
+  ;;; begin struct AccelMapClass
+  ;;; fields: ()
+  ;;; end AccelMapClass
+
+  ;;; ---------------
   (define-from-gtk gtk-accel-map-add-entry void '* uint32 uint32)
   (define-from-gtk gtk-accel-map-add-filter void '*)
   (define-from-gtk gtk-accel-map-change-entry int '* uint32 uint32 int)
@@ -4244,6 +4280,16 @@
   ;;; (callback "AccelMapForeach")
   ;;; begin object Accessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkAccessible
+  ;;; parent: "Object"
+  ;;; vfuncs: ("connect_widget_destroyed" "widget_set" "widget_unset")
+  ;;; type-init: "gtk_accessible_get_type"
+  ;;; begin struct AccessibleClass
+  ;;; fields: ("parent_class" "connect_widget_destroyed" "widget_set" "widget_unset" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AccessibleClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-accessible-connect-widget-destroyed void)
   (define-from-gtk gtk-accessible-connect-widget-destroyed void)
   (define-from-gtk gtk-accessible-get-widget '*)
   (define-from-gtk gtk-accessible-set-widget void '*)
@@ -4259,6 +4305,19 @@
 
   ;;; begin object Action
   ;;; fields: ("object" "private_data")
+  ;;; object type name: GtkAction
+  ;;; parent: "Object"
+  ;;; vfuncs: ("activate" "connect_proxy" "create_menu" "create_menu_item" "create_tool_item" "disconnect_proxy")
+  ;;; type-init: "gtk_action_get_type"
+  ;;; begin struct ActionClass
+  ;;; fields: ("parent_class" "activate" "menu_item_type" "toolbar_item_type" "create_menu_item" "create_tool_item" "connect_proxy" "disconnect_proxy" "create_menu" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ActionClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-action-activate void)
+  (define-from-gtk gtk-action-create-menu '*)
+  (define-from-gtk gtk-action-create-menu-item '*)
+  (define-from-gtk gtk-action-create-tool-item '*)
   (define-from-gtk gtk-action-new '* '* '* '* '*)
   (define-from-gtk gtk-action-activate void)
   (define-from-gtk gtk-action-block-activate void)
@@ -4305,6 +4364,15 @@
 
   ;;; begin object ActionBar
   ;;; fields: ("bin")
+  ;;; object type name: GtkActionBar
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_action_bar_get_type"
+  ;;; begin struct ActionBarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ActionBarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-action-bar-new '*)
   (define-from-gtk gtk-action-bar-get-center-widget '*)
   (define-from-gtk gtk-action-bar-pack-end void '*)
@@ -4330,6 +4398,16 @@
 
   ;;; begin object ActionGroup
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkActionGroup
+  ;;; parent: "Object"
+  ;;; vfuncs: ("get_action")
+  ;;; type-init: "gtk_action_group_get_type"
+  ;;; begin struct ActionGroupClass
+  ;;; fields: ("parent_class" "get_action" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ActionGroupClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-action-group-get-action '* '*)
   (define-from-gtk gtk-action-group-new '* '*)
   (define-from-gtk gtk-action-group-add-action void '*)
   (define-from-gtk gtk-action-group-add-action-with-accel void '* '*)
@@ -4372,6 +4450,17 @@
 
   ;;; begin object Adjustment
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkAdjustment
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ("changed" "value_changed")
+  ;;; type-init: "gtk_adjustment_get_type"
+  ;;; begin struct AdjustmentClass
+  ;;; fields: ("parent_class" "changed" "value_changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AdjustmentClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-adjustment-changed void)
+  (define-from-gtk gtk-adjustment-value-changed void)
   (define-from-gtk gtk-adjustment-new '* double double double double double double)
   (define-from-gtk gtk-adjustment-changed void)
   (define-from-gtk gtk-adjustment-clamp-page void double double)
@@ -4407,6 +4496,15 @@
 
   ;;; begin object Alignment
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkAlignment
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_alignment_get_type"
+  ;;; begin struct AlignmentClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AlignmentClass
+
+  ;;; ---------------
   (define-from-gtk gtk-alignment-new '* float float float float)
   (define-from-gtk gtk-alignment-get-padding void uint32 uint32 uint32 uint32)
   (define-from-gtk gtk-alignment-set void float float float float)
@@ -4424,6 +4522,15 @@
   ;;; (interface "AppChooser")
   ;;; begin object AppChooserButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkAppChooserButton
+  ;;; parent: "ComboBox"
+  ;;; vfuncs: ("custom_item_activated")
+  ;;; type-init: "gtk_app_chooser_button_get_type"
+  ;;; begin struct AppChooserButtonClass
+  ;;; fields: ("parent_class" "custom_item_activated" "padding")
+  ;;; end AppChooserButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-app-chooser-button-new '* '*)
   (define-from-gtk gtk-app-chooser-button-append-custom-item void '* '* '*)
   (define-from-gtk gtk-app-chooser-button-append-separator void)
@@ -4446,6 +4553,15 @@
 
   ;;; begin object AppChooserDialog
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkAppChooserDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_app_chooser_dialog_get_type"
+  ;;; begin struct AppChooserDialogClass
+  ;;; fields: ("parent_class" "padding")
+  ;;; end AppChooserDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-app-chooser-dialog-new '* '* uint32 '*)
   (define-from-gtk gtk-app-chooser-dialog-new-for-content-type '* '* uint32 '*)
   (define-from-gtk gtk-app-chooser-dialog-get-heading '*)
@@ -4463,6 +4579,15 @@
 
   ;;; begin object AppChooserWidget
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkAppChooserWidget
+  ;;; parent: "Box"
+  ;;; vfuncs: ("application_activated" "application_selected" "populate_popup")
+  ;;; type-init: "gtk_app_chooser_widget_get_type"
+  ;;; begin struct AppChooserWidgetClass
+  ;;; fields: ("parent_class" "application_selected" "application_activated" "populate_popup" "padding")
+  ;;; end AppChooserWidgetClass
+
+  ;;; ---------------
   (define-from-gtk gtk-app-chooser-widget-new '* '*)
   (define-from-gtk gtk-app-chooser-widget-get-default-text '*)
   (define-from-gtk gtk-app-chooser-widget-get-show-all int)
@@ -4488,6 +4613,15 @@
 
   ;;; begin object Application
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkApplication
+  ;;; parent: "Application"
+  ;;; vfuncs: ("window_added" "window_removed")
+  ;;; type-init: "gtk_application_get_type"
+  ;;; begin struct ApplicationClass
+  ;;; fields: ("parent_class" "window_added" "window_removed" "padding")
+  ;;; end ApplicationClass
+
+  ;;; ---------------
   (define-from-gtk gtk-application-new '* '* uint32)
   (define-from-gtk gtk-application-add-accelerator void '* '* '*)
   (define-from-gtk gtk-application-add-window void '*)
@@ -4526,6 +4660,15 @@
 
   ;;; begin object ApplicationWindow
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkApplicationWindow
+  ;;; parent: "Window"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_application_window_get_type"
+  ;;; begin struct ApplicationWindowClass
+  ;;; fields: ("parent_class" "padding")
+  ;;; end ApplicationWindowClass
+
+  ;;; ---------------
   (define-from-gtk gtk-application-window-new '* '*)
   (define-from-gtk gtk-application-window-get-help-overlay '*)
   (define-from-gtk gtk-application-window-get-id uint32)
@@ -4544,12 +4687,30 @@
 
   ;;; begin object Arrow
   ;;; fields: ("misc" "priv")
+  ;;; object type name: GtkArrow
+  ;;; parent: "Misc"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_arrow_get_type"
+  ;;; begin struct ArrowClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ArrowClass
+
+  ;;; ---------------
   (define-from-gtk gtk-arrow-new '* uint32 uint32)
   (define-from-gtk gtk-arrow-set void uint32 uint32)
   ;;; end Arrow
 
   ;;; begin object ArrowAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkArrowAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_arrow_accessible_get_type"
+  ;;; begin struct ArrowAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ArrowAccessibleClass
+
+  ;;; ---------------
   ;;; end ArrowAccessible
 
   ;;; begin struct ArrowAccessibleClass
@@ -4580,6 +4741,15 @@
 
   ;;; begin object AspectFrame
   ;;; fields: ("frame" "priv")
+  ;;; object type name: GtkAspectFrame
+  ;;; parent: "Frame"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_aspect_frame_get_type"
+  ;;; begin struct AspectFrameClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end AspectFrameClass
+
+  ;;; ---------------
   (define-from-gtk gtk-aspect-frame-new '* '* float float float int)
   (define-from-gtk gtk-aspect-frame-set void float float float int)
   ;;; end AspectFrame
@@ -4594,6 +4764,15 @@
 
   ;;; begin object Assistant
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkAssistant
+  ;;; parent: "Window"
+  ;;; vfuncs: ("apply" "cancel" "close" "prepare")
+  ;;; type-init: "gtk_assistant_get_type"
+  ;;; begin struct AssistantClass
+  ;;; fields: ("parent_class" "prepare" "apply" "close" "cancel" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5")
+  ;;; end AssistantClass
+
+  ;;; ---------------
   (define-from-gtk gtk-assistant-new '*)
   (define-from-gtk gtk-assistant-add-action-widget void '*)
   (define-from-gtk gtk-assistant-append-page int32 '*)
@@ -4651,6 +4830,15 @@
 
   ;;; begin object Bin
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkBin
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_bin_get_type"
+  ;;; begin struct BinClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end BinClass
+
+  ;;; ---------------
   (define-from-gtk gtk-bin-get-child '*)
   ;;; end Bin
 
@@ -4687,6 +4875,15 @@
 
   ;;; begin object BooleanCellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkBooleanCellAccessible
+  ;;; parent: "RendererCellAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_boolean_cell_accessible_get_type"
+  ;;; begin struct BooleanCellAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end BooleanCellAccessibleClass
+
+  ;;; ---------------
   ;;; end BooleanCellAccessible
 
   ;;; begin struct BooleanCellAccessibleClass
@@ -4722,6 +4919,15 @@
 
   ;;; begin object Box
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkBox
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_box_get_type"
+  ;;; begin struct BoxClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end BoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-box-new '* uint32 int32)
   (define-from-gtk gtk-box-get-baseline-position uint32)
   (define-from-gtk gtk-box-get-center-widget '*)
@@ -4753,6 +4959,16 @@
 
   ;;; begin object Builder
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkBuilder
+  ;;; parent: "Object"
+  ;;; vfuncs: ("get_type_from_name")
+  ;;; type-init: "gtk_builder_get_type"
+  ;;; begin struct BuilderClass
+  ;;; fields: ("parent_class" "get_type_from_name" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end BuilderClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-builder-get-type-from-name size_t '*)
   (define-from-gtk gtk-builder-new '*)
   (define-from-gtk gtk-builder-new-from-file '* '*)
   (define-from-gtk gtk-builder-new-from-resource '* '*)
@@ -4786,6 +5002,7 @@
   ;;; (callback "BuilderConnectFunc")
   ;;; begin enum BuilderError
   ;;; series: sequence
+  (define-from-gtk gtk-builder-error-quark uint32)
   (define-enum-transformer
     BuilderError
     invalid_type_function
@@ -4811,6 +5028,20 @@
 
   ;;; begin object Button
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkButton
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("activate" "clicked" "enter" "leave" "pressed" "released")
+  ;;; type-init: "gtk_button_get_type"
+  ;;; begin struct ButtonClass
+  ;;; fields: ("parent_class" "pressed" "released" "clicked" "enter" "leave" "activate" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ButtonClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-button-clicked void)
+  (define-from-gtk gtk-button-enter void)
+  (define-from-gtk gtk-button-leave void)
+  (define-from-gtk gtk-button-pressed void)
+  (define-from-gtk gtk-button-released void)
   (define-from-gtk gtk-button-new '*)
   (define-from-gtk gtk-button-new-from-icon-name '* '* int32)
   (define-from-gtk gtk-button-new-from-stock '* '*)
@@ -4844,6 +5075,15 @@
 
   ;;; begin object ButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkButtonAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_button_accessible_get_type"
+  ;;; begin struct ButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end ButtonAccessible
 
   ;;; begin struct ButtonAccessibleClass
@@ -4856,6 +5096,15 @@
 
   ;;; begin object ButtonBox
   ;;; fields: ("box" "priv")
+  ;;; object type name: GtkButtonBox
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_button_box_get_type"
+  ;;; begin struct ButtonBoxClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ButtonBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-button-box-new '* uint32)
   (define-from-gtk gtk-button-box-get-child-non-homogeneous int '*)
   (define-from-gtk gtk-button-box-get-child-secondary int '*)
@@ -4897,6 +5146,15 @@
 
   ;;; begin object Calendar
   ;;; fields: ("widget" "priv")
+  ;;; object type name: GtkCalendar
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("day_selected" "day_selected_double_click" "month_changed" "next_month" "next_year" "prev_month" "prev_year")
+  ;;; type-init: "gtk_calendar_get_type"
+  ;;; begin struct CalendarClass
+  ;;; fields: ("parent_class" "month_changed" "day_selected" "day_selected_double_click" "prev_month" "next_month" "prev_year" "next_year" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CalendarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-calendar-new '*)
   (define-from-gtk gtk-calendar-clear-marks void)
   (define-from-gtk gtk-calendar-get-date void uint32 uint32 uint32)
@@ -4930,6 +5188,15 @@
   ;;; (callback "Callback")
   ;;; begin object CellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellAccessible
+  ;;; parent: "Accessible"
+  ;;; vfuncs: ("update_cache")
+  ;;; type-init: "gtk_cell_accessible_get_type"
+  ;;; begin struct CellAccessibleClass
+  ;;; fields: ("parent_class" "update_cache")
+  ;;; end CellAccessibleClass
+
+  ;;; ---------------
   ;;; end CellAccessible
 
   ;;; begin struct CellAccessibleClass
@@ -4948,6 +5215,35 @@
   ;;; (callback "CellAllocCallback")
   ;;; begin object CellArea
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCellArea
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ("activate" "add" "apply_attributes" "copy_context" "create_context" "event" "focus" "foreach" "foreach_alloc" "get_cell_property" "get_preferred_height" "get_preferred_height_for_width" "get_preferred_width" "get_preferred_width_for_height" "get_request_mode" "is_activatable" "remove" "render" "set_cell_property")
+  ;;; type-init: "gtk_cell_area_get_type"
+  ;;; begin struct CellAreaClass
+  ;;; fields: ("parent_class" "add" "remove" "foreach" "foreach_alloc" "event" "render" "apply_attributes" "create_context" "copy_context" "get_request_mode" "get_preferred_width" "get_preferred_height_for_width" "get_preferred_height" "get_preferred_width_for_height" "set_cell_property" "get_cell_property" "focus" "is_activatable" "activate" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  (define-from-gtk gtk-cell-area-class-find-cell-property '* '*)
+  (define-from-gtk gtk-cell-area-class-install-cell-property void uint32 '*)
+  (define-from-gtk gtk-cell-area-class-list-cell-properties '* uint32)
+  ;;; end CellAreaClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-cell-area-activate int '* '* '* uint32 int)
+  (define-from-gtk gtk-cell-area-add void '*)
+  (define-from-gtk gtk-cell-area-apply-attributes void '* '* int int)
+  (define-from-gtk gtk-cell-area-copy-context '* '*)
+  (define-from-gtk gtk-cell-area-create-context '*)
+  (define-from-gtk gtk-cell-area-event int32 '* '* '* '* uint32)
+  (define-from-gtk gtk-cell-area-focus int uint32)
+  (define-from-gtk gtk-cell-area-foreach void '* '*)
+  (define-from-gtk gtk-cell-area-foreach-alloc void '* '* '* '* '* '*)
+  (define-from-gtk gtk-cell-area-get-preferred-height void '* '* int32 int32)
+  (define-from-gtk gtk-cell-area-get-preferred-height-for-width void '* '* int32 int32 int32)
+  (define-from-gtk gtk-cell-area-get-preferred-width void '* '* int32 int32)
+  (define-from-gtk gtk-cell-area-get-preferred-width-for-height void '* '* int32 int32 int32)
+  (define-from-gtk gtk-cell-area-get-request-mode uint32)
+  (define-from-gtk gtk-cell-area-is-activatable int)
+  (define-from-gtk gtk-cell-area-remove void '*)
+  (define-from-gtk gtk-cell-area-render void '* '* '* '* '* uint32 int)
   (define-from-gtk gtk-cell-area-activate int '* '* '* uint32 int)
   (define-from-gtk gtk-cell-area-activate-cell int '* '* '* '* uint32)
   (define-from-gtk gtk-cell-area-add void '*)
@@ -4991,6 +5287,15 @@
 
   ;;; begin object CellAreaBox
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCellAreaBox
+  ;;; parent: "CellArea"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_area_box_get_type"
+  ;;; begin struct CellAreaBoxClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellAreaBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-area-box-new '*)
   (define-from-gtk gtk-cell-area-box-get-spacing int32)
   (define-from-gtk gtk-cell-area-box-pack-end void '* int int int)
@@ -5015,6 +5320,19 @@
 
   ;;; begin object CellAreaContext
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCellAreaContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ("allocate" "get_preferred_height_for_width" "get_preferred_width_for_height" "reset")
+  ;;; type-init: "gtk_cell_area_context_get_type"
+  ;;; begin struct CellAreaContextClass
+  ;;; fields: ("parent_class" "allocate" "reset" "get_preferred_height_for_width" "get_preferred_width_for_height" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6")
+  ;;; end CellAreaContextClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-cell-area-context-allocate void int32 int32)
+  (define-from-gtk gtk-cell-area-context-get-preferred-height-for-width void int32 int32 int32)
+  (define-from-gtk gtk-cell-area-context-get-preferred-width-for-height void int32 int32 int32)
+  (define-from-gtk gtk-cell-area-context-reset void)
   (define-from-gtk gtk-cell-area-context-allocate void int32 int32)
   (define-from-gtk gtk-cell-area-context-get-allocation void int32 int32)
   (define-from-gtk gtk-cell-area-context-get-area '*)
@@ -5053,6 +5371,26 @@
 
   ;;; begin object CellRenderer
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCellRenderer
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ("activate" "editing_canceled" "editing_started" "get_aligned_area" "get_preferred_height" "get_preferred_height_for_width" "get_preferred_width" "get_preferred_width_for_height" "get_request_mode" "get_size" "render" "start_editing")
+  ;;; type-init: "gtk_cell_renderer_get_type"
+  ;;; begin struct CellRendererClass
+  ;;; fields: ("parent_class" "get_request_mode" "get_preferred_width" "get_preferred_height_for_width" "get_preferred_height" "get_preferred_width_for_height" "get_aligned_area" "get_size" "render" "activate" "start_editing" "editing_canceled" "editing_started" "priv" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  (define-from-gtk gtk-cell-renderer-class-set-accessible-type void size_t)
+  ;;; end CellRendererClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-cell-renderer-activate int '* '* '* '* '* uint32)
+  (define-from-gtk gtk-cell-renderer-get-aligned-area void '* uint32 '* '*)
+  (define-from-gtk gtk-cell-renderer-get-preferred-height void '* int32 int32)
+  (define-from-gtk gtk-cell-renderer-get-preferred-height-for-width void '* int32 int32 int32)
+  (define-from-gtk gtk-cell-renderer-get-preferred-width void '* int32 int32)
+  (define-from-gtk gtk-cell-renderer-get-preferred-width-for-height void '* int32 int32 int32)
+  (define-from-gtk gtk-cell-renderer-get-request-mode uint32)
+  (define-from-gtk gtk-cell-renderer-get-size void '* '* int32 int32 int32 int32)
+  (define-from-gtk gtk-cell-renderer-render void '* '* '* '* uint32)
+  (define-from-gtk gtk-cell-renderer-start-editing '* '* '* '* '* '* uint32)
   (define-from-gtk gtk-cell-renderer-activate int '* '* '* '* '* uint32)
   (define-from-gtk gtk-cell-renderer-get-aligned-area void '* uint32 '* '*)
   (define-from-gtk gtk-cell-renderer-get-alignment void float float)
@@ -5081,6 +5419,15 @@
 
   ;;; begin object CellRendererAccel
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererAccel
+  ;;; parent: "CellRendererText"
+  ;;; vfuncs: ("accel_cleared" "accel_edited")
+  ;;; type-init: "gtk_cell_renderer_accel_get_type"
+  ;;; begin struct CellRendererAccelClass
+  ;;; fields: ("parent_class" "accel_edited" "accel_cleared" "_gtk_reserved0" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererAccelClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-accel-new '*)
   ;;; end CellRendererAccel
 
@@ -5108,6 +5455,15 @@
 
   ;;; begin object CellRendererCombo
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererCombo
+  ;;; parent: "CellRendererText"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_renderer_combo_get_type"
+  ;;; begin struct CellRendererComboClass
+  ;;; fields: ("parent" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererComboClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-combo-new '*)
   ;;; end CellRendererCombo
 
@@ -5126,6 +5482,15 @@
 
   ;;; begin object CellRendererPixbuf
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererPixbuf
+  ;;; parent: "CellRenderer"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_renderer_pixbuf_get_type"
+  ;;; begin struct CellRendererPixbufClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererPixbufClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-pixbuf-new '*)
   ;;; end CellRendererPixbuf
 
@@ -5143,6 +5508,15 @@
 
   ;;; begin object CellRendererProgress
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCellRendererProgress
+  ;;; parent: "CellRenderer"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_renderer_progress_get_type"
+  ;;; begin struct CellRendererProgressClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererProgressClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-progress-new '*)
   ;;; end CellRendererProgress
 
@@ -5156,6 +5530,15 @@
 
   ;;; begin object CellRendererSpin
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererSpin
+  ;;; parent: "CellRendererText"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_renderer_spin_get_type"
+  ;;; begin struct CellRendererSpinClass
+  ;;; fields: ("parent" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererSpinClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-spin-new '*)
   ;;; end CellRendererSpin
 
@@ -5169,6 +5552,15 @@
 
   ;;; begin object CellRendererSpinner
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererSpinner
+  ;;; parent: "CellRenderer"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_renderer_spinner_get_type"
+  ;;; begin struct CellRendererSpinnerClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererSpinnerClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-spinner-new '*)
   ;;; end CellRendererSpinner
 
@@ -5195,6 +5587,15 @@
 
   ;;; begin object CellRendererText
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererText
+  ;;; parent: "CellRenderer"
+  ;;; vfuncs: ("edited")
+  ;;; type-init: "gtk_cell_renderer_text_get_type"
+  ;;; begin struct CellRendererTextClass
+  ;;; fields: ("parent_class" "edited" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererTextClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-text-new '*)
   (define-from-gtk gtk-cell-renderer-text-set-fixed-height-from-font void int32)
   ;;; end CellRendererText
@@ -5209,6 +5610,15 @@
 
   ;;; begin object CellRendererToggle
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCellRendererToggle
+  ;;; parent: "CellRenderer"
+  ;;; vfuncs: ("toggled")
+  ;;; type-init: "gtk_cell_renderer_toggle_get_type"
+  ;;; begin struct CellRendererToggleClass
+  ;;; fields: ("parent_class" "toggled" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellRendererToggleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-renderer-toggle-new '*)
   (define-from-gtk gtk-cell-renderer-toggle-get-activatable int)
   (define-from-gtk gtk-cell-renderer-toggle-get-active int)
@@ -5228,6 +5638,15 @@
 
   ;;; begin object CellView
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCellView
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_cell_view_get_type"
+  ;;; begin struct CellViewClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CellViewClass
+
+  ;;; ---------------
   (define-from-gtk gtk-cell-view-new '*)
   (define-from-gtk gtk-cell-view-new-with-context '* '* '*)
   (define-from-gtk gtk-cell-view-new-with-markup '* '*)
@@ -5256,6 +5675,15 @@
 
   ;;; begin object CheckButton
   ;;; fields: ("toggle_button")
+  ;;; object type name: GtkCheckButton
+  ;;; parent: "ToggleButton"
+  ;;; vfuncs: ("draw_indicator")
+  ;;; type-init: "gtk_check_button_get_type"
+  ;;; begin struct CheckButtonClass
+  ;;; fields: ("parent_class" "draw_indicator" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CheckButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-check-button-new '*)
   (define-from-gtk gtk-check-button-new-with-label '* '*)
   (define-from-gtk gtk-check-button-new-with-mnemonic '* '*)
@@ -5267,6 +5695,16 @@
 
   ;;; begin object CheckMenuItem
   ;;; fields: ("menu_item" "priv")
+  ;;; object type name: GtkCheckMenuItem
+  ;;; parent: "MenuItem"
+  ;;; vfuncs: ("draw_indicator" "toggled")
+  ;;; type-init: "gtk_check_menu_item_get_type"
+  ;;; begin struct CheckMenuItemClass
+  ;;; fields: ("parent_class" "toggled" "draw_indicator" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CheckMenuItemClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-check-menu-item-toggled void)
   (define-from-gtk gtk-check-menu-item-new '*)
   (define-from-gtk gtk-check-menu-item-new-with-label '* '*)
   (define-from-gtk gtk-check-menu-item-new-with-mnemonic '* '*)
@@ -5281,6 +5719,15 @@
 
   ;;; begin object CheckMenuItemAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkCheckMenuItemAccessible
+  ;;; parent: "MenuItemAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_check_menu_item_accessible_get_type"
+  ;;; begin struct CheckMenuItemAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end CheckMenuItemAccessibleClass
+
+  ;;; ---------------
   ;;; end CheckMenuItemAccessible
 
   ;;; begin struct CheckMenuItemAccessibleClass
@@ -5301,6 +5748,11 @@
 
   ;;; begin object Clipboard
   ;;; fields: ()
+  ;;; object type name: GtkClipboard
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_clipboard_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-clipboard-get '* '*)
   (define-from-gtk gtk-clipboard-get-default '* '*)
   (define-from-gtk gtk-clipboard-get-for-display '* '* '*)
@@ -5340,6 +5792,15 @@
   ;;; (callback "ClipboardURIReceivedFunc")
   ;;; begin object ColorButton
   ;;; fields: ("button" "priv")
+  ;;; object type name: GtkColorButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ("color_set")
+  ;;; type-init: "gtk_color_button_get_type"
+  ;;; begin struct ColorButtonClass
+  ;;; fields: ("parent_class" "color_set" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ColorButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-color-button-new '*)
   (define-from-gtk gtk-color-button-new-with-color '* '*)
   (define-from-gtk gtk-color-button-new-with-rgba '* '*)
@@ -5364,6 +5825,15 @@
   ;;; (interface "ColorChooser")
   ;;; begin object ColorChooserDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkColorChooserDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_color_chooser_dialog_get_type"
+  ;;; begin struct ColorChooserDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ColorChooserDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-color-chooser-dialog-new '* '* '*)
   ;;; end ColorChooserDialog
 
@@ -5381,6 +5851,15 @@
 
   ;;; begin object ColorChooserWidget
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkColorChooserWidget
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_color_chooser_widget_get_type"
+  ;;; begin struct ColorChooserWidgetClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end ColorChooserWidgetClass
+
+  ;;; ---------------
   (define-from-gtk gtk-color-chooser-widget-new '*)
   ;;; end ColorChooserWidget
 
@@ -5394,6 +5873,15 @@
 
   ;;; begin object ColorSelection
   ;;; fields: ("parent_instance" "private_data")
+  ;;; object type name: GtkColorSelection
+  ;;; parent: "Box"
+  ;;; vfuncs: ("color_changed")
+  ;;; type-init: "gtk_color_selection_get_type"
+  ;;; begin struct ColorSelectionClass
+  ;;; fields: ("parent_class" "color_changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ColorSelectionClass
+
+  ;;; ---------------
   (define-from-gtk gtk-color-selection-new '*)
   (define-from-gtk gtk-color-selection-palette-from-string int '* '* int32)
   (define-from-gtk gtk-color-selection-palette-to-string '* '* int32)
@@ -5424,6 +5912,15 @@
 
   ;;; begin object ColorSelectionDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkColorSelectionDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_color_selection_dialog_get_type"
+  ;;; begin struct ColorSelectionDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ColorSelectionDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-color-selection-dialog-new '* '*)
   (define-from-gtk gtk-color-selection-dialog-get-color-selection '*)
   ;;; end ColorSelectionDialog
@@ -5442,6 +5939,15 @@
 
   ;;; begin object ComboBox
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkComboBox
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("changed" "format_entry_text")
+  ;;; type-init: "gtk_combo_box_get_type"
+  ;;; begin struct ComboBoxClass
+  ;;; fields: ("parent_class" "changed" "format_entry_text" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3")
+  ;;; end ComboBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-combo-box-new '*)
   (define-from-gtk gtk-combo-box-new-with-area '* '*)
   (define-from-gtk gtk-combo-box-new-with-area-and-entry '* '*)
@@ -5486,6 +5992,15 @@
 
   ;;; begin object ComboBoxAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkComboBoxAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_combo_box_accessible_get_type"
+  ;;; begin struct ComboBoxAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ComboBoxAccessibleClass
+
+  ;;; ---------------
   ;;; end ComboBoxAccessible
 
   ;;; begin struct ComboBoxAccessibleClass
@@ -5506,6 +6021,15 @@
 
   ;;; begin object ComboBoxText
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkComboBoxText
+  ;;; parent: "ComboBox"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_combo_box_text_get_type"
+  ;;; begin struct ComboBoxTextClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ComboBoxTextClass
+
+  ;;; ---------------
   (define-from-gtk gtk-combo-box-text-new '*)
   (define-from-gtk gtk-combo-box-text-new-with-entry '*)
   (define-from-gtk gtk-combo-box-text-append void '* '*)
@@ -5529,6 +6053,27 @@
 
   ;;; begin object Container
   ;;; fields: ("widget" "priv")
+  ;;; object type name: GtkContainer
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("add" "check_resize" "child_type" "composite_name" "forall" "get_child_property" "get_path_for_child" "remove" "set_child_property" "set_focus_child")
+  ;;; type-init: "gtk_container_get_type"
+  ;;; begin struct ContainerClass
+  ;;; fields: ("parent_class" "add" "remove" "check_resize" "forall" "set_focus_child" "child_type" "composite_name" "set_child_property" "get_child_property" "get_path_for_child" "_handle_border_width" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  (define-from-gtk gtk-container-class-find-child-property '* '*)
+  (define-from-gtk gtk-container-class-handle-border-width void)
+  (define-from-gtk gtk-container-class-install-child-properties void uint32 '*)
+  (define-from-gtk gtk-container-class-install-child-property void uint32 '*)
+  (define-from-gtk gtk-container-class-list-child-properties '* uint32)
+  ;;; end ContainerClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-container-add void '*)
+  (define-from-gtk gtk-container-check-resize void)
+  (define-from-gtk gtk-container-child-type size_t)
+  (define-from-gtk gtk-container-forall void '* '*)
+  (define-from-gtk gtk-container-get-path-for-child '* '*)
+  (define-from-gtk gtk-container-remove void '*)
+  (define-from-gtk gtk-container-set-focus-child void '*)
   (define-from-gtk gtk-container-add void '*)
   (define-from-gtk gtk-container-check-resize void)
   (define-from-gtk gtk-container-child-get-property void '* '* '*)
@@ -5561,6 +6106,15 @@
 
   ;;; begin object ContainerAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkContainerAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_container_accessible_get_type"
+  ;;; begin struct ContainerAccessibleClass
+  ;;; fields: ("parent_class" "add_gtk" "remove_gtk")
+  ;;; end ContainerAccessibleClass
+
+  ;;; ---------------
   ;;; end ContainerAccessible
 
   ;;; begin struct ContainerAccessibleClass
@@ -5573,6 +6127,15 @@
 
   ;;; begin object ContainerCellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkContainerCellAccessible
+  ;;; parent: "CellAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_container_cell_accessible_get_type"
+  ;;; begin struct ContainerCellAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ContainerCellAccessibleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-container-cell-accessible-new '*)
   (define-from-gtk gtk-container-cell-accessible-add-child void '*)
   (define-from-gtk gtk-container-cell-accessible-get-children '*)
@@ -5607,6 +6170,15 @@
 
   ;;; begin object CssProvider
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkCssProvider
+  ;;; parent: "Object"
+  ;;; vfuncs: ("parsing_error")
+  ;;; type-init: "gtk_css_provider_get_type"
+  ;;; begin struct CssProviderClass
+  ;;; fields: ("parent_class" "parsing_error" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end CssProviderClass
+
+  ;;; ---------------
   (define-from-gtk gtk-css-provider-new '*)
   (define-from-gtk gtk-css-provider-get-default '*)
   (define-from-gtk gtk-css-provider-get-named '* '* '*)
@@ -5623,6 +6195,7 @@
 
   ;;; begin enum CssProviderError
   ;;; series: sequence
+  (define-from-gtk gtk-css-provider-error-quark uint32)
   (define-enum-transformer CssProviderError failed syntax import name deprecated unknown_value)
   (define-from-gtk gtk-css-provider-error-quark uint32)
   ;;; end CssProviderError
@@ -5707,6 +6280,16 @@
 
   ;;; begin object Dialog
   ;;; fields: ("window" "priv")
+  ;;; object type name: GtkDialog
+  ;;; parent: "Window"
+  ;;; vfuncs: ("close" "response")
+  ;;; type-init: "gtk_dialog_get_type"
+  ;;; begin struct DialogClass
+  ;;; fields: ("parent_class" "response" "close" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end DialogClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-dialog-response void int32)
   (define-from-gtk gtk-dialog-new '*)
   (define-from-gtk gtk-dialog-add-action-widget void '* int32)
   (define-from-gtk gtk-dialog-add-button '* '* int32)
@@ -5754,6 +6337,15 @@
 
   ;;; begin object DrawingArea
   ;;; fields: ("widget" "dummy")
+  ;;; object type name: GtkDrawingArea
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_drawing_area_get_type"
+  ;;; begin struct DrawingAreaClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end DrawingAreaClass
+
+  ;;; ---------------
   (define-from-gtk gtk-drawing-area-new '*)
   ;;; end DrawingArea
 
@@ -5768,6 +6360,15 @@
 
   ;;; begin object Entry
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkEntry
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("activate" "backspace" "copy_clipboard" "cut_clipboard" "delete_from_cursor" "get_frame_size" "get_text_area_size" "insert_at_cursor" "move_cursor" "paste_clipboard" "populate_popup" "toggle_overwrite")
+  ;;; type-init: "gtk_entry_get_type"
+  ;;; begin struct EntryClass
+  ;;; fields: ("parent_class" "populate_popup" "activate" "move_cursor" "insert_at_cursor" "delete_from_cursor" "backspace" "cut_clipboard" "copy_clipboard" "paste_clipboard" "toggle_overwrite" "get_text_area_size" "get_frame_size" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7")
+  ;;; end EntryClass
+
+  ;;; ---------------
   (define-from-gtk gtk-entry-new '*)
   (define-from-gtk gtk-entry-new-with-buffer '* '*)
   (define-from-gtk gtk-entry-get-activates-default int)
@@ -5848,6 +6449,15 @@
 
   ;;; begin object EntryAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkEntryAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_entry_accessible_get_type"
+  ;;; begin struct EntryAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end EntryAccessibleClass
+
+  ;;; ---------------
   ;;; end EntryAccessible
 
   ;;; begin struct EntryAccessibleClass
@@ -5860,6 +6470,18 @@
 
   ;;; begin object EntryBuffer
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkEntryBuffer
+  ;;; parent: "Object"
+  ;;; vfuncs: ("delete_text" "deleted_text" "get_length" "get_text" "insert_text" "inserted_text")
+  ;;; type-init: "gtk_entry_buffer_get_type"
+  ;;; begin struct EntryBufferClass
+  ;;; fields: ("parent_class" "inserted_text" "deleted_text" "get_text" "get_length" "insert_text" "delete_text" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end EntryBufferClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-entry-buffer-delete-text uint32 uint32 int32)
+  (define-from-gtk gtk-entry-buffer-get-length uint32)
+  (define-from-gtk gtk-entry-buffer-insert-text uint32 uint32 '* int32)
   (define-from-gtk gtk-entry-buffer-new '* '* int32)
   (define-from-gtk gtk-entry-buffer-delete-text uint32 uint32 int32)
   (define-from-gtk gtk-entry-buffer-emit-deleted-text void uint32 uint32)
@@ -5887,6 +6509,15 @@
 
   ;;; begin object EntryCompletion
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkEntryCompletion
+  ;;; parent: "Object"
+  ;;; vfuncs: ("action_activated" "cursor_on_match" "insert_prefix" "match_selected" "no_matches")
+  ;;; type-init: "gtk_entry_completion_get_type"
+  ;;; begin struct EntryCompletionClass
+  ;;; fields: ("parent_class" "match_selected" "action_activated" "insert_prefix" "cursor_on_match" "no_matches" "_gtk_reserved0" "_gtk_reserved1" "_gtk_reserved2")
+  ;;; end EntryCompletionClass
+
+  ;;; ---------------
   (define-from-gtk gtk-entry-completion-new '*)
   (define-from-gtk gtk-entry-completion-new-with-area '* '*)
   (define-from-gtk gtk-entry-completion-complete void)
@@ -5927,6 +6558,11 @@
 
   ;;; begin object EntryIconAccessible
   ;;; fields: ()
+  ;;; object type name: GtkEntryIconAccessible
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_entry_icon_accessible_get_type"
+  ;;; ---------------
   ;;; end EntryIconAccessible
 
   ;;; begin enum EntryIconPosition
@@ -5940,6 +6576,15 @@
 
   ;;; begin object EventBox
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkEventBox
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_event_box_get_type"
+  ;;; begin struct EventBoxClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end EventBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-event-box-new '*)
   (define-from-gtk gtk-event-box-get-above-child int)
   (define-from-gtk gtk-event-box-get-visible-window int)
@@ -5957,6 +6602,15 @@
 
   ;;; begin object EventController
   ;;; fields: ()
+  ;;; object type name: GtkEventController
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_event_controller_get_type"
+  ;;; begin struct EventControllerClass
+  ;;; fields: ()
+  ;;; end EventControllerClass
+
+  ;;; ---------------
   (define-from-gtk gtk-event-controller-get-propagation-phase uint32)
   (define-from-gtk gtk-event-controller-get-widget '*)
   (define-from-gtk gtk-event-controller-handle-event int '*)
@@ -5975,6 +6629,15 @@
 
   ;;; begin object Expander
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkExpander
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("activate")
+  ;;; type-init: "gtk_expander_get_type"
+  ;;; begin struct ExpanderClass
+  ;;; fields: ("parent_class" "activate" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ExpanderClass
+
+  ;;; ---------------
   (define-from-gtk gtk-expander-new '* '*)
   (define-from-gtk gtk-expander-new-with-mnemonic '* '*)
   (define-from-gtk gtk-expander-get-expanded int)
@@ -5997,6 +6660,15 @@
 
   ;;; begin object ExpanderAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkExpanderAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_expander_accessible_get_type"
+  ;;; begin struct ExpanderAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ExpanderAccessibleClass
+
+  ;;; ---------------
   ;;; end ExpanderAccessible
 
   ;;; begin struct ExpanderAccessibleClass
@@ -6028,6 +6700,15 @@
 
   ;;; begin object FileChooserButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkFileChooserButton
+  ;;; parent: "Box"
+  ;;; vfuncs: ("file_set")
+  ;;; type-init: "gtk_file_chooser_button_get_type"
+  ;;; begin struct FileChooserButtonClass
+  ;;; fields: ("parent_class" "file_set" "__gtk_reserved1" "__gtk_reserved2" "__gtk_reserved3" "__gtk_reserved4")
+  ;;; end FileChooserButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-file-chooser-button-new '* '* uint32)
   (define-from-gtk gtk-file-chooser-button-new-with-dialog '* '*)
   (define-from-gtk gtk-file-chooser-button-get-focus-on-click int)
@@ -6053,6 +6734,15 @@
 
   ;;; begin object FileChooserDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkFileChooserDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_file_chooser_dialog_get_type"
+  ;;; begin struct FileChooserDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FileChooserDialogClass
+
+  ;;; ---------------
   ;;; end FileChooserDialog
 
   ;;; begin struct FileChooserDialogClass
@@ -6065,6 +6755,7 @@
 
   ;;; begin enum FileChooserError
   ;;; series: sequence
+  (define-from-gtk gtk-file-chooser-error-quark uint32)
   (define-enum-transformer
     FileChooserError
     nonexistent
@@ -6076,6 +6767,15 @@
 
   ;;; begin object FileChooserNative
   ;;; fields: ()
+  ;;; object type name: GtkFileChooserNative
+  ;;; parent: "NativeDialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_file_chooser_native_get_type"
+  ;;; begin struct FileChooserNativeClass
+  ;;; fields: ("parent_class")
+  ;;; end FileChooserNativeClass
+
+  ;;; ---------------
   (define-from-gtk gtk-file-chooser-native-new '* '* '* uint32 '* '*)
   (define-from-gtk gtk-file-chooser-native-get-accept-label '*)
   (define-from-gtk gtk-file-chooser-native-get-cancel-label '*)
@@ -6089,6 +6789,15 @@
 
   ;;; begin object FileChooserWidget
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkFileChooserWidget
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_file_chooser_widget_get_type"
+  ;;; begin struct FileChooserWidgetClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FileChooserWidgetClass
+
+  ;;; ---------------
   (define-from-gtk gtk-file-chooser-widget-new '* uint32)
   ;;; end FileChooserWidget
 
@@ -6102,6 +6811,11 @@
 
   ;;; begin object FileFilter
   ;;; fields: ()
+  ;;; object type name: GtkFileFilter
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_file_filter_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-file-filter-new '*)
   (define-from-gtk gtk-file-filter-new-from-gvariant '* '*)
   (define-from-gtk gtk-file-filter-add-custom void uint32 '* '* '*)
@@ -6127,6 +6841,15 @@
 
   ;;; begin object Fixed
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkFixed
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_fixed_get_type"
+  ;;; begin struct FixedClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FixedClass
+
+  ;;; ---------------
   (define-from-gtk gtk-fixed-new '*)
   (define-from-gtk gtk-fixed-move void '* int32 int32)
   (define-from-gtk gtk-fixed-put void '* int32 int32)
@@ -6146,6 +6869,17 @@
 
   ;;; begin object FlowBox
   ;;; fields: ("container")
+  ;;; object type name: GtkFlowBox
+  ;;; parent: "Container"
+  ;;; vfuncs: ("activate_cursor_child" "child_activated" "move_cursor" "select_all" "selected_children_changed" "toggle_cursor_child" "unselect_all")
+  ;;; type-init: "gtk_flow_box_get_type"
+  ;;; begin struct FlowBoxClass
+  ;;; fields: ("parent_class" "child_activated" "selected_children_changed" "activate_cursor_child" "toggle_cursor_child" "move_cursor" "select_all" "unselect_all" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6")
+  ;;; end FlowBoxClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-flow-box-select-all void)
+  (define-from-gtk gtk-flow-box-unselect-all void)
   (define-from-gtk gtk-flow-box-new '*)
   (define-from-gtk gtk-flow-box-bind-model void '* '* '* '*)
   (define-from-gtk gtk-flow-box-get-activate-on-single-click int)
@@ -6181,6 +6915,15 @@
 
   ;;; begin object FlowBoxAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkFlowBoxAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_flow_box_accessible_get_type"
+  ;;; begin struct FlowBoxAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end FlowBoxAccessibleClass
+
+  ;;; ---------------
   ;;; end FlowBoxAccessible
 
   ;;; begin struct FlowBoxAccessibleClass
@@ -6193,6 +6936,15 @@
 
   ;;; begin object FlowBoxChild
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkFlowBoxChild
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("activate")
+  ;;; type-init: "gtk_flow_box_child_get_type"
+  ;;; begin struct FlowBoxChildClass
+  ;;; fields: ("parent_class" "activate" "_gtk_reserved1" "_gtk_reserved2")
+  ;;; end FlowBoxChildClass
+
+  ;;; ---------------
   (define-from-gtk gtk-flow-box-child-new '*)
   (define-from-gtk gtk-flow-box-child-changed void)
   (define-from-gtk gtk-flow-box-child-get-index int32)
@@ -6201,6 +6953,15 @@
 
   ;;; begin object FlowBoxChildAccessible
   ;;; fields: ("parent")
+  ;;; object type name: GtkFlowBoxChildAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_flow_box_child_accessible_get_type"
+  ;;; begin struct FlowBoxChildAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end FlowBoxChildAccessibleClass
+
+  ;;; ---------------
   ;;; end FlowBoxChildAccessible
 
   ;;; begin struct FlowBoxChildAccessibleClass
@@ -6221,6 +6982,15 @@
   ;;; (callback "FlowBoxSortFunc")
   ;;; begin object FontButton
   ;;; fields: ("button" "priv")
+  ;;; object type name: GtkFontButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ("font_set")
+  ;;; type-init: "gtk_font_button_get_type"
+  ;;; begin struct FontButtonClass
+  ;;; fields: ("parent_class" "font_set" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FontButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-font-button-new '*)
   (define-from-gtk gtk-font-button-new-with-font '* '*)
   (define-from-gtk gtk-font-button-get-font-name '*)
@@ -6248,6 +7018,15 @@
   ;;; (interface "FontChooser")
   ;;; begin object FontChooserDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkFontChooserDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_font_chooser_dialog_get_type"
+  ;;; begin struct FontChooserDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FontChooserDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-font-chooser-dialog-new '* '* '*)
   ;;; end FontChooserDialog
 
@@ -6265,6 +7044,15 @@
 
   ;;; begin object FontChooserWidget
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkFontChooserWidget
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_font_chooser_widget_get_type"
+  ;;; begin struct FontChooserWidgetClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end FontChooserWidgetClass
+
+  ;;; ---------------
   (define-from-gtk gtk-font-chooser-widget-new '*)
   ;;; end FontChooserWidget
 
@@ -6279,6 +7067,15 @@
   ;;; (callback "FontFilterFunc")
   ;;; begin object FontSelection
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkFontSelection
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_font_selection_get_type"
+  ;;; begin struct FontSelectionClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FontSelectionClass
+
+  ;;; ---------------
   (define-from-gtk gtk-font-selection-new '*)
   (define-from-gtk gtk-font-selection-get-face '*)
   (define-from-gtk gtk-font-selection-get-face-list '*)
@@ -6300,6 +7097,15 @@
 
   ;;; begin object FontSelectionDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkFontSelectionDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_font_selection_dialog_get_type"
+  ;;; begin struct FontSelectionDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FontSelectionDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-font-selection-dialog-new '* '*)
   (define-from-gtk gtk-font-selection-dialog-get-cancel-button '*)
   (define-from-gtk gtk-font-selection-dialog-get-font-name '*)
@@ -6324,6 +7130,15 @@
 
   ;;; begin object Frame
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkFrame
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("compute_child_allocation")
+  ;;; type-init: "gtk_frame_get_type"
+  ;;; begin struct FrameClass
+  ;;; fields: ("parent_class" "compute_child_allocation" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end FrameClass
+
+  ;;; ---------------
   (define-from-gtk gtk-frame-new '* '*)
   (define-from-gtk gtk-frame-get-label '*)
   (define-from-gtk gtk-frame-get-label-align void float float)
@@ -6337,6 +7152,15 @@
 
   ;;; begin object FrameAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkFrameAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_frame_accessible_get_type"
+  ;;; begin struct FrameAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end FrameAccessibleClass
+
+  ;;; ---------------
   ;;; end FrameAccessible
 
   ;;; begin struct FrameAccessibleClass
@@ -6357,6 +7181,15 @@
 
   ;;; begin object GLArea
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkGLArea
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("render" "resize")
+  ;;; type-init: "gtk_gl_area_get_type"
+  ;;; begin struct GLAreaClass
+  ;;; fields: ("parent_class" "render" "resize" "create_context" "_padding")
+  ;;; end GLAreaClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gl-area-new '*)
   (define-from-gtk gtk-gl-area-attach-buffers void)
   (define-from-gtk gtk-gl-area-get-auto-render int)
@@ -6384,6 +7217,15 @@
 
   ;;; begin object Gesture
   ;;; fields: ()
+  ;;; object type name: GtkGesture
+  ;;; parent: "EventController"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_get_type"
+  ;;; begin struct GestureClass
+  ;;; fields: ()
+  ;;; end GestureClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-get-bounding-box int '*)
   (define-from-gtk gtk-gesture-get-bounding-box-center int double double)
   (define-from-gtk gtk-gesture-get-device '*)
@@ -6411,6 +7253,15 @@
 
   ;;; begin object GestureDrag
   ;;; fields: ()
+  ;;; object type name: GtkGestureDrag
+  ;;; parent: "GestureSingle"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_drag_get_type"
+  ;;; begin struct GestureDragClass
+  ;;; fields: ()
+  ;;; end GestureDragClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-drag-new '* '*)
   (define-from-gtk gtk-gesture-drag-get-offset int double double)
   (define-from-gtk gtk-gesture-drag-get-start-point int double double)
@@ -6422,6 +7273,15 @@
 
   ;;; begin object GestureLongPress
   ;;; fields: ()
+  ;;; object type name: GtkGestureLongPress
+  ;;; parent: "GestureSingle"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_long_press_get_type"
+  ;;; begin struct GestureLongPressClass
+  ;;; fields: ()
+  ;;; end GestureLongPressClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-long-press-new '* '*)
   ;;; end GestureLongPress
 
@@ -6431,6 +7291,15 @@
 
   ;;; begin object GestureMultiPress
   ;;; fields: ()
+  ;;; object type name: GtkGestureMultiPress
+  ;;; parent: "GestureSingle"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_multi_press_get_type"
+  ;;; begin struct GestureMultiPressClass
+  ;;; fields: ()
+  ;;; end GestureMultiPressClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-multi-press-new '* '*)
   (define-from-gtk gtk-gesture-multi-press-get-area int '*)
   (define-from-gtk gtk-gesture-multi-press-set-area void '*)
@@ -6442,6 +7311,15 @@
 
   ;;; begin object GesturePan
   ;;; fields: ()
+  ;;; object type name: GtkGesturePan
+  ;;; parent: "GestureDrag"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_pan_get_type"
+  ;;; begin struct GesturePanClass
+  ;;; fields: ()
+  ;;; end GesturePanClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-pan-new '* '* uint32)
   (define-from-gtk gtk-gesture-pan-get-orientation uint32)
   (define-from-gtk gtk-gesture-pan-set-orientation void uint32)
@@ -6453,6 +7331,15 @@
 
   ;;; begin object GestureRotate
   ;;; fields: ()
+  ;;; object type name: GtkGestureRotate
+  ;;; parent: "Gesture"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_rotate_get_type"
+  ;;; begin struct GestureRotateClass
+  ;;; fields: ()
+  ;;; end GestureRotateClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-rotate-new '* '*)
   (define-from-gtk gtk-gesture-rotate-get-angle-delta double)
   ;;; end GestureRotate
@@ -6463,6 +7350,15 @@
 
   ;;; begin object GestureSingle
   ;;; fields: ()
+  ;;; object type name: GtkGestureSingle
+  ;;; parent: "Gesture"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_single_get_type"
+  ;;; begin struct GestureSingleClass
+  ;;; fields: ()
+  ;;; end GestureSingleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-single-get-button uint32)
   (define-from-gtk gtk-gesture-single-get-current-button uint32)
   (define-from-gtk gtk-gesture-single-get-current-sequence '*)
@@ -6479,6 +7375,15 @@
 
   ;;; begin object GestureSwipe
   ;;; fields: ()
+  ;;; object type name: GtkGestureSwipe
+  ;;; parent: "GestureSingle"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_swipe_get_type"
+  ;;; begin struct GestureSwipeClass
+  ;;; fields: ()
+  ;;; end GestureSwipeClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-swipe-new '* '*)
   (define-from-gtk gtk-gesture-swipe-get-velocity int double double)
   ;;; end GestureSwipe
@@ -6489,6 +7394,15 @@
 
   ;;; begin object GestureZoom
   ;;; fields: ()
+  ;;; object type name: GtkGestureZoom
+  ;;; parent: "Gesture"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_gesture_zoom_get_type"
+  ;;; begin struct GestureZoomClass
+  ;;; fields: ()
+  ;;; end GestureZoomClass
+
+  ;;; ---------------
   (define-from-gtk gtk-gesture-zoom-new '* '*)
   (define-from-gtk gtk-gesture-zoom-get-scale-delta double)
   ;;; end GestureZoom
@@ -6511,6 +7425,15 @@
 
   ;;; begin object Grid
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkGrid
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_grid_get_type"
+  ;;; begin struct GridClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end GridClass
+
+  ;;; ---------------
   (define-from-gtk gtk-grid-new '*)
   (define-from-gtk gtk-grid-attach void '* int32 int32 int32 int32)
   (define-from-gtk gtk-grid-attach-next-to void '* '* uint32 int32 int32)
@@ -6544,6 +7467,15 @@
 
   ;;; begin object HBox
   ;;; fields: ("box")
+  ;;; object type name: GtkHBox
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_hbox_get_type"
+  ;;; begin struct HBoxClass
+  ;;; fields: ("parent_class")
+  ;;; end HBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hbox-new '* int int32)
   ;;; end HBox
 
@@ -6553,6 +7485,15 @@
 
   ;;; begin object HButtonBox
   ;;; fields: ("button_box")
+  ;;; object type name: GtkHButtonBox
+  ;;; parent: "ButtonBox"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_hbutton_box_get_type"
+  ;;; begin struct HButtonBoxClass
+  ;;; fields: ("parent_class")
+  ;;; end HButtonBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hbutton-box-new '*)
   ;;; end HButtonBox
 
@@ -6562,6 +7503,15 @@
 
   ;;; begin object HPaned
   ;;; fields: ("paned")
+  ;;; object type name: GtkHPaned
+  ;;; parent: "Paned"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_hpaned_get_type"
+  ;;; begin struct HPanedClass
+  ;;; fields: ("parent_class")
+  ;;; end HPanedClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hpaned-new '*)
   ;;; end HPaned
 
@@ -6571,6 +7521,15 @@
 
   ;;; begin object HSV
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkHSV
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("changed" "move")
+  ;;; type-init: "gtk_hsv_get_type"
+  ;;; begin struct HSVClass
+  ;;; fields: ("parent_class" "changed" "move" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end HSVClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hsv-new '*)
   (define-from-gtk gtk-hsv-to-rgb void double double double double double double)
   (define-from-gtk gtk-hsv-get-color void double double double)
@@ -6590,6 +7549,15 @@
 
   ;;; begin object HScale
   ;;; fields: ("scale")
+  ;;; object type name: GtkHScale
+  ;;; parent: "Scale"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_hscale_get_type"
+  ;;; begin struct HScaleClass
+  ;;; fields: ("parent_class")
+  ;;; end HScaleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hscale-new '* '*)
   (define-from-gtk gtk-hscale-new-with-range '* double double double)
   ;;; end HScale
@@ -6600,6 +7568,15 @@
 
   ;;; begin object HScrollbar
   ;;; fields: ("scrollbar")
+  ;;; object type name: GtkHScrollbar
+  ;;; parent: "Scrollbar"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_hscrollbar_get_type"
+  ;;; begin struct HScrollbarClass
+  ;;; fields: ("parent_class")
+  ;;; end HScrollbarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hscrollbar-new '* '*)
   ;;; end HScrollbar
 
@@ -6609,6 +7586,15 @@
 
   ;;; begin object HSeparator
   ;;; fields: ("separator")
+  ;;; object type name: GtkHSeparator
+  ;;; parent: "Separator"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_hseparator_get_type"
+  ;;; begin struct HSeparatorClass
+  ;;; fields: ("parent_class")
+  ;;; end HSeparatorClass
+
+  ;;; ---------------
   (define-from-gtk gtk-hseparator-new '*)
   ;;; end HSeparator
 
@@ -6618,6 +7604,15 @@
 
   ;;; begin object HandleBox
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkHandleBox
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("child_attached" "child_detached")
+  ;;; type-init: "gtk_handle_box_get_type"
+  ;;; begin struct HandleBoxClass
+  ;;; fields: ("parent_class" "child_attached" "child_detached" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end HandleBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-handle-box-new '*)
   (define-from-gtk gtk-handle-box-get-child-detached int)
   (define-from-gtk gtk-handle-box-get-handle-position uint32)
@@ -6638,6 +7633,15 @@
 
   ;;; begin object HeaderBar
   ;;; fields: ("container")
+  ;;; object type name: GtkHeaderBar
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_header_bar_get_type"
+  ;;; begin struct HeaderBarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end HeaderBarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-header-bar-new '*)
   (define-from-gtk gtk-header-bar-get-custom-title '*)
   (define-from-gtk gtk-header-bar-get-decoration-layout '*)
@@ -6665,6 +7669,26 @@
 
   ;;; begin object IMContext
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkIMContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ("commit" "delete_surrounding" "filter_keypress" "focus_in" "focus_out" "get_preedit_string" "get_surrounding" "preedit_changed" "preedit_end" "preedit_start" "reset" "retrieve_surrounding" "set_client_window" "set_cursor_location" "set_surrounding" "set_use_preedit")
+  ;;; type-init: "gtk_im_context_get_type"
+  ;;; begin struct IMContextClass
+  ;;; fields: ("parent_class" "preedit_start" "preedit_end" "preedit_changed" "commit" "retrieve_surrounding" "delete_surrounding" "set_client_window" "get_preedit_string" "filter_keypress" "focus_in" "focus_out" "reset" "set_cursor_location" "set_use_preedit" "set_surrounding" "get_surrounding" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6")
+  ;;; end IMContextClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-im-context-delete-surrounding int int32 int32)
+  (define-from-gtk gtk-im-context-filter-keypress int '*)
+  (define-from-gtk gtk-im-context-focus-in void)
+  (define-from-gtk gtk-im-context-focus-out void)
+  (define-from-gtk gtk-im-context-get-preedit-string void '* '* int32)
+  (define-from-gtk gtk-im-context-get-surrounding int '* int32)
+  (define-from-gtk gtk-im-context-reset void)
+  (define-from-gtk gtk-im-context-set-client-window void '*)
+  (define-from-gtk gtk-im-context-set-cursor-location void '*)
+  (define-from-gtk gtk-im-context-set-surrounding void '* int32 int32)
+  (define-from-gtk gtk-im-context-set-use-preedit void int)
   (define-from-gtk gtk-im-context-delete-surrounding int int32 int32)
   (define-from-gtk gtk-im-context-filter-keypress int '*)
   (define-from-gtk gtk-im-context-focus-in void)
@@ -6688,6 +7712,15 @@
 
   ;;; begin object IMContextSimple
   ;;; fields: ("object" "priv")
+  ;;; object type name: GtkIMContextSimple
+  ;;; parent: "IMContext"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_im_context_simple_get_type"
+  ;;; begin struct IMContextSimpleClass
+  ;;; fields: ("parent_class")
+  ;;; end IMContextSimpleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-im-context-simple-new '*)
   (define-from-gtk gtk-im-context-simple-add-compose-file void '*)
   ;;; end IMContextSimple
@@ -6702,6 +7735,15 @@
 
   ;;; begin object IMMulticontext
   ;;; fields: ("object" "priv")
+  ;;; object type name: GtkIMMulticontext
+  ;;; parent: "IMContext"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_im_multicontext_get_type"
+  ;;; begin struct IMMulticontextClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end IMMulticontextClass
+
+  ;;; ---------------
   (define-from-gtk gtk-im-multicontext-new '*)
   (define-from-gtk gtk-im-multicontext-append-menuitems void '*)
   (define-from-gtk gtk-im-multicontext-get-context-id '*)
@@ -6730,6 +7772,15 @@
   (define INTERFACE_AGE 16)
   ;;; begin object IconFactory
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkIconFactory
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_icon_factory_get_type"
+  ;;; begin struct IconFactoryClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end IconFactoryClass
+
+  ;;; ---------------
   (define-from-gtk gtk-icon-factory-new '*)
   (define-from-gtk gtk-icon-factory-lookup-default '* '*)
   (define-from-gtk gtk-icon-factory-add void '* '*)
@@ -6748,6 +7799,15 @@
 
   ;;; begin object IconInfo
   ;;; fields: ()
+  ;;; object type name: GtkIconInfo
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_icon_info_get_type"
+  ;;; begin struct IconInfoClass
+  ;;; fields: ()
+  ;;; end IconInfoClass
+
+  ;;; ---------------
   (define-from-gtk gtk-icon-info-new-for-pixbuf '* '* '*)
   (define-from-gtk gtk-icon-info-get-attach-points int '* int32)
   (define-from-gtk gtk-icon-info-get-base-scale int32)
@@ -6806,6 +7866,12 @@
 
   ;;; begin enum IconSize
   ;;; series: sequence
+  (define-from-gtk gtk-icon-size-from-name int32 '*)
+  (define-from-gtk gtk-icon-size-get-name '* int32)
+  (define-from-gtk gtk-icon-size-lookup int int32 int32 int32)
+  (define-from-gtk gtk-icon-size-lookup-for-settings int '* int32 int32 int32)
+  (define-from-gtk gtk-icon-size-register int32 '* int32 int32)
+  (define-from-gtk gtk-icon-size-register-alias void '* int32)
   (define-enum-transformer IconSize invalid menu small_toolbar large_toolbar button dnd dialog)
   (define-from-gtk gtk-icon-size-from-name int32 '*)
   (define-from-gtk gtk-icon-size-get-name '* int32)
@@ -6842,6 +7908,15 @@
 
   ;;; begin object IconTheme
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkIconTheme
+  ;;; parent: "Object"
+  ;;; vfuncs: ("changed")
+  ;;; type-init: "gtk_icon_theme_get_type"
+  ;;; begin struct IconThemeClass
+  ;;; fields: ("parent_class" "changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end IconThemeClass
+
+  ;;; ---------------
   (define-from-gtk gtk-icon-theme-new '*)
   (define-from-gtk gtk-icon-theme-add-builtin-icon void '* int32 '*)
   (define-from-gtk gtk-icon-theme-get-default '*)
@@ -6876,6 +7951,7 @@
 
   ;;; begin enum IconThemeError
   ;;; series: sequence
+  (define-from-gtk gtk-icon-theme-error-quark uint32)
   (define-enum-transformer IconThemeError not_found failed)
   (define-from-gtk gtk-icon-theme-error-quark uint32)
   ;;; end IconThemeError
@@ -6886,6 +7962,18 @@
 
   ;;; begin object IconView
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkIconView
+  ;;; parent: "Container"
+  ;;; vfuncs: ("activate_cursor_item" "item_activated" "move_cursor" "select_all" "select_cursor_item" "selection_changed" "toggle_cursor_item" "unselect_all")
+  ;;; type-init: "gtk_icon_view_get_type"
+  ;;; begin struct IconViewClass
+  ;;; fields: ("parent_class" "item_activated" "selection_changed" "select_all" "unselect_all" "select_cursor_item" "toggle_cursor_item" "move_cursor" "activate_cursor_item" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end IconViewClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-icon-view-item-activated void '*)
+  (define-from-gtk gtk-icon-view-select-all void)
+  (define-from-gtk gtk-icon-view-unselect-all void)
   (define-from-gtk gtk-icon-view-new '*)
   (define-from-gtk gtk-icon-view-new-with-area '* '*)
   (define-from-gtk gtk-icon-view-new-with-model '* '*)
@@ -6954,6 +8042,15 @@
 
   ;;; begin object IconViewAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkIconViewAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_icon_view_accessible_get_type"
+  ;;; begin struct IconViewAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end IconViewAccessibleClass
+
+  ;;; ---------------
   ;;; end IconViewAccessible
 
   ;;; begin struct IconViewAccessibleClass
@@ -6987,6 +8084,15 @@
 
   ;;; begin object Image
   ;;; fields: ("misc" "priv")
+  ;;; object type name: GtkImage
+  ;;; parent: "Misc"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_image_get_type"
+  ;;; begin struct ImageClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ImageClass
+
+  ;;; ---------------
   (define-from-gtk gtk-image-new '*)
   (define-from-gtk gtk-image-new-from-animation '* '*)
   (define-from-gtk gtk-image-new-from-file '* '*)
@@ -7020,6 +8126,15 @@
 
   ;;; begin object ImageAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkImageAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_image_accessible_get_type"
+  ;;; begin struct ImageAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ImageAccessibleClass
+
+  ;;; ---------------
   ;;; end ImageAccessible
 
   ;;; begin struct ImageAccessibleClass
@@ -7032,6 +8147,15 @@
 
   ;;; begin object ImageCellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkImageCellAccessible
+  ;;; parent: "RendererCellAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_image_cell_accessible_get_type"
+  ;;; begin struct ImageCellAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ImageCellAccessibleClass
+
+  ;;; ---------------
   ;;; end ImageCellAccessible
 
   ;;; begin struct ImageCellAccessibleClass
@@ -7048,6 +8172,15 @@
 
   ;;; begin object ImageMenuItem
   ;;; fields: ("menu_item" "priv")
+  ;;; object type name: GtkImageMenuItem
+  ;;; parent: "MenuItem"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_image_menu_item_get_type"
+  ;;; begin struct ImageMenuItemClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ImageMenuItemClass
+
+  ;;; ---------------
   (define-from-gtk gtk-image-menu-item-new '*)
   (define-from-gtk gtk-image-menu-item-new-from-stock '* '* '*)
   (define-from-gtk gtk-image-menu-item-new-with-label '* '*)
@@ -7080,6 +8213,16 @@
 
   ;;; begin object InfoBar
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkInfoBar
+  ;;; parent: "Box"
+  ;;; vfuncs: ("close" "response")
+  ;;; type-init: "gtk_info_bar_get_type"
+  ;;; begin struct InfoBarClass
+  ;;; fields: ("parent_class" "response" "close" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end InfoBarClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-info-bar-response void int32)
   (define-from-gtk gtk-info-bar-new '*)
   (define-from-gtk gtk-info-bar-add-action-widget void '* int32)
   (define-from-gtk gtk-info-bar-add-button '* '* int32)
@@ -7124,6 +8267,15 @@
 
   ;;; begin object Invisible
   ;;; fields: ("widget" "priv")
+  ;;; object type name: GtkInvisible
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_invisible_get_type"
+  ;;; begin struct InvisibleClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end InvisibleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-invisible-new '*)
   (define-from-gtk gtk-invisible-new-for-screen '* '*)
   (define-from-gtk gtk-invisible-get-screen '*)
@@ -7153,6 +8305,15 @@
   (define LEVEL_BAR_OFFSET_LOW "low")
   ;;; begin object Label
   ;;; fields: ("misc" "priv")
+  ;;; object type name: GtkLabel
+  ;;; parent: "Misc"
+  ;;; vfuncs: ("activate_link" "copy_clipboard" "move_cursor" "populate_popup")
+  ;;; type-init: "gtk_label_get_type"
+  ;;; begin struct LabelClass
+  ;;; fields: ("parent_class" "move_cursor" "copy_clipboard" "populate_popup" "activate_link" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end LabelClass
+
+  ;;; ---------------
   (define-from-gtk gtk-label-new '* '*)
   (define-from-gtk gtk-label-new-with-mnemonic '* '*)
   (define-from-gtk gtk-label-get-angle double)
@@ -7207,6 +8368,15 @@
 
   ;;; begin object LabelAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkLabelAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_label_accessible_get_type"
+  ;;; begin struct LabelAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end LabelAccessibleClass
+
+  ;;; ---------------
   ;;; end LabelAccessible
 
   ;;; begin struct LabelAccessibleClass
@@ -7231,6 +8401,15 @@
 
   ;;; begin object Layout
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkLayout
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_layout_get_type"
+  ;;; begin struct LayoutClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end LayoutClass
+
+  ;;; ---------------
   (define-from-gtk gtk-layout-new '* '* '*)
   (define-from-gtk gtk-layout-get-bin-window '*)
   (define-from-gtk gtk-layout-get-hadjustment '*)
@@ -7253,6 +8432,15 @@
 
   ;;; begin object LevelBar
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkLevelBar
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("offset_changed")
+  ;;; type-init: "gtk_level_bar_get_type"
+  ;;; begin struct LevelBarClass
+  ;;; fields: ("parent_class" "offset_changed" "padding")
+  ;;; end LevelBarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-level-bar-new '*)
   (define-from-gtk gtk-level-bar-new-for-interval '* double double)
   (define-from-gtk gtk-level-bar-add-offset-value void '* double)
@@ -7272,6 +8460,15 @@
 
   ;;; begin object LevelBarAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkLevelBarAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_level_bar_accessible_get_type"
+  ;;; begin struct LevelBarAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end LevelBarAccessibleClass
+
+  ;;; ---------------
   ;;; end LevelBarAccessible
 
   ;;; begin struct LevelBarAccessibleClass
@@ -7317,6 +8514,15 @@
 
   ;;; begin object LinkButton
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkLinkButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ("activate_link")
+  ;;; type-init: "gtk_link_button_get_type"
+  ;;; begin struct LinkButtonClass
+  ;;; fields: ("parent_class" "activate_link" "_gtk_padding1" "_gtk_padding2" "_gtk_padding3" "_gtk_padding4")
+  ;;; end LinkButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-link-button-new '* '*)
   (define-from-gtk gtk-link-button-new-with-label '* '* '*)
   (define-from-gtk gtk-link-button-get-uri '*)
@@ -7327,6 +8533,15 @@
 
   ;;; begin object LinkButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkLinkButtonAccessible
+  ;;; parent: "ButtonAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_link_button_accessible_get_type"
+  ;;; begin struct LinkButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end LinkButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end LinkButtonAccessible
 
   ;;; begin struct LinkButtonAccessibleClass
@@ -7347,6 +8562,17 @@
 
   ;;; begin object ListBox
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkListBox
+  ;;; parent: "Container"
+  ;;; vfuncs: ("activate_cursor_row" "move_cursor" "row_activated" "row_selected" "select_all" "selected_rows_changed" "toggle_cursor_row" "unselect_all")
+  ;;; type-init: "gtk_list_box_get_type"
+  ;;; begin struct ListBoxClass
+  ;;; fields: ("parent_class" "row_selected" "row_activated" "activate_cursor_row" "toggle_cursor_row" "move_cursor" "selected_rows_changed" "select_all" "unselect_all" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3")
+  ;;; end ListBoxClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-list-box-select-all void)
+  (define-from-gtk gtk-list-box-unselect-all void)
   (define-from-gtk gtk-list-box-new '*)
   (define-from-gtk gtk-list-box-bind-model void '* '* '* '*)
   (define-from-gtk gtk-list-box-drag-highlight-row void '*)
@@ -7379,6 +8605,15 @@
 
   ;;; begin object ListBoxAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkListBoxAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_list_box_accessible_get_type"
+  ;;; begin struct ListBoxAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ListBoxAccessibleClass
+
+  ;;; ---------------
   ;;; end ListBoxAccessible
 
   ;;; begin struct ListBoxAccessibleClass
@@ -7398,6 +8633,15 @@
   ;;; (callback "ListBoxForeachFunc")
   ;;; begin object ListBoxRow
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkListBoxRow
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("activate")
+  ;;; type-init: "gtk_list_box_row_get_type"
+  ;;; begin struct ListBoxRowClass
+  ;;; fields: ("parent_class" "activate" "_gtk_reserved1" "_gtk_reserved2")
+  ;;; end ListBoxRowClass
+
+  ;;; ---------------
   (define-from-gtk gtk-list-box-row-new '*)
   (define-from-gtk gtk-list-box-row-changed void)
   (define-from-gtk gtk-list-box-row-get-activatable int)
@@ -7412,6 +8656,15 @@
 
   ;;; begin object ListBoxRowAccessible
   ;;; fields: ("parent")
+  ;;; object type name: GtkListBoxRowAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_list_box_row_accessible_get_type"
+  ;;; begin struct ListBoxRowAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ListBoxRowAccessibleClass
+
+  ;;; ---------------
   ;;; end ListBoxRowAccessible
 
   ;;; begin struct ListBoxRowAccessibleClass
@@ -7426,6 +8679,15 @@
   ;;; (callback "ListBoxUpdateHeaderFunc")
   ;;; begin object ListStore
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkListStore
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_list_store_get_type"
+  ;;; begin struct ListStoreClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ListStoreClass
+
+  ;;; ---------------
   (define-from-gtk gtk-list-store-newv '* int32 '*)
   (define-from-gtk gtk-list-store-append void '*)
   (define-from-gtk gtk-list-store-clear void)
@@ -7455,6 +8717,15 @@
 
   ;;; begin object LockButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkLockButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_lock_button_get_type"
+  ;;; begin struct LockButtonClass
+  ;;; fields: ("parent_class" "reserved0" "reserved1" "reserved2" "reserved3" "reserved4" "reserved5" "reserved6" "reserved7")
+  ;;; end LockButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-lock-button-new '* '*)
   (define-from-gtk gtk-lock-button-get-permission '*)
   (define-from-gtk gtk-lock-button-set-permission void '*)
@@ -7462,6 +8733,15 @@
 
   ;;; begin object LockButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkLockButtonAccessible
+  ;;; parent: "ButtonAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_lock_button_accessible_get_type"
+  ;;; begin struct LockButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end LockButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end LockButtonAccessible
 
   ;;; begin struct LockButtonAccessibleClass
@@ -7486,6 +8766,15 @@
   (define MINOR_VERSION 22)
   ;;; begin object Menu
   ;;; fields: ("menu_shell" "priv")
+  ;;; object type name: GtkMenu
+  ;;; parent: "MenuShell"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_get_type"
+  ;;; begin struct MenuClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MenuClass
+
+  ;;; ---------------
   (define-from-gtk gtk-menu-new '*)
   (define-from-gtk gtk-menu-new-from-model '* '*)
   (define-from-gtk gtk-menu-get-for-attach-widget '* '*)
@@ -7521,6 +8810,15 @@
 
   ;;; begin object MenuAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkMenuAccessible
+  ;;; parent: "MenuShellAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_accessible_get_type"
+  ;;; begin struct MenuAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end MenuAccessibleClass
+
+  ;;; ---------------
   ;;; end MenuAccessible
 
   ;;; begin struct MenuAccessibleClass
@@ -7533,6 +8831,15 @@
 
   ;;; begin object MenuBar
   ;;; fields: ("menu_shell" "priv")
+  ;;; object type name: GtkMenuBar
+  ;;; parent: "MenuShell"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_bar_get_type"
+  ;;; begin struct MenuBarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MenuBarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-menu-bar-new '*)
   (define-from-gtk gtk-menu-bar-new-from-model '* '*)
   (define-from-gtk gtk-menu-bar-get-child-pack-direction uint32)
@@ -7551,6 +8858,15 @@
 
   ;;; begin object MenuButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkMenuButton
+  ;;; parent: "ToggleButton"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_button_get_type"
+  ;;; begin struct MenuButtonClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MenuButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-menu-button-new '*)
   (define-from-gtk gtk-menu-button-get-align-widget '*)
   (define-from-gtk gtk-menu-button-get-direction uint32)
@@ -7568,6 +8884,15 @@
 
   ;;; begin object MenuButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkMenuButtonAccessible
+  ;;; parent: "ToggleButtonAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_button_accessible_get_type"
+  ;;; begin struct MenuButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end MenuButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end MenuButtonAccessible
 
   ;;; begin struct MenuButtonAccessibleClass
@@ -7598,6 +8923,22 @@
 
   ;;; begin object MenuItem
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkMenuItem
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("activate" "activate_item" "deselect" "get_label" "select" "set_label" "toggle_size_allocate" "toggle_size_request")
+  ;;; type-init: "gtk_menu_item_get_type"
+  ;;; begin struct MenuItemClass
+  ;;; fields: ("parent_class" "hide_on_activate" "activate" "activate_item" "toggle_size_request" "toggle_size_allocate" "set_label" "get_label" "select" "deselect" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MenuItemClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-menu-item-activate void)
+  (define-from-gtk gtk-menu-item-deselect void)
+  (define-from-gtk gtk-menu-item-get-label '*)
+  (define-from-gtk gtk-menu-item-select void)
+  (define-from-gtk gtk-menu-item-set-label void '*)
+  (define-from-gtk gtk-menu-item-toggle-size-allocate void int32)
+  (define-from-gtk gtk-menu-item-toggle-size-request void int32)
   (define-from-gtk gtk-menu-item-new '*)
   (define-from-gtk gtk-menu-item-new-with-label '* '*)
   (define-from-gtk gtk-menu-item-new-with-mnemonic '* '*)
@@ -7622,6 +8963,15 @@
 
   ;;; begin object MenuItemAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkMenuItemAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_item_accessible_get_type"
+  ;;; begin struct MenuItemAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end MenuItemAccessibleClass
+
+  ;;; ---------------
   ;;; end MenuItemAccessible
 
   ;;; begin struct MenuItemAccessibleClass
@@ -7647,6 +8997,19 @@
 
   ;;; begin object MenuShell
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkMenuShell
+  ;;; parent: "Container"
+  ;;; vfuncs: ("activate_current" "cancel" "deactivate" "get_popup_delay" "insert" "move_current" "move_selected" "select_item" "selection_done")
+  ;;; type-init: "gtk_menu_shell_get_type"
+  ;;; begin struct MenuShellClass
+  ;;; fields: ("parent_class" "submenu_placement" "deactivate" "selection_done" "move_current" "activate_current" "cancel" "select_item" "insert" "get_popup_delay" "move_selected" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MenuShellClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-menu-shell-cancel void)
+  (define-from-gtk gtk-menu-shell-deactivate void)
+  (define-from-gtk gtk-menu-shell-insert void '* int32)
+  (define-from-gtk gtk-menu-shell-select-item void '*)
   (define-from-gtk gtk-menu-shell-activate-item void '* int)
   (define-from-gtk gtk-menu-shell-append void '*)
   (define-from-gtk gtk-menu-shell-bind-model void '* '* int)
@@ -7665,6 +9028,15 @@
 
   ;;; begin object MenuShellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkMenuShellAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_menu_shell_accessible_get_type"
+  ;;; begin struct MenuShellAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end MenuShellAccessibleClass
+
+  ;;; ---------------
   ;;; end MenuShellAccessible
 
   ;;; begin struct MenuShellAccessibleClass
@@ -7685,6 +9057,15 @@
 
   ;;; begin object MenuToolButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkMenuToolButton
+  ;;; parent: "ToolButton"
+  ;;; vfuncs: ("show_menu")
+  ;;; type-init: "gtk_menu_tool_button_get_type"
+  ;;; begin struct MenuToolButtonClass
+  ;;; fields: ("parent_class" "show_menu" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MenuToolButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-menu-tool-button-new '* '* '*)
   (define-from-gtk gtk-menu-tool-button-new-from-stock '* '*)
   (define-from-gtk gtk-menu-tool-button-get-menu '*)
@@ -7703,6 +9084,15 @@
 
   ;;; begin object MessageDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkMessageDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_message_dialog_get_type"
+  ;;; begin struct MessageDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MessageDialogClass
+
+  ;;; ---------------
   (define-from-gtk gtk-message-dialog-get-image '*)
   (define-from-gtk gtk-message-dialog-get-message-area '*)
   (define-from-gtk gtk-message-dialog-set-image void '*)
@@ -7724,6 +9114,15 @@
 
   ;;; begin object Misc
   ;;; fields: ("widget" "priv")
+  ;;; object type name: GtkMisc
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_misc_get_type"
+  ;;; begin struct MiscClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MiscClass
+
+  ;;; ---------------
   (define-from-gtk gtk-misc-get-alignment void float float)
   (define-from-gtk gtk-misc-get-padding void int32 int32)
   (define-from-gtk gtk-misc-set-alignment void float float)
@@ -7740,6 +9139,11 @@
 
   ;;; begin object ModelButton
   ;;; fields: ()
+  ;;; object type name: GtkModelButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_model_button_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-model-button-new '*)
   ;;; end ModelButton
 
@@ -7747,6 +9151,15 @@
   ;;; (callback "ModuleInitFunc")
   ;;; begin object MountOperation
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkMountOperation
+  ;;; parent: "MountOperation"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_mount_operation_get_type"
+  ;;; begin struct MountOperationClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end MountOperationClass
+
+  ;;; ---------------
   (define-from-gtk gtk-mount-operation-new '* '*)
   (define-from-gtk gtk-mount-operation-get-parent '*)
   (define-from-gtk gtk-mount-operation-get-screen '*)
@@ -7781,6 +9194,17 @@
 
   ;;; begin object NativeDialog
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkNativeDialog
+  ;;; parent: "Object"
+  ;;; vfuncs: ("hide" "response" "show")
+  ;;; type-init: "gtk_native_dialog_get_type"
+  ;;; begin struct NativeDialogClass
+  ;;; fields: ("parent_class" "response" "show" "hide" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end NativeDialogClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-native-dialog-hide void)
+  (define-from-gtk gtk-native-dialog-show void)
   (define-from-gtk gtk-native-dialog-destroy void)
   (define-from-gtk gtk-native-dialog-get-modal int)
   (define-from-gtk gtk-native-dialog-get-title '*)
@@ -7800,6 +9224,15 @@
 
   ;;; begin object Notebook
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkNotebook
+  ;;; parent: "Container"
+  ;;; vfuncs: ("change_current_page" "focus_tab" "insert_page" "move_focus_out" "page_added" "page_removed" "page_reordered" "reorder_tab" "select_page" "switch_page")
+  ;;; type-init: "gtk_notebook_get_type"
+  ;;; begin struct NotebookClass
+  ;;; fields: ("parent_class" "switch_page" "select_page" "focus_tab" "change_current_page" "move_focus_out" "reorder_tab" "insert_page" "create_window" "page_reordered" "page_removed" "page_added" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end NotebookClass
+
+  ;;; ---------------
   (define-from-gtk gtk-notebook-new '*)
   (define-from-gtk gtk-notebook-append-page int32 '* '*)
   (define-from-gtk gtk-notebook-append-page-menu int32 '* '* '*)
@@ -7849,6 +9282,15 @@
 
   ;;; begin object NotebookAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkNotebookAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_notebook_accessible_get_type"
+  ;;; begin struct NotebookAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end NotebookAccessibleClass
+
+  ;;; ---------------
   ;;; end NotebookAccessible
 
   ;;; begin struct NotebookAccessibleClass
@@ -7865,6 +9307,15 @@
 
   ;;; begin object NotebookPageAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkNotebookPageAccessible
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_notebook_page_accessible_get_type"
+  ;;; begin struct NotebookPageAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end NotebookPageAccessibleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-notebook-page-accessible-new '* '* '*)
   (define-from-gtk gtk-notebook-page-accessible-invalidate void)
   ;;; end NotebookPageAccessible
@@ -7893,6 +9344,15 @@
 
   ;;; begin object NumerableIcon
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkNumerableIcon
+  ;;; parent: "EmblemedIcon"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_numerable_icon_get_type"
+  ;;; begin struct NumerableIconClass
+  ;;; fields: ("parent_class" "padding")
+  ;;; end NumerableIconClass
+
+  ;;; ---------------
   (define-from-gtk gtk-numerable-icon-new '* '*)
   (define-from-gtk gtk-numerable-icon-new-with-style-context '* '* '*)
   (define-from-gtk gtk-numerable-icon-get-background-gicon '*)
@@ -7917,6 +9377,15 @@
 
   ;;; begin object OffscreenWindow
   ;;; fields: ("parent_object")
+  ;;; object type name: GtkOffscreenWindow
+  ;;; parent: "Window"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_offscreen_window_get_type"
+  ;;; begin struct OffscreenWindowClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end OffscreenWindowClass
+
+  ;;; ---------------
   (define-from-gtk gtk-offscreen-window-new '*)
   (define-from-gtk gtk-offscreen-window-get-pixbuf '*)
   (define-from-gtk gtk-offscreen-window-get-surface '*)
@@ -7938,6 +9407,15 @@
 
   ;;; begin object Overlay
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkOverlay
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("get_child_position")
+  ;;; type-init: "gtk_overlay_get_type"
+  ;;; begin struct OverlayClass
+  ;;; fields: ("parent_class" "get_child_position" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end OverlayClass
+
+  ;;; ---------------
   (define-from-gtk gtk-overlay-new '*)
   (define-from-gtk gtk-overlay-add-overlay void '*)
   (define-from-gtk gtk-overlay-get-overlay-pass-through int '*)
@@ -8015,6 +9493,15 @@
 
   ;;; begin object PadController
   ;;; fields: ()
+  ;;; object type name: GtkPadController
+  ;;; parent: "EventController"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_pad_controller_get_type"
+  ;;; begin struct PadControllerClass
+  ;;; fields: ()
+  ;;; end PadControllerClass
+
+  ;;; ---------------
   (define-from-gtk gtk-pad-controller-new '* '* '* '*)
   (define-from-gtk gtk-pad-controller-set-action void uint32 int32 int32 '* '*)
   (define-from-gtk gtk-pad-controller-set-action-entries void '* int32)
@@ -8040,6 +9527,11 @@
 
   ;;; begin object PageSetup
   ;;; fields: ()
+  ;;; object type name: GtkPageSetup
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_page_setup_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-page-setup-new '*)
   (define-from-gtk gtk-page-setup-new-from-file '* '*)
   (define-from-gtk gtk-page-setup-new-from-gvariant '* '*)
@@ -8077,6 +9569,15 @@
 
   ;;; begin object Paned
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkPaned
+  ;;; parent: "Container"
+  ;;; vfuncs: ("accept_position" "cancel_position" "cycle_child_focus" "cycle_handle_focus" "move_handle" "toggle_handle_focus")
+  ;;; type-init: "gtk_paned_get_type"
+  ;;; begin struct PanedClass
+  ;;; fields: ("parent_class" "cycle_child_focus" "toggle_handle_focus" "move_handle" "cycle_handle_focus" "accept_position" "cancel_position" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end PanedClass
+
+  ;;; ---------------
   (define-from-gtk gtk-paned-new '* uint32)
   (define-from-gtk gtk-paned-add1 void '*)
   (define-from-gtk gtk-paned-add2 void '*)
@@ -8093,6 +9594,15 @@
 
   ;;; begin object PanedAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkPanedAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_paned_accessible_get_type"
+  ;;; begin struct PanedAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end PanedAccessibleClass
+
+  ;;; ---------------
   ;;; end PanedAccessible
 
   ;;; begin struct PanedAccessibleClass
@@ -8156,6 +9666,15 @@
 
   ;;; begin object PlacesSidebar
   ;;; fields: ()
+  ;;; object type name: GtkPlacesSidebar
+  ;;; parent: "ScrolledWindow"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_places_sidebar_get_type"
+  ;;; begin struct PlacesSidebarClass
+  ;;; fields: ()
+  ;;; end PlacesSidebarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-places-sidebar-new '*)
   (define-from-gtk gtk-places-sidebar-add-shortcut void '*)
   (define-from-gtk gtk-places-sidebar-get-local-only int)
@@ -8188,6 +9707,15 @@
 
   ;;; begin object Plug
   ;;; fields: ("window" "priv")
+  ;;; object type name: GtkPlug
+  ;;; parent: "Window"
+  ;;; vfuncs: ("embedded")
+  ;;; type-init: "gtk_plug_get_type"
+  ;;; begin struct PlugClass
+  ;;; fields: ("parent_class" "embedded" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end PlugClass
+
+  ;;; ---------------
   (define-from-gtk gtk-plug-new '* uint64)
   (define-from-gtk gtk-plug-new-for-display '* '* uint64)
   (define-from-gtk gtk-plug-construct void uint64)
@@ -8212,6 +9740,15 @@
 
   ;;; begin object Popover
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkPopover
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("closed")
+  ;;; type-init: "gtk_popover_get_type"
+  ;;; begin struct PopoverClass
+  ;;; fields: ("parent_class" "closed" "reserved")
+  ;;; end PopoverClass
+
+  ;;; ---------------
   (define-from-gtk gtk-popover-new '* '*)
   (define-from-gtk gtk-popover-new-from-model '* '* '*)
   (define-from-gtk gtk-popover-bind-model void '* '*)
@@ -8235,6 +9772,15 @@
 
   ;;; begin object PopoverAccessible
   ;;; fields: ("parent")
+  ;;; object type name: GtkPopoverAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_popover_accessible_get_type"
+  ;;; begin struct PopoverAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end PopoverAccessibleClass
+
+  ;;; ---------------
   ;;; end PopoverAccessible
 
   ;;; begin struct PopoverAccessibleClass
@@ -8252,6 +9798,15 @@
 
   ;;; begin object PopoverMenu
   ;;; fields: ()
+  ;;; object type name: GtkPopoverMenu
+  ;;; parent: "Popover"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_popover_menu_get_type"
+  ;;; begin struct PopoverMenuClass
+  ;;; fields: ("parent_class" "reserved")
+  ;;; end PopoverMenuClass
+
+  ;;; ---------------
   (define-from-gtk gtk-popover-menu-new '*)
   (define-from-gtk gtk-popover-menu-open-submenu void '*)
   ;;; end PopoverMenu
@@ -8271,6 +9826,11 @@
 
   ;;; begin object PrintContext
   ;;; fields: ()
+  ;;; object type name: GtkPrintContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_print_context_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-print-context-create-pango-context '*)
   (define-from-gtk gtk-print-context-create-pango-layout '*)
   (define-from-gtk gtk-print-context-get-cairo-context '*)
@@ -8291,12 +9851,22 @@
 
   ;;; begin enum PrintError
   ;;; series: sequence
+  (define-from-gtk gtk-print-error-quark uint32)
   (define-enum-transformer PrintError general internal_error nomem invalid_file)
   (define-from-gtk gtk-print-error-quark uint32)
   ;;; end PrintError
 
   ;;; begin object PrintOperation
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkPrintOperation
+  ;;; parent: "Object"
+  ;;; vfuncs: ("begin_print" "custom_widget_apply" "done" "draw_page" "end_print" "paginate" "preview" "request_page_setup" "status_changed" "update_custom_widget")
+  ;;; type-init: "gtk_print_operation_get_type"
+  ;;; begin struct PrintOperationClass
+  ;;; fields: ("parent_class" "done" "begin_print" "paginate" "request_page_setup" "draw_page" "end_print" "status_changed" "create_custom_widget" "custom_widget_apply" "preview" "update_custom_widget" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end PrintOperationClass
+
+  ;;; ---------------
   (define-from-gtk gtk-print-operation-new '*)
   (define-from-gtk gtk-print-operation-cancel void)
   (define-from-gtk gtk-print-operation-draw-page-finish void)
@@ -8364,6 +9934,11 @@
 
   ;;; begin object PrintSettings
   ;;; fields: ()
+  ;;; object type name: GtkPrintSettings
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_print_settings_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-print-settings-new '*)
   (define-from-gtk gtk-print-settings-new-from-file '* '*)
   (define-from-gtk gtk-print-settings-new-from-gvariant '* '*)
@@ -8460,6 +10035,15 @@
 
   ;;; begin object ProgressBar
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkProgressBar
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_progress_bar_get_type"
+  ;;; begin struct ProgressBarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ProgressBarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-progress-bar-new '*)
   (define-from-gtk gtk-progress-bar-get-ellipsize uint32)
   (define-from-gtk gtk-progress-bar-get-fraction double)
@@ -8478,6 +10062,15 @@
 
   ;;; begin object ProgressBarAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkProgressBarAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_progress_bar_accessible_get_type"
+  ;;; begin struct ProgressBarAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ProgressBarAccessibleClass
+
+  ;;; ---------------
   ;;; end ProgressBarAccessible
 
   ;;; begin struct ProgressBarAccessibleClass
@@ -8503,6 +10096,15 @@
 
   ;;; begin object RadioAction
   ;;; fields: ("parent" "private_data")
+  ;;; object type name: GtkRadioAction
+  ;;; parent: "ToggleAction"
+  ;;; vfuncs: ("changed")
+  ;;; type-init: "gtk_radio_action_get_type"
+  ;;; begin struct RadioActionClass
+  ;;; fields: ("parent_class" "changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RadioActionClass
+
+  ;;; ---------------
   (define-from-gtk gtk-radio-action-new '* '* '* '* '* int32)
   (define-from-gtk gtk-radio-action-get-current-value int32)
   (define-from-gtk gtk-radio-action-get-group '*)
@@ -8525,6 +10127,15 @@
 
   ;;; begin object RadioButton
   ;;; fields: ("check_button" "priv")
+  ;;; object type name: GtkRadioButton
+  ;;; parent: "CheckButton"
+  ;;; vfuncs: ("group_changed")
+  ;;; type-init: "gtk_radio_button_get_type"
+  ;;; begin struct RadioButtonClass
+  ;;; fields: ("parent_class" "group_changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RadioButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-radio-button-new '* '*)
   (define-from-gtk gtk-radio-button-new-from-widget '* '*)
   (define-from-gtk gtk-radio-button-new-with-label '* '* '*)
@@ -8538,6 +10149,15 @@
 
   ;;; begin object RadioButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkRadioButtonAccessible
+  ;;; parent: "ToggleButtonAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_radio_button_accessible_get_type"
+  ;;; begin struct RadioButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end RadioButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end RadioButtonAccessible
 
   ;;; begin struct RadioButtonAccessibleClass
@@ -8558,6 +10178,15 @@
 
   ;;; begin object RadioMenuItem
   ;;; fields: ("check_menu_item" "priv")
+  ;;; object type name: GtkRadioMenuItem
+  ;;; parent: "CheckMenuItem"
+  ;;; vfuncs: ("group_changed")
+  ;;; type-init: "gtk_radio_menu_item_get_type"
+  ;;; begin struct RadioMenuItemClass
+  ;;; fields: ("parent_class" "group_changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RadioMenuItemClass
+
+  ;;; ---------------
   (define-from-gtk gtk-radio-menu-item-new '* '*)
   (define-from-gtk gtk-radio-menu-item-new-from-widget '* '*)
   (define-from-gtk gtk-radio-menu-item-new-with-label '* '* '*)
@@ -8571,6 +10200,15 @@
 
   ;;; begin object RadioMenuItemAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkRadioMenuItemAccessible
+  ;;; parent: "CheckMenuItemAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_radio_menu_item_accessible_get_type"
+  ;;; begin struct RadioMenuItemAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end RadioMenuItemAccessibleClass
+
+  ;;; ---------------
   ;;; end RadioMenuItemAccessible
 
   ;;; begin struct RadioMenuItemAccessibleClass
@@ -8591,6 +10229,15 @@
 
   ;;; begin object RadioToolButton
   ;;; fields: ("parent")
+  ;;; object type name: GtkRadioToolButton
+  ;;; parent: "ToggleToolButton"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_radio_tool_button_get_type"
+  ;;; begin struct RadioToolButtonClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RadioToolButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-radio-tool-button-new '* '*)
   (define-from-gtk gtk-radio-tool-button-new-from-stock '* '* '*)
   (define-from-gtk gtk-radio-tool-button-new-from-widget '* '*)
@@ -8605,6 +10252,15 @@
 
   ;;; begin object Range
   ;;; fields: ("widget" "priv")
+  ;;; object type name: GtkRange
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("adjust_bounds" "change_value" "get_range_border" "get_range_size_request" "move_slider" "value_changed")
+  ;;; type-init: "gtk_range_get_type"
+  ;;; begin struct RangeClass
+  ;;; fields: ("parent_class" "slider_detail" "stepper_detail" "value_changed" "adjust_bounds" "move_slider" "get_range_border" "change_value" "get_range_size_request" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3")
+  ;;; end RangeClass
+
+  ;;; ---------------
   (define-from-gtk gtk-range-get-adjustment '*)
   (define-from-gtk gtk-range-get-fill-level double)
   (define-from-gtk gtk-range-get-flippable int)
@@ -8637,6 +10293,15 @@
 
   ;;; begin object RangeAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkRangeAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_range_accessible_get_type"
+  ;;; begin struct RangeAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end RangeAccessibleClass
+
+  ;;; ---------------
   ;;; end RangeAccessible
 
   ;;; begin struct RangeAccessibleClass
@@ -8676,6 +10341,15 @@
   ;;; (callback "RcPropertyParser")
   ;;; begin object RcStyle
   ;;; fields: ("parent_instance" "name" "bg_pixmap_name" "font_desc" "color_flags" "fg" "bg" "text" "base" "xthickness" "ythickness" "rc_properties" "rc_style_lists" "icon_factories" "engine_specified")
+  ;;; object type name: GtkRcStyle
+  ;;; parent: "Object"
+  ;;; vfuncs: ("merge" "parse")
+  ;;; type-init: "gtk_rc_style_get_type"
+  ;;; begin struct RcStyleClass
+  ;;; fields: ("parent_class" "create_rc_style" "parse" "merge" "create_style" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RcStyleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-rc-style-new '*)
   (define-from-gtk gtk-rc-style-copy '*)
   ;;; end RcStyle
@@ -8690,6 +10364,15 @@
 
   ;;; begin object RecentAction
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkRecentAction
+  ;;; parent: "Action"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_recent_action_get_type"
+  ;;; begin struct RecentActionClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RecentActionClass
+
+  ;;; ---------------
   (define-from-gtk gtk-recent-action-new '* '* '* '* '*)
   (define-from-gtk gtk-recent-action-new-for-manager '* '* '* '* '* '*)
   (define-from-gtk gtk-recent-action-get-show-numbers int)
@@ -8707,6 +10390,15 @@
   ;;; (interface "RecentChooser")
   ;;; begin object RecentChooserDialog
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkRecentChooserDialog
+  ;;; parent: "Dialog"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_recent_chooser_dialog_get_type"
+  ;;; begin struct RecentChooserDialogClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RecentChooserDialogClass
+
+  ;;; ---------------
   ;;; end RecentChooserDialog
 
   ;;; begin struct RecentChooserDialogClass
@@ -8719,6 +10411,7 @@
 
   ;;; begin enum RecentChooserError
   ;;; series: sequence
+  (define-from-gtk gtk-recent-chooser-error-quark uint32)
   (define-enum-transformer RecentChooserError not_found invalid_uri)
   (define-from-gtk gtk-recent-chooser-error-quark uint32)
   ;;; end RecentChooserError
@@ -8729,6 +10422,15 @@
 
   ;;; begin object RecentChooserMenu
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkRecentChooserMenu
+  ;;; parent: "Menu"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_recent_chooser_menu_get_type"
+  ;;; begin struct RecentChooserMenuClass
+  ;;; fields: ("parent_class" "gtk_recent1" "gtk_recent2" "gtk_recent3" "gtk_recent4")
+  ;;; end RecentChooserMenuClass
+
+  ;;; ---------------
   (define-from-gtk gtk-recent-chooser-menu-new '*)
   (define-from-gtk gtk-recent-chooser-menu-new-for-manager '* '*)
   (define-from-gtk gtk-recent-chooser-menu-get-show-numbers int)
@@ -8745,6 +10447,15 @@
 
   ;;; begin object RecentChooserWidget
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkRecentChooserWidget
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_recent_chooser_widget_get_type"
+  ;;; begin struct RecentChooserWidgetClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end RecentChooserWidgetClass
+
+  ;;; ---------------
   (define-from-gtk gtk-recent-chooser-widget-new '*)
   (define-from-gtk gtk-recent-chooser-widget-new-for-manager '* '*)
   ;;; end RecentChooserWidget
@@ -8763,6 +10474,11 @@
 
   ;;; begin object RecentFilter
   ;;; fields: ()
+  ;;; object type name: GtkRecentFilter
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_recent_filter_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-recent-filter-new '*)
   (define-from-gtk gtk-recent-filter-add-age void int32)
   (define-from-gtk gtk-recent-filter-add-application void '*)
@@ -8818,6 +10534,15 @@
 
   ;;; begin object RecentManager
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkRecentManager
+  ;;; parent: "Object"
+  ;;; vfuncs: ("changed")
+  ;;; type-init: "gtk_recent_manager_get_type"
+  ;;; begin struct RecentManagerClass
+  ;;; fields: ("parent_class" "changed" "_gtk_recent1" "_gtk_recent2" "_gtk_recent3" "_gtk_recent4")
+  ;;; end RecentManagerClass
+
+  ;;; ---------------
   (define-from-gtk gtk-recent-manager-new '*)
   (define-from-gtk gtk-recent-manager-get-default '*)
   (define-from-gtk gtk-recent-manager-add-full int '* '*)
@@ -8836,6 +10561,7 @@
 
   ;;; begin enum RecentManagerError
   ;;; series: sequence
+  (define-from-gtk gtk-recent-manager-error-quark uint32)
   (define-enum-transformer
     RecentManagerError
     not_found
@@ -8870,6 +10596,15 @@
 
   ;;; begin object RendererCellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkRendererCellAccessible
+  ;;; parent: "CellAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_renderer_cell_accessible_get_type"
+  ;;; begin struct RendererCellAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end RendererCellAccessibleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-renderer-cell-accessible-new '* '*)
   ;;; end RendererCellAccessible
 
@@ -8903,6 +10638,15 @@
 
   ;;; begin object Revealer
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkRevealer
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_revealer_get_type"
+  ;;; begin struct RevealerClass
+  ;;; fields: ("parent_class")
+  ;;; end RevealerClass
+
+  ;;; ---------------
   (define-from-gtk gtk-revealer-new '*)
   (define-from-gtk gtk-revealer-get-child-revealed int)
   (define-from-gtk gtk-revealer-get-reveal-child int)
@@ -9139,6 +10883,16 @@
   (define STYLE_REGION_TAB "tab")
   ;;; begin object Scale
   ;;; fields: ("range" "priv")
+  ;;; object type name: GtkScale
+  ;;; parent: "Range"
+  ;;; vfuncs: ("draw_value" "format_value" "get_layout_offsets")
+  ;;; type-init: "gtk_scale_get_type"
+  ;;; begin struct ScaleClass
+  ;;; fields: ("parent_class" "format_value" "draw_value" "get_layout_offsets" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ScaleClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-scale-get-layout-offsets void int32 int32)
   (define-from-gtk gtk-scale-new '* uint32 '*)
   (define-from-gtk gtk-scale-new-with-range '* uint32 double double double)
   (define-from-gtk gtk-scale-add-mark void double uint32 '*)
@@ -9157,6 +10911,15 @@
 
   ;;; begin object ScaleAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkScaleAccessible
+  ;;; parent: "RangeAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_scale_accessible_get_type"
+  ;;; begin struct ScaleAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ScaleAccessibleClass
+
+  ;;; ---------------
   ;;; end ScaleAccessible
 
   ;;; begin struct ScaleAccessibleClass
@@ -9169,6 +10932,15 @@
 
   ;;; begin object ScaleButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkScaleButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ("value_changed")
+  ;;; type-init: "gtk_scale_button_get_type"
+  ;;; begin struct ScaleButtonClass
+  ;;; fields: ("parent_class" "value_changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ScaleButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-scale-button-new '* int32 double double double '*)
   (define-from-gtk gtk-scale-button-get-adjustment '*)
   (define-from-gtk gtk-scale-button-get-minus-button '*)
@@ -9182,6 +10954,15 @@
 
   ;;; begin object ScaleButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkScaleButtonAccessible
+  ;;; parent: "ButtonAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_scale_button_accessible_get_type"
+  ;;; begin struct ScaleButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ScaleButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end ScaleButtonAccessible
 
   ;;; begin struct ScaleButtonAccessibleClass
@@ -9254,6 +11035,15 @@
 
   ;;; begin object Scrollbar
   ;;; fields: ("range")
+  ;;; object type name: GtkScrollbar
+  ;;; parent: "Range"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_scrollbar_get_type"
+  ;;; begin struct ScrollbarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ScrollbarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-scrollbar-new '* uint32 '*)
   ;;; end Scrollbar
 
@@ -9263,6 +11053,15 @@
 
   ;;; begin object ScrolledWindow
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkScrolledWindow
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("move_focus_out" "scroll_child")
+  ;;; type-init: "gtk_scrolled_window_get_type"
+  ;;; begin struct ScrolledWindowClass
+  ;;; fields: ("parent_class" "scrollbar_spacing" "scroll_child" "move_focus_out" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ScrolledWindowClass
+
+  ;;; ---------------
   (define-from-gtk gtk-scrolled-window-new '* '* '*)
   (define-from-gtk gtk-scrolled-window-add-with-viewport void '*)
   (define-from-gtk gtk-scrolled-window-get-capture-button-press int)
@@ -9300,6 +11099,15 @@
 
   ;;; begin object ScrolledWindowAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkScrolledWindowAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_scrolled_window_accessible_get_type"
+  ;;; begin struct ScrolledWindowAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ScrolledWindowAccessibleClass
+
+  ;;; ---------------
   ;;; end ScrolledWindowAccessible
 
   ;;; begin struct ScrolledWindowAccessibleClass
@@ -9320,6 +11128,15 @@
 
   ;;; begin object SearchBar
   ;;; fields: ("parent")
+  ;;; object type name: GtkSearchBar
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_search_bar_get_type"
+  ;;; begin struct SearchBarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SearchBarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-search-bar-new '*)
   (define-from-gtk gtk-search-bar-connect-entry void '*)
   (define-from-gtk gtk-search-bar-get-search-mode int)
@@ -9335,6 +11152,15 @@
 
   ;;; begin object SearchEntry
   ;;; fields: ("parent")
+  ;;; object type name: GtkSearchEntry
+  ;;; parent: "Entry"
+  ;;; vfuncs: ("next_match" "previous_match" "search_changed" "stop_search")
+  ;;; type-init: "gtk_search_entry_get_type"
+  ;;; begin struct SearchEntryClass
+  ;;; fields: ("parent_class" "search_changed" "next_match" "previous_match" "stop_search")
+  ;;; end SearchEntryClass
+
+  ;;; ---------------
   (define-from-gtk gtk-search-entry-new '*)
   (define-from-gtk gtk-search-entry-handle-event int '*)
   ;;; end SearchEntry
@@ -9380,6 +11206,15 @@
 
   ;;; begin object Separator
   ;;; fields: ("widget" "priv")
+  ;;; object type name: GtkSeparator
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_separator_get_type"
+  ;;; begin struct SeparatorClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SeparatorClass
+
+  ;;; ---------------
   (define-from-gtk gtk-separator-new '* uint32)
   ;;; end Separator
 
@@ -9389,6 +11224,15 @@
 
   ;;; begin object SeparatorMenuItem
   ;;; fields: ("menu_item")
+  ;;; object type name: GtkSeparatorMenuItem
+  ;;; parent: "MenuItem"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_separator_menu_item_get_type"
+  ;;; begin struct SeparatorMenuItemClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SeparatorMenuItemClass
+
+  ;;; ---------------
   (define-from-gtk gtk-separator-menu-item-new '*)
   ;;; end SeparatorMenuItem
 
@@ -9402,6 +11246,15 @@
 
   ;;; begin object SeparatorToolItem
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkSeparatorToolItem
+  ;;; parent: "ToolItem"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_separator_tool_item_get_type"
+  ;;; begin struct SeparatorToolItemClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SeparatorToolItemClass
+
+  ;;; ---------------
   (define-from-gtk gtk-separator-tool-item-new '*)
   (define-from-gtk gtk-separator-tool-item-get-draw int)
   (define-from-gtk gtk-separator-tool-item-set-draw void int)
@@ -9417,6 +11270,15 @@
 
   ;;; begin object Settings
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkSettings
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_settings_get_type"
+  ;;; begin struct SettingsClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SettingsClass
+
+  ;;; ---------------
   (define-from-gtk gtk-settings-get-default '*)
   (define-from-gtk gtk-settings-get-for-screen '* '*)
   (define-from-gtk gtk-settings-install-property void '*)
@@ -9447,6 +11309,15 @@
 
   ;;; begin object ShortcutLabel
   ;;; fields: ()
+  ;;; object type name: GtkShortcutLabel
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_shortcut_label_get_type"
+  ;;; begin struct ShortcutLabelClass
+  ;;; fields: ()
+  ;;; end ShortcutLabelClass
+
+  ;;; ---------------
   (define-from-gtk gtk-shortcut-label-new '* '*)
   (define-from-gtk gtk-shortcut-label-get-accelerator '*)
   (define-from-gtk gtk-shortcut-label-get-disabled-text '*)
@@ -9474,6 +11345,15 @@
 
   ;;; begin object ShortcutsGroup
   ;;; fields: ()
+  ;;; object type name: GtkShortcutsGroup
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_shortcuts_group_get_type"
+  ;;; begin struct ShortcutsGroupClass
+  ;;; fields: ()
+  ;;; end ShortcutsGroupClass
+
+  ;;; ---------------
   ;;; end ShortcutsGroup
 
   ;;; begin struct ShortcutsGroupClass
@@ -9482,6 +11362,15 @@
 
   ;;; begin object ShortcutsSection
   ;;; fields: ()
+  ;;; object type name: GtkShortcutsSection
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_shortcuts_section_get_type"
+  ;;; begin struct ShortcutsSectionClass
+  ;;; fields: ()
+  ;;; end ShortcutsSectionClass
+
+  ;;; ---------------
   ;;; end ShortcutsSection
 
   ;;; begin struct ShortcutsSectionClass
@@ -9490,6 +11379,15 @@
 
   ;;; begin object ShortcutsShortcut
   ;;; fields: ()
+  ;;; object type name: GtkShortcutsShortcut
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_shortcuts_shortcut_get_type"
+  ;;; begin struct ShortcutsShortcutClass
+  ;;; fields: ()
+  ;;; end ShortcutsShortcutClass
+
+  ;;; ---------------
   ;;; end ShortcutsShortcut
 
   ;;; begin struct ShortcutsShortcutClass
@@ -9498,6 +11396,15 @@
 
   ;;; begin object ShortcutsWindow
   ;;; fields: ("window")
+  ;;; object type name: GtkShortcutsWindow
+  ;;; parent: "Window"
+  ;;; vfuncs: ("close" "search")
+  ;;; type-init: "gtk_shortcuts_window_get_type"
+  ;;; begin struct ShortcutsWindowClass
+  ;;; fields: ("parent_class" "close" "search")
+  ;;; end ShortcutsWindowClass
+
+  ;;; ---------------
   ;;; end ShortcutsWindow
 
   ;;; begin struct ShortcutsWindowClass
@@ -9506,6 +11413,15 @@
 
   ;;; begin object SizeGroup
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkSizeGroup
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_size_group_get_type"
+  ;;; begin struct SizeGroupClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SizeGroupClass
+
+  ;;; ---------------
   (define-from-gtk gtk-size-group-new '* uint32)
   (define-from-gtk gtk-size-group-add-widget void '*)
   (define-from-gtk gtk-size-group-get-ignore-hidden int)
@@ -9536,6 +11452,15 @@
 
   ;;; begin object Socket
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkSocket
+  ;;; parent: "Container"
+  ;;; vfuncs: ("plug_added" "plug_removed")
+  ;;; type-init: "gtk_socket_get_type"
+  ;;; begin struct SocketClass
+  ;;; fields: ("parent_class" "plug_added" "plug_removed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SocketClass
+
+  ;;; ---------------
   (define-from-gtk gtk-socket-new '*)
   (define-from-gtk gtk-socket-add-id void uint64)
   (define-from-gtk gtk-socket-get-id uint64)
@@ -9557,6 +11482,15 @@
 
   ;;; begin object SpinButton
   ;;; fields: ("entry" "priv")
+  ;;; object type name: GtkSpinButton
+  ;;; parent: "Entry"
+  ;;; vfuncs: ("change_value" "input" "output" "value_changed" "wrapped")
+  ;;; type-init: "gtk_spin_button_get_type"
+  ;;; begin struct SpinButtonClass
+  ;;; fields: ("parent_class" "input" "output" "value_changed" "change_value" "wrapped" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SpinButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-spin-button-new '* '* double uint32)
   (define-from-gtk gtk-spin-button-new-with-range '* double double double)
   (define-from-gtk gtk-spin-button-configure void '* double uint32)
@@ -9585,6 +11519,15 @@
 
   ;;; begin object SpinButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkSpinButtonAccessible
+  ;;; parent: "EntryAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_spin_button_accessible_get_type"
+  ;;; begin struct SpinButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end SpinButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end SpinButtonAccessible
 
   ;;; begin struct SpinButtonAccessibleClass
@@ -9623,6 +11566,15 @@
 
   ;;; begin object Spinner
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkSpinner
+  ;;; parent: "Widget"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_spinner_get_type"
+  ;;; begin struct SpinnerClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end SpinnerClass
+
+  ;;; ---------------
   (define-from-gtk gtk-spinner-new '*)
   (define-from-gtk gtk-spinner-start void)
   (define-from-gtk gtk-spinner-stop void)
@@ -9630,6 +11582,15 @@
 
   ;;; begin object SpinnerAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkSpinnerAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_spinner_accessible_get_type"
+  ;;; begin struct SpinnerAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end SpinnerAccessibleClass
+
+  ;;; ---------------
   ;;; end SpinnerAccessible
 
   ;;; begin struct SpinnerAccessibleClass
@@ -9650,6 +11611,15 @@
 
   ;;; begin object Stack
   ;;; fields: ("parent_instance")
+  ;;; object type name: GtkStack
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_stack_get_type"
+  ;;; begin struct StackClass
+  ;;; fields: ("parent_class")
+  ;;; end StackClass
+
+  ;;; ---------------
   (define-from-gtk gtk-stack-new '*)
   (define-from-gtk gtk-stack-add-named void '* '*)
   (define-from-gtk gtk-stack-add-titled void '* '* '*)
@@ -9676,6 +11646,15 @@
 
   ;;; begin object StackAccessible
   ;;; fields: ("parent")
+  ;;; object type name: GtkStackAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_stack_accessible_get_type"
+  ;;; begin struct StackAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end StackAccessibleClass
+
+  ;;; ---------------
   ;;; end StackAccessible
 
   ;;; begin struct StackAccessibleClass
@@ -9688,6 +11667,15 @@
 
   ;;; begin object StackSidebar
   ;;; fields: ("parent")
+  ;;; object type name: GtkStackSidebar
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_stack_sidebar_get_type"
+  ;;; begin struct StackSidebarClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end StackSidebarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-stack-sidebar-new '*)
   (define-from-gtk gtk-stack-sidebar-get-stack '*)
   (define-from-gtk gtk-stack-sidebar-set-stack void '*)
@@ -9703,6 +11691,15 @@
 
   ;;; begin object StackSwitcher
   ;;; fields: ("widget")
+  ;;; object type name: GtkStackSwitcher
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_stack_switcher_get_type"
+  ;;; begin struct StackSwitcherClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end StackSwitcherClass
+
+  ;;; ---------------
   (define-from-gtk gtk-stack-switcher-new '*)
   (define-from-gtk gtk-stack-switcher-get-stack '*)
   (define-from-gtk gtk-stack-switcher-set-stack void '*)
@@ -9757,6 +11754,15 @@
 
   ;;; begin object StatusIcon
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkStatusIcon
+  ;;; parent: "Object"
+  ;;; vfuncs: ("activate" "button_press_event" "button_release_event" "popup_menu" "query_tooltip" "scroll_event" "size_changed")
+  ;;; type-init: "gtk_status_icon_get_type"
+  ;;; begin struct StatusIconClass
+  ;;; fields: ("parent_class" "activate" "popup_menu" "size_changed" "button_press_event" "button_release_event" "scroll_event" "query_tooltip" "__gtk_reserved1" "__gtk_reserved2" "__gtk_reserved3" "__gtk_reserved4")
+  ;;; end StatusIconClass
+
+  ;;; ---------------
   (define-from-gtk gtk-status-icon-new '*)
   (define-from-gtk gtk-status-icon-new-from-file '* '*)
   (define-from-gtk gtk-status-icon-new-from-gicon '* '*)
@@ -9803,6 +11809,15 @@
 
   ;;; begin object Statusbar
   ;;; fields: ("parent_widget" "priv")
+  ;;; object type name: GtkStatusbar
+  ;;; parent: "Box"
+  ;;; vfuncs: ("text_popped" "text_pushed")
+  ;;; type-init: "gtk_statusbar_get_type"
+  ;;; begin struct StatusbarClass
+  ;;; fields: ("parent_class" "reserved" "text_pushed" "text_popped" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end StatusbarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-statusbar-new '*)
   (define-from-gtk gtk-statusbar-get-context-id uint32 '*)
   (define-from-gtk gtk-statusbar-get-message-area '*)
@@ -9814,6 +11829,15 @@
 
   ;;; begin object StatusbarAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkStatusbarAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_statusbar_accessible_get_type"
+  ;;; begin struct StatusbarAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end StatusbarAccessibleClass
+
+  ;;; ---------------
   ;;; end StatusbarAccessible
 
   ;;; begin struct StatusbarAccessibleClass
@@ -9839,6 +11863,17 @@
 
   ;;; begin object Style
   ;;; fields: ("parent_instance" "fg" "bg" "light" "dark" "mid" "text" "base" "text_aa" "black" "white" "font_desc" "xthickness" "ythickness" "background" "attach_count" "visual" "private_font_desc" "rc_style" "styles" "property_cache" "icon_factories")
+  ;;; object type name: GtkStyle
+  ;;; parent: "Object"
+  ;;; vfuncs: ("copy" "draw_arrow" "draw_box" "draw_box_gap" "draw_check" "draw_diamond" "draw_expander" "draw_extension" "draw_flat_box" "draw_focus" "draw_handle" "draw_hline" "draw_layout" "draw_option" "draw_resize_grip" "draw_shadow" "draw_shadow_gap" "draw_slider" "draw_spinner" "draw_tab" "draw_vline" "init_from_rc" "realize" "render_icon" "set_background" "unrealize")
+  ;;; type-init: "gtk_style_get_type"
+  ;;; begin struct StyleClass
+  ;;; fields: ("parent_class" "realize" "unrealize" "copy" "clone" "init_from_rc" "set_background" "render_icon" "draw_hline" "draw_vline" "draw_shadow" "draw_arrow" "draw_diamond" "draw_box" "draw_flat_box" "draw_check" "draw_option" "draw_tab" "draw_shadow_gap" "draw_box_gap" "draw_extension" "draw_focus" "draw_slider" "draw_handle" "draw_expander" "draw_layout" "draw_resize_grip" "draw_spinner" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8" "_gtk_reserved9" "_gtk_reserved10" "_gtk_reserved11")
+  ;;; end StyleClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-style-render-icon '* '* uint32 uint32 int32 '* '*)
+  (define-from-gtk gtk-style-set-background void '* uint32)
   (define-from-gtk gtk-style-new '*)
   (define-from-gtk gtk-style-apply-default-background void '* '* uint32 int32 int32 int32 int32)
   (define-from-gtk gtk-style-copy '*)
@@ -9857,6 +11892,15 @@
 
   ;;; begin object StyleContext
   ;;; fields: ("parent_object" "priv")
+  ;;; object type name: GtkStyleContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ("changed")
+  ;;; type-init: "gtk_style_context_get_type"
+  ;;; begin struct StyleContextClass
+  ;;; fields: ("parent_class" "changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end StyleContextClass
+
+  ;;; ---------------
   (define-from-gtk gtk-style-context-new '*)
   (define-from-gtk gtk-style-context-add-provider-for-screen void '* '* uint32)
   (define-from-gtk gtk-style-context-remove-provider-for-screen void '* '*)
@@ -9927,6 +11971,15 @@
 
   ;;; begin object StyleProperties
   ;;; fields: ("parent_object" "priv")
+  ;;; object type name: GtkStyleProperties
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_style_properties_get_type"
+  ;;; begin struct StylePropertiesClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end StylePropertiesClass
+
+  ;;; ---------------
   (define-from-gtk gtk-style-properties-new '*)
   (define-from-gtk gtk-style-properties-clear void)
   (define-from-gtk gtk-style-properties-get-property int '* uint32 '*)
@@ -9953,6 +12006,15 @@
 
   ;;; begin object Switch
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkSwitch
+  ;;; parent: "Widget"
+  ;;; vfuncs: ("activate" "state_set")
+  ;;; type-init: "gtk_switch_get_type"
+  ;;; begin struct SwitchClass
+  ;;; fields: ("parent_class" "activate" "state_set" "_switch_padding_1" "_switch_padding_2" "_switch_padding_3" "_switch_padding_4" "_switch_padding_5")
+  ;;; end SwitchClass
+
+  ;;; ---------------
   (define-from-gtk gtk-switch-new '*)
   (define-from-gtk gtk-switch-get-active int)
   (define-from-gtk gtk-switch-get-state int)
@@ -9962,6 +12024,15 @@
 
   ;;; begin object SwitchAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkSwitchAccessible
+  ;;; parent: "WidgetAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_switch_accessible_get_type"
+  ;;; begin struct SwitchAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end SwitchAccessibleClass
+
+  ;;; ---------------
   ;;; end SwitchAccessible
 
   ;;; begin struct SwitchAccessibleClass
@@ -9999,6 +12070,15 @@
   (define TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID -2)
   ;;; begin object Table
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkTable
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_table_get_type"
+  ;;; begin struct TableClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TableClass
+
+  ;;; ---------------
   (define-from-gtk gtk-table-new '* uint32 uint32 int)
   (define-from-gtk gtk-table-attach void '* uint32 uint32 uint32 uint32 uint32 uint32 uint32 uint32)
   (define-from-gtk gtk-table-attach-defaults void '* uint32 uint32 uint32 uint32)
@@ -10065,6 +12145,15 @@
 
   ;;; begin object TearoffMenuItem
   ;;; fields: ("menu_item" "priv")
+  ;;; object type name: GtkTearoffMenuItem
+  ;;; parent: "MenuItem"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tearoff_menu_item_get_type"
+  ;;; begin struct TearoffMenuItemClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TearoffMenuItemClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tearoff-menu-item-new '*)
   ;;; end TearoffMenuItem
 
@@ -10095,6 +12184,21 @@
 
   ;;; begin object TextBuffer
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkTextBuffer
+  ;;; parent: "Object"
+  ;;; vfuncs: ("apply_tag" "begin_user_action" "changed" "delete_range" "end_user_action" "insert_child_anchor" "insert_pixbuf" "insert_text" "mark_deleted" "mark_set" "modified_changed" "paste_done" "remove_tag")
+  ;;; type-init: "gtk_text_buffer_get_type"
+  ;;; begin struct TextBufferClass
+  ;;; fields: ("parent_class" "insert_text" "insert_pixbuf" "insert_child_anchor" "delete_range" "changed" "modified_changed" "mark_set" "mark_deleted" "apply_tag" "remove_tag" "begin_user_action" "end_user_action" "paste_done" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TextBufferClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-text-buffer-apply-tag void '* '* '*)
+  (define-from-gtk gtk-text-buffer-begin-user-action void)
+  (define-from-gtk gtk-text-buffer-end-user-action void)
+  (define-from-gtk gtk-text-buffer-insert-child-anchor void '* '*)
+  (define-from-gtk gtk-text-buffer-insert-pixbuf void '* '*)
+  (define-from-gtk gtk-text-buffer-remove-tag void '* '* '*)
   (define-from-gtk gtk-text-buffer-new '* '*)
   (define-from-gtk gtk-text-buffer-add-mark void '* '*)
   (define-from-gtk gtk-text-buffer-add-selection-clipboard void '*)
@@ -10184,6 +12288,15 @@
 
   ;;; begin object TextCellAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTextCellAccessible
+  ;;; parent: "RendererCellAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_text_cell_accessible_get_type"
+  ;;; begin struct TextCellAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end TextCellAccessibleClass
+
+  ;;; ---------------
   ;;; end TextCellAccessible
 
   ;;; begin struct TextCellAccessibleClass
@@ -10197,6 +12310,15 @@
   ;;; (callback "TextCharPredicate")
   ;;; begin object TextChildAnchor
   ;;; fields: ("parent_instance" "segment")
+  ;;; object type name: GtkTextChildAnchor
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_text_child_anchor_get_type"
+  ;;; begin struct TextChildAnchorClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TextChildAnchorClass
+
+  ;;; ---------------
   (define-from-gtk gtk-text-child-anchor-new '*)
   (define-from-gtk gtk-text-child-anchor-get-deleted int)
   (define-from-gtk gtk-text-child-anchor-get-widgets '*)
@@ -10314,6 +12436,15 @@
 
   ;;; begin object TextMark
   ;;; fields: ("parent_instance" "segment")
+  ;;; object type name: GtkTextMark
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_text_mark_get_type"
+  ;;; begin struct TextMarkClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TextMarkClass
+
+  ;;; ---------------
   (define-from-gtk gtk-text-mark-new '* '* int)
   (define-from-gtk gtk-text-mark-get-buffer '*)
   (define-from-gtk gtk-text-mark-get-deleted int)
@@ -10334,6 +12465,16 @@
 
   ;;; begin object TextTag
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkTextTag
+  ;;; parent: "Object"
+  ;;; vfuncs: ("event")
+  ;;; type-init: "gtk_text_tag_get_type"
+  ;;; begin struct TextTagClass
+  ;;; fields: ("parent_class" "event" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TextTagClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-text-tag-event int '* '* '*)
   (define-from-gtk gtk-text-tag-new '* '*)
   (define-from-gtk gtk-text-tag-changed void int)
   (define-from-gtk gtk-text-tag-event int '* '* '*)
@@ -10351,6 +12492,15 @@
 
   ;;; begin object TextTagTable
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkTextTagTable
+  ;;; parent: "Object"
+  ;;; vfuncs: ("tag_added" "tag_changed" "tag_removed")
+  ;;; type-init: "gtk_text_tag_table_get_type"
+  ;;; begin struct TextTagTableClass
+  ;;; fields: ("parent_class" "tag_changed" "tag_added" "tag_removed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TextTagTableClass
+
+  ;;; ---------------
   (define-from-gtk gtk-text-tag-table-new '*)
   (define-from-gtk gtk-text-tag-table-add int '*)
   (define-from-gtk gtk-text-tag-table-foreach void '* '*)
@@ -10370,6 +12520,15 @@
 
   ;;; begin object TextView
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkTextView
+  ;;; parent: "Container"
+  ;;; vfuncs: ("backspace" "copy_clipboard" "cut_clipboard" "delete_from_cursor" "draw_layer" "extend_selection" "insert_at_cursor" "move_cursor" "paste_clipboard" "populate_popup" "set_anchor" "toggle_overwrite")
+  ;;; type-init: "gtk_text_view_get_type"
+  ;;; begin struct TextViewClass
+  ;;; fields: ("parent_class" "populate_popup" "move_cursor" "set_anchor" "insert_at_cursor" "delete_from_cursor" "backspace" "cut_clipboard" "copy_clipboard" "paste_clipboard" "toggle_overwrite" "create_buffer" "draw_layer" "extend_selection" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5")
+  ;;; end TextViewClass
+
+  ;;; ---------------
   (define-from-gtk gtk-text-view-new '*)
   (define-from-gtk gtk-text-view-new-with-buffer '* '*)
   (define-from-gtk gtk-text-view-add-child-at-anchor void '* '*)
@@ -10447,6 +12606,15 @@
 
   ;;; begin object TextViewAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTextViewAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_text_view_accessible_get_type"
+  ;;; begin struct TextViewAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end TextViewAccessibleClass
+
+  ;;; ---------------
   ;;; end TextViewAccessible
 
   ;;; begin struct TextViewAccessibleClass
@@ -10481,6 +12649,15 @@
 
   ;;; begin object ThemingEngine
   ;;; fields: ("parent_object" "priv")
+  ;;; object type name: GtkThemingEngine
+  ;;; parent: "Object"
+  ;;; vfuncs: ("render_activity" "render_arrow" "render_background" "render_check" "render_expander" "render_extension" "render_focus" "render_frame" "render_frame_gap" "render_handle" "render_icon" "render_icon_surface" "render_layout" "render_line" "render_option" "render_slider")
+  ;;; type-init: "gtk_theming_engine_get_type"
+  ;;; begin struct ThemingEngineClass
+  ;;; fields: ("parent_class" "render_line" "render_background" "render_frame" "render_frame_gap" "render_extension" "render_check" "render_option" "render_arrow" "render_expander" "render_focus" "render_layout" "render_slider" "render_handle" "render_activity" "render_icon_pixbuf" "render_icon" "render_icon_surface" "padding")
+  ;;; end ThemingEngineClass
+
+  ;;; ---------------
   (define-from-gtk gtk-theming-engine-load '* '*)
   (define-from-gtk gtk-theming-engine-get-background-color void uint32 '*)
   (define-from-gtk gtk-theming-engine-get-border void uint32 '*)
@@ -10513,6 +12690,16 @@
   ;;; (callback "TickCallback")
   ;;; begin object ToggleAction
   ;;; fields: ("parent" "private_data")
+  ;;; object type name: GtkToggleAction
+  ;;; parent: "Action"
+  ;;; vfuncs: ("toggled")
+  ;;; type-init: "gtk_toggle_action_get_type"
+  ;;; begin struct ToggleActionClass
+  ;;; fields: ("parent_class" "toggled" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToggleActionClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-toggle-action-toggled void)
   (define-from-gtk gtk-toggle-action-new '* '* '* '* '*)
   (define-from-gtk gtk-toggle-action-get-active int)
   (define-from-gtk gtk-toggle-action-get-draw-as-radio int)
@@ -10535,6 +12722,16 @@
 
   ;;; begin object ToggleButton
   ;;; fields: ("button" "priv")
+  ;;; object type name: GtkToggleButton
+  ;;; parent: "Button"
+  ;;; vfuncs: ("toggled")
+  ;;; type-init: "gtk_toggle_button_get_type"
+  ;;; begin struct ToggleButtonClass
+  ;;; fields: ("parent_class" "toggled" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToggleButtonClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-toggle-button-toggled void)
   (define-from-gtk gtk-toggle-button-new '*)
   (define-from-gtk gtk-toggle-button-new-with-label '* '*)
   (define-from-gtk gtk-toggle-button-new-with-mnemonic '* '*)
@@ -10549,6 +12746,15 @@
 
   ;;; begin object ToggleButtonAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkToggleButtonAccessible
+  ;;; parent: "ButtonAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_toggle_button_accessible_get_type"
+  ;;; begin struct ToggleButtonAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ToggleButtonAccessibleClass
+
+  ;;; ---------------
   ;;; end ToggleButtonAccessible
 
   ;;; begin struct ToggleButtonAccessibleClass
@@ -10569,6 +12775,15 @@
 
   ;;; begin object ToggleToolButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkToggleToolButton
+  ;;; parent: "ToolButton"
+  ;;; vfuncs: ("toggled")
+  ;;; type-init: "gtk_toggle_tool_button_get_type"
+  ;;; begin struct ToggleToolButtonClass
+  ;;; fields: ("parent_class" "toggled" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToggleToolButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-toggle-tool-button-new '*)
   (define-from-gtk gtk-toggle-tool-button-new-from-stock '* '*)
   (define-from-gtk gtk-toggle-tool-button-get-active int)
@@ -10585,6 +12800,15 @@
 
   ;;; begin object ToolButton
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkToolButton
+  ;;; parent: "ToolItem"
+  ;;; vfuncs: ("clicked")
+  ;;; type-init: "gtk_tool_button_get_type"
+  ;;; begin struct ToolButtonClass
+  ;;; fields: ("parent_class" "button_type" "clicked" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToolButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tool-button-new '* '* '*)
   (define-from-gtk gtk-tool-button-new-from-stock '* '*)
   (define-from-gtk gtk-tool-button-get-icon-name '*)
@@ -10611,6 +12835,16 @@
 
   ;;; begin object ToolItem
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkToolItem
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("create_menu_proxy" "toolbar_reconfigured")
+  ;;; type-init: "gtk_tool_item_get_type"
+  ;;; begin struct ToolItemClass
+  ;;; fields: ("parent_class" "create_menu_proxy" "toolbar_reconfigured" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToolItemClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-tool-item-toolbar-reconfigured void)
   (define-from-gtk gtk-tool-item-new '*)
   (define-from-gtk gtk-tool-item-get-ellipsize-mode uint32)
   (define-from-gtk gtk-tool-item-get-expand int)
@@ -10647,6 +12881,15 @@
 
   ;;; begin object ToolItemGroup
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkToolItemGroup
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tool_item_group_get_type"
+  ;;; begin struct ToolItemGroupClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToolItemGroupClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tool-item-group-new '* '*)
   (define-from-gtk gtk-tool-item-group-get-collapsed int)
   (define-from-gtk gtk-tool-item-group-get-drop-item '* int32 int32)
@@ -10680,6 +12923,15 @@
 
   ;;; begin object ToolPalette
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkToolPalette
+  ;;; parent: "Container"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tool_palette_get_type"
+  ;;; begin struct ToolPaletteClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToolPaletteClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tool-palette-new '*)
   (define-from-gtk gtk-tool-palette-get-drag-target-group '*)
   (define-from-gtk gtk-tool-palette-get-drag-target-item '*)
@@ -10724,6 +12976,15 @@
 
   ;;; begin object Toolbar
   ;;; fields: ("container" "priv")
+  ;;; object type name: GtkToolbar
+  ;;; parent: "Container"
+  ;;; vfuncs: ("orientation_changed" "popup_context_menu" "style_changed")
+  ;;; type-init: "gtk_toolbar_get_type"
+  ;;; begin struct ToolbarClass
+  ;;; fields: ("parent_class" "orientation_changed" "style_changed" "popup_context_menu" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ToolbarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-toolbar-new '*)
   (define-from-gtk gtk-toolbar-get-drop-index int32 int32 int32)
   (define-from-gtk gtk-toolbar-get-icon-size uint32)
@@ -10762,6 +13023,11 @@
 
   ;;; begin object Tooltip
   ;;; fields: ()
+  ;;; object type name: GtkTooltip
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tooltip_get_type"
+  ;;; ---------------
   (define-from-gtk gtk-tooltip-trigger-tooltip-query void '*)
   (define-from-gtk gtk-tooltip-set-custom void '*)
   (define-from-gtk gtk-tooltip-set-icon void '*)
@@ -10775,6 +13041,15 @@
 
   ;;; begin object ToplevelAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkToplevelAccessible
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_toplevel_accessible_get_type"
+  ;;; begin struct ToplevelAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end ToplevelAccessibleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-toplevel-accessible-get-children '*)
   ;;; end ToplevelAccessible
 
@@ -10809,6 +13084,15 @@
   ;;; (interface "TreeModel")
   ;;; begin object TreeModelFilter
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTreeModelFilter
+  ;;; parent: "Object"
+  ;;; vfuncs: ("modify" "visible")
+  ;;; type-init: "gtk_tree_model_filter_get_type"
+  ;;; begin struct TreeModelFilterClass
+  ;;; fields: ("parent_class" "visible" "modify" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TreeModelFilterClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tree-model-filter-clear-cache void)
   (define-from-gtk gtk-tree-model-filter-convert-child-iter-to-iter int '* '*)
   (define-from-gtk gtk-tree-model-filter-convert-child-path-to-path '* '*)
@@ -10843,6 +13127,15 @@
 
   ;;; begin object TreeModelSort
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTreeModelSort
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tree_model_sort_get_type"
+  ;;; begin struct TreeModelSortClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TreeModelSortClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tree-model-sort-clear-cache void)
   (define-from-gtk gtk-tree-model-sort-convert-child-iter-to-iter int '* '*)
   (define-from-gtk gtk-tree-model-sort-convert-child-path-to-path '* '*)
@@ -10898,6 +13191,15 @@
 
   ;;; begin object TreeSelection
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTreeSelection
+  ;;; parent: "Object"
+  ;;; vfuncs: ("changed")
+  ;;; type-init: "gtk_tree_selection_get_type"
+  ;;; begin struct TreeSelectionClass
+  ;;; fields: ("parent_class" "changed" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TreeSelectionClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tree-selection-count-selected-rows int32)
   (define-from-gtk gtk-tree-selection-get-mode uint32)
   (define-from-gtk gtk-tree-selection-get-selected int '* '*)
@@ -10935,6 +13237,15 @@
 
   ;;; begin object TreeStore
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTreeStore
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tree_store_get_type"
+  ;;; begin struct TreeStoreClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TreeStoreClass
+
+  ;;; ---------------
   (define-from-gtk gtk-tree-store-newv '* int32 '*)
   (define-from-gtk gtk-tree-store-append void '* '*)
   (define-from-gtk gtk-tree-store-clear void)
@@ -10965,6 +13276,16 @@
 
   ;;; begin object TreeView
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTreeView
+  ;;; parent: "Container"
+  ;;; vfuncs: ("columns_changed" "cursor_changed" "expand_collapse_cursor_row" "move_cursor" "row_activated" "row_collapsed" "row_expanded" "select_all" "select_cursor_parent" "select_cursor_row" "start_interactive_search" "test_collapse_row" "test_expand_row" "toggle_cursor_row" "unselect_all")
+  ;;; type-init: "gtk_tree_view_get_type"
+  ;;; begin struct TreeViewClass
+  ;;; fields: ("parent_class" "row_activated" "test_expand_row" "test_collapse_row" "row_expanded" "row_collapsed" "columns_changed" "cursor_changed" "move_cursor" "select_all" "unselect_all" "select_cursor_row" "toggle_cursor_row" "expand_collapse_cursor_row" "select_cursor_parent" "start_interactive_search" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4" "_gtk_reserved5" "_gtk_reserved6" "_gtk_reserved7" "_gtk_reserved8")
+  ;;; end TreeViewClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-tree-view-row-activated void '* '*)
   (define-from-gtk gtk-tree-view-new '*)
   (define-from-gtk gtk-tree-view-new-with-model '* '*)
   (define-from-gtk gtk-tree-view-append-column int32 '*)
@@ -11066,6 +13387,15 @@
 
   ;;; begin object TreeViewAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkTreeViewAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_tree_view_accessible_get_type"
+  ;;; begin struct TreeViewAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end TreeViewAccessibleClass
+
+  ;;; ---------------
   ;;; end TreeViewAccessible
 
   ;;; begin struct TreeViewAccessibleClass
@@ -11082,6 +13412,16 @@
 
   ;;; begin object TreeViewColumn
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkTreeViewColumn
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ("clicked")
+  ;;; type-init: "gtk_tree_view_column_get_type"
+  ;;; begin struct TreeViewColumnClass
+  ;;; fields: ("parent_class" "clicked" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end TreeViewColumnClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-tree-view-column-clicked void)
   (define-from-gtk gtk-tree-view-column-new '*)
   (define-from-gtk gtk-tree-view-column-new-with-area '* '*)
   (define-from-gtk gtk-tree-view-column-add-attribute void '* '* int32)
@@ -11169,6 +13509,17 @@
   ;;; (callback "TreeViewSearchPositionFunc")
   ;;; begin object UIManager
   ;;; fields: ("parent" "private_data")
+  ;;; object type name: GtkUIManager
+  ;;; parent: "Object"
+  ;;; vfuncs: ("actions_changed" "add_widget" "connect_proxy" "disconnect_proxy" "get_action" "get_widget" "post_activate" "pre_activate")
+  ;;; type-init: "gtk_ui_manager_get_type"
+  ;;; begin struct UIManagerClass
+  ;;; fields: ("parent_class" "add_widget" "actions_changed" "connect_proxy" "disconnect_proxy" "pre_activate" "post_activate" "get_widget" "get_action" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end UIManagerClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-ui-manager-get-action '* '*)
+  (define-from-gtk gtk-ui-manager-get-widget '* '*)
   (define-from-gtk gtk-ui-manager-new '*)
   (define-from-gtk gtk-ui-manager-add-ui void uint32 '* '* '* uint32 int)
   (define-from-gtk gtk-ui-manager-add-ui-from-file uint32 '*)
@@ -11208,6 +13559,15 @@
 
   ;;; begin object VBox
   ;;; fields: ("box")
+  ;;; object type name: GtkVBox
+  ;;; parent: "Box"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_vbox_get_type"
+  ;;; begin struct VBoxClass
+  ;;; fields: ("parent_class")
+  ;;; end VBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-vbox-new '* int int32)
   ;;; end VBox
 
@@ -11217,6 +13577,15 @@
 
   ;;; begin object VButtonBox
   ;;; fields: ("button_box")
+  ;;; object type name: GtkVButtonBox
+  ;;; parent: "ButtonBox"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_vbutton_box_get_type"
+  ;;; begin struct VButtonBoxClass
+  ;;; fields: ("parent_class")
+  ;;; end VButtonBoxClass
+
+  ;;; ---------------
   (define-from-gtk gtk-vbutton-box-new '*)
   ;;; end VButtonBox
 
@@ -11226,6 +13595,15 @@
 
   ;;; begin object VPaned
   ;;; fields: ("paned")
+  ;;; object type name: GtkVPaned
+  ;;; parent: "Paned"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_vpaned_get_type"
+  ;;; begin struct VPanedClass
+  ;;; fields: ("parent_class")
+  ;;; end VPanedClass
+
+  ;;; ---------------
   (define-from-gtk gtk-vpaned-new '*)
   ;;; end VPaned
 
@@ -11235,6 +13613,15 @@
 
   ;;; begin object VScale
   ;;; fields: ("scale")
+  ;;; object type name: GtkVScale
+  ;;; parent: "Scale"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_vscale_get_type"
+  ;;; begin struct VScaleClass
+  ;;; fields: ("parent_class")
+  ;;; end VScaleClass
+
+  ;;; ---------------
   (define-from-gtk gtk-vscale-new '* '*)
   (define-from-gtk gtk-vscale-new-with-range '* double double double)
   ;;; end VScale
@@ -11245,6 +13632,15 @@
 
   ;;; begin object VScrollbar
   ;;; fields: ("scrollbar")
+  ;;; object type name: GtkVScrollbar
+  ;;; parent: "Scrollbar"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_vscrollbar_get_type"
+  ;;; begin struct VScrollbarClass
+  ;;; fields: ("parent_class")
+  ;;; end VScrollbarClass
+
+  ;;; ---------------
   (define-from-gtk gtk-vscrollbar-new '* '*)
   ;;; end VScrollbar
 
@@ -11254,6 +13650,15 @@
 
   ;;; begin object VSeparator
   ;;; fields: ("separator")
+  ;;; object type name: GtkVSeparator
+  ;;; parent: "Separator"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_vseparator_get_type"
+  ;;; begin struct VSeparatorClass
+  ;;; fields: ("parent_class")
+  ;;; end VSeparatorClass
+
+  ;;; ---------------
   (define-from-gtk gtk-vseparator-new '*)
   ;;; end VSeparator
 
@@ -11263,6 +13668,15 @@
 
   ;;; begin object Viewport
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkViewport
+  ;;; parent: "Bin"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_viewport_get_type"
+  ;;; begin struct ViewportClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end ViewportClass
+
+  ;;; ---------------
   (define-from-gtk gtk-viewport-new '* '* '*)
   (define-from-gtk gtk-viewport-get-bin-window '*)
   (define-from-gtk gtk-viewport-get-hadjustment '*)
@@ -11284,6 +13698,15 @@
 
   ;;; begin object VolumeButton
   ;;; fields: ("parent")
+  ;;; object type name: GtkVolumeButton
+  ;;; parent: "ScaleButton"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_volume_button_get_type"
+  ;;; begin struct VolumeButtonClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end VolumeButtonClass
+
+  ;;; ---------------
   (define-from-gtk gtk-volume-button-new '*)
   ;;; end VolumeButton
 
@@ -11293,6 +13716,50 @@
 
   ;;; begin object Widget
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkWidget
+  ;;; parent: "InitiallyUnowned"
+  ;;; vfuncs: ("adjust_baseline_allocation" "adjust_baseline_request" "adjust_size_allocation" "adjust_size_request" "button_press_event" "button_release_event" "can_activate_accel" "child_notify" "composited_changed" "compute_expand" "configure_event" "damage_event" "delete_event" "destroy" "destroy_event" "direction_changed" "dispatch_child_properties_changed" "drag_begin" "drag_data_delete" "drag_data_get" "drag_data_received" "drag_drop" "drag_end" "drag_failed" "drag_leave" "drag_motion" "draw" "enter_notify_event" "event" "focus" "focus_in_event" "focus_out_event" "get_accessible" "get_preferred_height" "get_preferred_height_and_baseline_for_width" "get_preferred_height_for_width" "get_preferred_width" "get_preferred_width_for_height" "get_request_mode" "grab_broken_event" "grab_focus" "grab_notify" "hide" "hierarchy_changed" "key_press_event" "key_release_event" "keynav_failed" "leave_notify_event" "map" "map_event" "mnemonic_activate" "motion_notify_event" "move_focus" "parent_set" "popup_menu" "property_notify_event" "proximity_in_event" "proximity_out_event" "query_tooltip" "queue_draw_region" "realize" "screen_changed" "scroll_event" "selection_clear_event" "selection_get" "selection_notify_event" "selection_received" "selection_request_event" "show" "show_all" "show_help" "size_allocate" "state_changed" "state_flags_changed" "style_set" "style_updated" "touch_event" "unmap" "unmap_event" "unrealize" "visibility_notify_event" "window_state_event")
+  ;;; type-init: "gtk_widget_get_type"
+  ;;; begin struct WidgetClass
+  ;;; fields: ("parent_class" "activate_signal" "dispatch_child_properties_changed" "destroy" "show" "show_all" "hide" "map" "unmap" "realize" "unrealize" "size_allocate" "state_changed" "state_flags_changed" "parent_set" "hierarchy_changed" "style_set" "direction_changed" "grab_notify" "child_notify" "draw" "get_request_mode" "get_preferred_height" "get_preferred_width_for_height" "get_preferred_width" "get_preferred_height_for_width" "mnemonic_activate" "grab_focus" "focus" "move_focus" "keynav_failed" "event" "button_press_event" "button_release_event" "scroll_event" "motion_notify_event" "delete_event" "destroy_event" "key_press_event" "key_release_event" "enter_notify_event" "leave_notify_event" "configure_event" "focus_in_event" "focus_out_event" "map_event" "unmap_event" "property_notify_event" "selection_clear_event" "selection_request_event" "selection_notify_event" "proximity_in_event" "proximity_out_event" "visibility_notify_event" "window_state_event" "damage_event" "grab_broken_event" "selection_get" "selection_received" "drag_begin" "drag_end" "drag_data_get" "drag_data_delete" "drag_leave" "drag_motion" "drag_drop" "drag_data_received" "drag_failed" "popup_menu" "show_help" "get_accessible" "screen_changed" "can_activate_accel" "composited_changed" "query_tooltip" "compute_expand" "adjust_size_request" "adjust_size_allocation" "style_updated" "touch_event" "get_preferred_height_and_baseline_for_width" "adjust_baseline_request" "adjust_baseline_allocation" "queue_draw_region" "priv" "_gtk_reserved6" "_gtk_reserved7")
+  (define-from-gtk gtk-widget-class-bind-template-callback-full void '* '*)
+  (define-from-gtk gtk-widget-class-bind-template-child-full void '* int int64)
+  (define-from-gtk gtk-widget-class-find-style-property '* '*)
+  (define-from-gtk gtk-widget-class-get-css-name '*)
+  (define-from-gtk gtk-widget-class-install-style-property void '*)
+  (define-from-gtk gtk-widget-class-list-style-properties '* uint32)
+  (define-from-gtk gtk-widget-class-set-accessible-role void uint32)
+  (define-from-gtk gtk-widget-class-set-accessible-type void size_t)
+  (define-from-gtk gtk-widget-class-set-connect-func void '* '* '*)
+  (define-from-gtk gtk-widget-class-set-css-name void '*)
+  (define-from-gtk gtk-widget-class-set-template void '*)
+  (define-from-gtk gtk-widget-class-set-template-from-resource void '*)
+  ;;; end WidgetClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-widget-can-activate-accel int uint32)
+  (define-from-gtk gtk-widget-child-notify void '*)
+  (define-from-gtk gtk-widget-destroy void)
+  (define-from-gtk gtk-widget-event int '*)
+  (define-from-gtk gtk-widget-get-accessible '*)
+  (define-from-gtk gtk-widget-get-preferred-height void int32 int32)
+  (define-from-gtk gtk-widget-get-preferred-height-and-baseline-for-width void int32 int32 int32 int32 int32)
+  (define-from-gtk gtk-widget-get-preferred-height-for-width void int32 int32 int32)
+  (define-from-gtk gtk-widget-get-preferred-width void int32 int32)
+  (define-from-gtk gtk-widget-get-preferred-width-for-height void int32 int32 int32)
+  (define-from-gtk gtk-widget-get-request-mode uint32)
+  (define-from-gtk gtk-widget-grab-focus void)
+  (define-from-gtk gtk-widget-hide void)
+  (define-from-gtk gtk-widget-keynav-failed int uint32)
+  (define-from-gtk gtk-widget-map void)
+  (define-from-gtk gtk-widget-mnemonic-activate int int)
+  (define-from-gtk gtk-widget-queue-draw-region void '*)
+  (define-from-gtk gtk-widget-realize void)
+  (define-from-gtk gtk-widget-show void)
+  (define-from-gtk gtk-widget-show-all void)
+  (define-from-gtk gtk-widget-size-allocate void '*)
+  (define-from-gtk gtk-widget-unmap void)
+  (define-from-gtk gtk-widget-unrealize void)
   (define-from-gtk gtk-widget-get-default-direction uint32)
   (define-from-gtk gtk-widget-get-default-style '*)
   (define-from-gtk gtk-widget-pop-composite-child void)
@@ -11563,6 +14030,15 @@
 
   ;;; begin object WidgetAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkWidgetAccessible
+  ;;; parent: "Accessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_widget_accessible_get_type"
+  ;;; begin struct WidgetAccessibleClass
+  ;;; fields: ("parent_class" "notify_gtk")
+  ;;; end WidgetAccessibleClass
+
+  ;;; ---------------
   ;;; end WidgetAccessible
 
   ;;; begin struct WidgetAccessibleClass
@@ -11646,6 +14122,16 @@
 
   ;;; begin object Window
   ;;; fields: ("bin" "priv")
+  ;;; object type name: GtkWindow
+  ;;; parent: "Bin"
+  ;;; vfuncs: ("activate_default" "activate_focus" "enable_debugging" "keys_changed" "set_focus")
+  ;;; type-init: "gtk_window_get_type"
+  ;;; begin struct WindowClass
+  ;;; fields: ("parent_class" "set_focus" "activate_focus" "activate_default" "keys_changed" "enable_debugging" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3")
+  ;;; end WindowClass
+
+  ;;; ---------------
+  (define-from-gtk gtk-window-set-focus void '*)
   (define-from-gtk gtk-window-new '* uint32)
   (define-from-gtk gtk-window-get-default-icon-list '*)
   (define-from-gtk gtk-window-get-default-icon-name '*)
@@ -11769,6 +14255,15 @@
 
   ;;; begin object WindowAccessible
   ;;; fields: ("parent" "priv")
+  ;;; object type name: GtkWindowAccessible
+  ;;; parent: "ContainerAccessible"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_window_accessible_get_type"
+  ;;; begin struct WindowAccessibleClass
+  ;;; fields: ("parent_class")
+  ;;; end WindowAccessibleClass
+
+  ;;; ---------------
   ;;; end WindowAccessible
 
   ;;; begin struct WindowAccessibleClass
@@ -11789,6 +14284,15 @@
 
   ;;; begin object WindowGroup
   ;;; fields: ("parent_instance" "priv")
+  ;;; object type name: GtkWindowGroup
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gtk_window_group_get_type"
+  ;;; begin struct WindowGroupClass
+  ;;; fields: ("parent_class" "_gtk_reserved1" "_gtk_reserved2" "_gtk_reserved3" "_gtk_reserved4")
+  ;;; end WindowGroupClass
+
+  ;;; ---------------
   (define-from-gtk gtk-window-group-new '*)
   (define-from-gtk gtk-window-group-add-window void '*)
   (define-from-gtk gtk-window-group-get-current-device-grab '* '*)
