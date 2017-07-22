@@ -5,7 +5,7 @@
           g-irepository-get-default g-irepository-require
           g-irepository-get-dependencies g-irepository-get-version
           g-irepository-get-loaded-namespaces g-irepository-get-shared-library
-          g-irepository-dump
+          g-irepository-dump g-irepository-find-by-name
 
           g-base-info-ref g-base-info-unref g-base-info-get-type
           g-base-info-get-name g-base-info-equal g-base-info-iterate-attributes
@@ -102,7 +102,7 @@
 
   (import (rnrs (6))
           (system foreign)
-          (gir support)
+          (gir shorts)
           (only (guile) dynamic-link))
 
   (define libgirepository (dynamic-link "libgirepository-1.0"))
@@ -118,6 +118,7 @@
   (define-from-girepository g-irepository-get-loaded-namespaces '* '*)
   (define-from-girepository g-irepository-get-shared-library '* '* '*)
   (define-from-girepository g-irepository-dump int '* '*)
+  (define-from-girepository g-irepository-find-by-name '* '* '* '*)
 
   (define-from-girepository g-base-info-ref '* '*)
   (define-from-girepository g-base-info-unref void '*)

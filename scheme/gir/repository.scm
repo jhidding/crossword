@@ -2,7 +2,8 @@
   (export gir-get-default gir-require
           gir-get-n-infos gir-get-info gir-get-info-list
           gir-get-loaded-namespaces gir-get-dependencies
-          gir-get-version gir-get-shared-library)
+          gir-get-version gir-get-shared-library
+          gir-find-by-name)
 
   (import (rnrs (6))
           (functional)
@@ -65,4 +66,13 @@
   (define (gir-get-shared-library namespace)
     (pointer->string
       (g-irepository-get-shared-library %null-pointer (string->pointer namespace))))
+
+  (define (gir-find-by-name namespace name)
+    (let ((p (g-irepository-find-by-name
+               %null-pointer
+               (string->pointer namespace)
+               (string->pointer name))))
+      (if (null-pointer? p)
+        #f
+        (make-info p))))
 )

@@ -103,7 +103,8 @@
     (pointer->string (g-object-info-get-get-value-function (get-ptr info))))
 
   (define-method (get-type-name (info <registered-type>))
-    (pointer->string (g-registered-type-info-get-type-name (get-ptr info))))
+    (let ((p (g-registered-type-info-get-type-name (get-ptr info))))
+      (if (null-pointer? p) #f (pointer->string p))))
 
   (define-method (get-g-type (info <registered-type>))
     (g-registered-type-info-get-g-type (get-ptr info)))

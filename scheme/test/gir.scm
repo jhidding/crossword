@@ -121,6 +121,7 @@
 
 (define (print-object-info port info)
   (format port "  ;;; begin ~s ~a~%" (get-type info) (get-name info))
+  (format port "  ;;; typename: ~a~%" (get-type-name info))
   (format port "  ;;; fields: ~s~%" (map get-name (get-field-list info)))
   (when (eq? (get-type info) 'object)
     (format port "  ;;; object type name: ~a~%" (get-type-name info))
