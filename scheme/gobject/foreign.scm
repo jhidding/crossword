@@ -3,6 +3,7 @@
 
 (library (gobject foreign)
   (export
+    GBinding-gtype
     g-binding-get-flags
     g-binding-get-source
     g-binding-get-source-property
@@ -34,6 +35,7 @@
     g-cclosure-marshal-VOID--VARIANT
     g-cclosure-marshal-VOID--VOID
     g-cclosure-marshal-generic
+    GClosure-gtype
     g-closure-new-object
     g-closure-new-simple
     g-closure-invalidate
@@ -43,6 +45,8 @@
     g-closure-unref
     ConnectFlags->symbols
     symbols->ConnectFlags
+    GInitiallyUnowned-gtype
+    GObject-gtype
     g-object-newv
     g-object-compat-control
     g-object-interface-find-property
@@ -80,6 +84,7 @@
     PARAM_USER_SHIFT
     ParamFlags->symbols
     symbols->ParamFlags
+    GParam-gtype
     g-param-spec-get-blurb
     g-param-spec-get-default-value
     g-param-spec-get-name
@@ -90,12 +95,35 @@
     g-param-spec-set-qdata
     g-param-spec-sink
     g-param-spec-steal-qdata
+    GParamBoolean-gtype
+    GParamBoxed-gtype
+    GParamChar-gtype
+    GParamDouble-gtype
+    GParamEnum-gtype
+    GParamFlags-gtype
+    GParamFloat-gtype
+    GParamGType-gtype
+    GParamInt-gtype
+    GParamInt64-gtype
+    GParamLong-gtype
+    GParamObject-gtype
+    GParamOverride-gtype
+    GParamParam-gtype
+    GParamPointer-gtype
     g-param-spec-pool-insert
     g-param-spec-pool-list
     g-param-spec-pool-list-owned
     g-param-spec-pool-lookup
     g-param-spec-pool-remove
     g-param-spec-pool-new
+    GParamString-gtype
+    GParamUChar-gtype
+    GParamUInt-gtype
+    GParamUInt64-gtype
+    GParamULong-gtype
+    GParamUnichar-gtype
+    GParamValueArray-gtype
+    GParamVariant-gtype
     SIGNAL_FLAGS_MASK
     SIGNAL_MATCH_MASK
     SignalFlags->symbols
@@ -130,6 +158,7 @@
     g-type-interface-get-plugin
     g-type-interface-peek
     g-type-interface-prerequisites
+    GTypeModule-gtype
     g-type-module-add-interface
     g-type-module-register-enum
     g-type-module-register-flags
@@ -139,6 +168,7 @@
     g-type-module-use
     VALUE_COLLECT_FORMAT_MAX_LENGTH
     VALUE_NOCOPY_CONTENTS
+    GValue-gtype
     g-value-copy
     g-value-dup-object
     g-value-dup-string
@@ -202,6 +232,7 @@
     g-value-unset
     g-value-type-compatible
     g-value-type-transformable
+    GValueArray-gtype
     g-value-array-new
     g-value-array-append
     g-value-array-copy
@@ -376,6 +407,8 @@
   ;;; (callback "BaseFinalizeFunc")
   ;;; (callback "BaseInitFunc")
   ;;; begin object Binding
+  ;;; typename: GBinding
+  (define-gtype-getter GBinding-gtype "GBinding")
   ;;; fields: ()
   ;;; object type name: GBinding
   ;;; parent: "Object"
@@ -428,6 +461,8 @@
   ;;; (callback "ClassFinalizeFunc")
   ;;; (callback "ClassInitFunc")
   ;;; begin struct Closure
+  ;;; typename: GClosure
+  (define-gtype-getter GClosure-gtype "GClosure")
   ;;; fields: ("ref_count" "meta_marshal_nouse" "n_guards" "n_fnotifiers" "n_inotifiers" "in_inotify" "floating" "derivative_flag" "in_marshal" "is_invalid" "marshal" "data" "notifiers")
   (define-from-gobject g-closure-new-object '* uint32 '*)
   (define-from-gobject g-closure-new-simple '* uint32 '*)
@@ -466,6 +501,8 @@
   ;;; end FlagsValue
 
   ;;; begin object InitiallyUnowned
+  ;;; typename: GInitiallyUnowned
+  (define-gtype-getter GInitiallyUnowned-gtype "GInitiallyUnowned")
   ;;; fields: ("g_type_instance" "ref_count" "qdata")
   ;;; object type name: GInitiallyUnowned
   ;;; parent: "Object"
@@ -490,6 +527,8 @@
 
   ;;; (callback "InterfaceInitFunc")
   ;;; begin object Object
+  ;;; typename: GObject
+  (define-gtype-getter GObject-gtype "GObject")
   ;;; fields: ("g_type_instance" "ref_count" "qdata")
   ;;; object type name: GObject
   ;;; parent: #f
@@ -559,6 +598,8 @@
   ;;; end ParamFlags
 
   ;;; begin object ParamSpec
+  ;;; typename: GParam
+  (define-gtype-getter GParam-gtype "GParam")
   ;;; fields: ("g_type_instance" "name" "flags" "value_type" "owner_type" "_nick" "_blurb" "qdata" "ref_count" "param_id")
   ;;; object type name: GParam
   ;;; parent: #f
@@ -582,6 +623,8 @@
   ;;; end ParamSpec
 
   ;;; begin object ParamSpecBoolean
+  ;;; typename: GParamBoolean
+  (define-gtype-getter GParamBoolean-gtype "GParamBoolean")
   ;;; fields: ("parent_instance" "default_value")
   ;;; object type name: GParamBoolean
   ;;; parent: "ParamSpec"
@@ -591,6 +634,8 @@
   ;;; end ParamSpecBoolean
 
   ;;; begin object ParamSpecBoxed
+  ;;; typename: GParamBoxed
+  (define-gtype-getter GParamBoxed-gtype "GParamBoxed")
   ;;; fields: ("parent_instance")
   ;;; object type name: GParamBoxed
   ;;; parent: "ParamSpec"
@@ -600,6 +645,8 @@
   ;;; end ParamSpecBoxed
 
   ;;; begin object ParamSpecChar
+  ;;; typename: GParamChar
+  (define-gtype-getter GParamChar-gtype "GParamChar")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamChar
   ;;; parent: "ParamSpec"
@@ -613,6 +660,8 @@
   ;;; end ParamSpecClass
 
   ;;; begin object ParamSpecDouble
+  ;;; typename: GParamDouble
+  (define-gtype-getter GParamDouble-gtype "GParamDouble")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value" "epsilon")
   ;;; object type name: GParamDouble
   ;;; parent: "ParamSpec"
@@ -622,6 +671,8 @@
   ;;; end ParamSpecDouble
 
   ;;; begin object ParamSpecEnum
+  ;;; typename: GParamEnum
+  (define-gtype-getter GParamEnum-gtype "GParamEnum")
   ;;; fields: ("parent_instance" "enum_class" "default_value")
   ;;; object type name: GParamEnum
   ;;; parent: "ParamSpec"
@@ -631,6 +682,8 @@
   ;;; end ParamSpecEnum
 
   ;;; begin object ParamSpecFlags
+  ;;; typename: GParamFlags
+  (define-gtype-getter GParamFlags-gtype "GParamFlags")
   ;;; fields: ("parent_instance" "flags_class" "default_value")
   ;;; object type name: GParamFlags
   ;;; parent: "ParamSpec"
@@ -640,6 +693,8 @@
   ;;; end ParamSpecFlags
 
   ;;; begin object ParamSpecFloat
+  ;;; typename: GParamFloat
+  (define-gtype-getter GParamFloat-gtype "GParamFloat")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value" "epsilon")
   ;;; object type name: GParamFloat
   ;;; parent: "ParamSpec"
@@ -649,6 +704,8 @@
   ;;; end ParamSpecFloat
 
   ;;; begin object ParamSpecGType
+  ;;; typename: GParamGType
+  (define-gtype-getter GParamGType-gtype "GParamGType")
   ;;; fields: ("parent_instance" "is_a_type")
   ;;; object type name: GParamGType
   ;;; parent: "ParamSpec"
@@ -658,6 +715,8 @@
   ;;; end ParamSpecGType
 
   ;;; begin object ParamSpecInt
+  ;;; typename: GParamInt
+  (define-gtype-getter GParamInt-gtype "GParamInt")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamInt
   ;;; parent: "ParamSpec"
@@ -667,6 +726,8 @@
   ;;; end ParamSpecInt
 
   ;;; begin object ParamSpecInt64
+  ;;; typename: GParamInt64
+  (define-gtype-getter GParamInt64-gtype "GParamInt64")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamInt64
   ;;; parent: "ParamSpec"
@@ -676,6 +737,8 @@
   ;;; end ParamSpecInt64
 
   ;;; begin object ParamSpecLong
+  ;;; typename: GParamLong
+  (define-gtype-getter GParamLong-gtype "GParamLong")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamLong
   ;;; parent: "ParamSpec"
@@ -685,6 +748,8 @@
   ;;; end ParamSpecLong
 
   ;;; begin object ParamSpecObject
+  ;;; typename: GParamObject
+  (define-gtype-getter GParamObject-gtype "GParamObject")
   ;;; fields: ("parent_instance")
   ;;; object type name: GParamObject
   ;;; parent: "ParamSpec"
@@ -694,6 +759,8 @@
   ;;; end ParamSpecObject
 
   ;;; begin object ParamSpecOverride
+  ;;; typename: GParamOverride
+  (define-gtype-getter GParamOverride-gtype "GParamOverride")
   ;;; fields: ("parent_instance" "overridden")
   ;;; object type name: GParamOverride
   ;;; parent: "ParamSpec"
@@ -703,6 +770,8 @@
   ;;; end ParamSpecOverride
 
   ;;; begin object ParamSpecParam
+  ;;; typename: GParamParam
+  (define-gtype-getter GParamParam-gtype "GParamParam")
   ;;; fields: ("parent_instance")
   ;;; object type name: GParamParam
   ;;; parent: "ParamSpec"
@@ -712,6 +781,8 @@
   ;;; end ParamSpecParam
 
   ;;; begin object ParamSpecPointer
+  ;;; typename: GParamPointer
+  (define-gtype-getter GParamPointer-gtype "GParamPointer")
   ;;; fields: ("parent_instance")
   ;;; object type name: GParamPointer
   ;;; parent: "ParamSpec"
@@ -731,6 +802,8 @@
   ;;; end ParamSpecPool
 
   ;;; begin object ParamSpecString
+  ;;; typename: GParamString
+  (define-gtype-getter GParamString-gtype "GParamString")
   ;;; fields: ("parent_instance" "default_value" "cset_first" "cset_nth" "substitutor" "null_fold_if_empty" "ensure_non_null")
   ;;; object type name: GParamString
   ;;; parent: "ParamSpec"
@@ -744,6 +817,8 @@
   ;;; end ParamSpecTypeInfo
 
   ;;; begin object ParamSpecUChar
+  ;;; typename: GParamUChar
+  (define-gtype-getter GParamUChar-gtype "GParamUChar")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamUChar
   ;;; parent: "ParamSpec"
@@ -753,6 +828,8 @@
   ;;; end ParamSpecUChar
 
   ;;; begin object ParamSpecUInt
+  ;;; typename: GParamUInt
+  (define-gtype-getter GParamUInt-gtype "GParamUInt")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamUInt
   ;;; parent: "ParamSpec"
@@ -762,6 +839,8 @@
   ;;; end ParamSpecUInt
 
   ;;; begin object ParamSpecUInt64
+  ;;; typename: GParamUInt64
+  (define-gtype-getter GParamUInt64-gtype "GParamUInt64")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamUInt64
   ;;; parent: "ParamSpec"
@@ -771,6 +850,8 @@
   ;;; end ParamSpecUInt64
 
   ;;; begin object ParamSpecULong
+  ;;; typename: GParamULong
+  (define-gtype-getter GParamULong-gtype "GParamULong")
   ;;; fields: ("parent_instance" "minimum" "maximum" "default_value")
   ;;; object type name: GParamULong
   ;;; parent: "ParamSpec"
@@ -780,6 +861,8 @@
   ;;; end ParamSpecULong
 
   ;;; begin object ParamSpecUnichar
+  ;;; typename: GParamUnichar
+  (define-gtype-getter GParamUnichar-gtype "GParamUnichar")
   ;;; fields: ("parent_instance" "default_value")
   ;;; object type name: GParamUnichar
   ;;; parent: "ParamSpec"
@@ -789,6 +872,8 @@
   ;;; end ParamSpecUnichar
 
   ;;; begin object ParamSpecValueArray
+  ;;; typename: GParamValueArray
+  (define-gtype-getter GParamValueArray-gtype "GParamValueArray")
   ;;; fields: ("parent_instance" "element_spec" "fixed_n_elements")
   ;;; object type name: GParamValueArray
   ;;; parent: "ParamSpec"
@@ -798,6 +883,8 @@
   ;;; end ParamSpecValueArray
 
   ;;; begin object ParamSpecVariant
+  ;;; typename: GParamVariant
+  (define-gtype-getter GParamVariant-gtype "GParamVariant")
   ;;; fields: ("parent_instance" "type" "default_value" "padding")
   ;;; object type name: GParamVariant
   ;;; parent: "ParamSpec"
@@ -905,6 +992,8 @@
 
   ;;; (callback "TypeInterfaceCheckFunc")
   ;;; begin object TypeModule
+  ;;; typename: GTypeModule
+  (define-gtype-getter GTypeModule-gtype "GTypeModule")
   ;;; fields: ("parent_instance" "use_count" "type_infos" "interface_infos" "name")
   ;;; object type name: GTypeModule
   ;;; parent: "Object"
@@ -948,6 +1037,8 @@
   (define VALUE_COLLECT_FORMAT_MAX_LENGTH 8)
   (define VALUE_NOCOPY_CONTENTS 134217728)
   ;;; begin struct Value
+  ;;; typename: GValue
+  (define-gtype-getter GValue-gtype "GValue")
   ;;; fields: ("g_type" "data")
   (define-from-gobject g-value-copy void '*)
   (define-from-gobject g-value-dup-object '*)
@@ -1015,6 +1106,8 @@
   ;;; end Value
 
   ;;; begin struct ValueArray
+  ;;; typename: GValueArray
+  (define-gtype-getter GValueArray-gtype "GValueArray")
   ;;; fields: ("n_values" "values" "n_prealloced")
   (define-from-gobject g-value-array-new '* uint32)
   (define-from-gobject g-value-array-append '* '*)
@@ -1127,7 +1220,7 @@
   (define-from-gobject g-signal-parse-name int '* size_t uint32 uint32 int)
   (define-from-gobject g-signal-query void uint32 '*)
   (define-from-gobject g-signal-remove-emission-hook void uint32 uint64)
-  (define-from-gobject g-signal-set-va-marshaller void uint32 size_t (unknown-interface unresolved))
+;;  (define-from-gobject g-signal-set-va-marshaller void uint32 size_t (unknown-interface unresolved))
   (define-from-gobject g-signal-stop-emission void '* uint32 uint32)
   (define-from-gobject g-signal-stop-emission-by-name void '* '*)
   (define-from-gobject g-signal-type-cclosure-new '* size_t uint32)

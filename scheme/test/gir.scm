@@ -77,10 +77,15 @@
                (string-replace #\_ #\-)
                string->symbol list))
         ((memq (get-type info) '(object struct union))
-         (map (compose string->symbol
-                       (string-replace #\_ #\-)
-                       get-symbol)
-              (get-method-list info)))
+         (let ((methods (map (compose string->symbol
+                                      (string-replace #\_ #\-)
+                                      get-symbol)
+                             (get-method-list info)))
+               (gtype-getter (if (get-type-name info)
+                               (string->symbol (string-append (get-type-name info) "-gtype"))
+                               #f)))
+           (if gtype-getter
+             (cons gtype-getter methods) methods)))
         ((eq? (get-type info) 'enum)
          (cons* (string->symbol (string-append (get-name info) "->symbol"))
                 (string->symbol (string-append "symbol->" (get-name info)))
@@ -121,7 +126,13 @@
 
 (define (print-object-info port info)
   (format port "  ;;; begin ~s ~a~%" (get-type info) (get-name info))
-  (format port "  ;;; typename: ~a~%" (get-type-name info))
+  (when (get-type-name info)
+    (format port "  ;;; typename: ~a~%" (get-type-name info))
+    (pretty-print
+      `(define-gtype-getter
+         ,(string->symbol (string-append (get-type-name info) "-gtype"))
+         ,(get-type-name info))
+      port #:per-line-prefix "  " #:width 200 #:max-expr-width 200))
   (format port "  ;;; fields: ~s~%" (map get-name (get-field-list info)))
   (when (eq? (get-type info) 'object)
     (format port "  ;;; object type name: ~a~%" (get-type-name info))

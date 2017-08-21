@@ -5,6 +5,7 @@
   (export
     AnchorHints->symbols
     symbols->AnchorHints
+    GdkAppLaunchContext-gtype
     gdk-app-launch-context-new
     gdk-app-launch-context-set-desktop
     gdk-app-launch-context-set-display
@@ -25,6 +26,7 @@
     ByteOrder->symbol
     symbol->ByteOrder
     CURRENT_TIME
+    GdkColor-gtype
     gdk-color-copy
     gdk-color-equal
     gdk-color-free
@@ -33,6 +35,7 @@
     gdk-color-parse
     CrossingMode->symbol
     symbol->CrossingMode
+    GdkCursor-gtype
     gdk-cursor-new
     gdk-cursor-new-for-display
     gdk-cursor-new-from-name
@@ -46,6 +49,7 @@
     gdk-cursor-unref
     CursorType->symbol
     symbol->CursorType
+    GdkDevice-gtype
     gdk-device-grab-info-libgtk-only
     gdk-device-get-associated-device
     gdk-device-get-axes
@@ -75,11 +79,13 @@
     gdk-device-set-mode
     gdk-device-ungrab
     gdk-device-warp
+    GdkDeviceManager-gtype
     gdk-device-manager-get-client-pointer
     gdk-device-manager-get-display
     gdk-device-manager-list-devices
     DevicePadFeature->symbol
     symbol->DevicePadFeature
+    GdkDeviceTool-gtype
     gdk-device-tool-get-hardware-id
     gdk-device-tool-get-serial
     gdk-device-tool-get-tool-type
@@ -87,6 +93,7 @@
     symbol->DeviceToolType
     DeviceType->symbol
     symbol->DeviceType
+    GdkDisplay-gtype
     gdk-display-get-default
     gdk-display-open
     gdk-display-open-default-libgtk-only
@@ -135,6 +142,7 @@
     gdk-display-supports-shapes
     gdk-display-sync
     gdk-display-warp-pointer
+    GdkDisplayManager-gtype
     gdk-display-manager-get
     gdk-display-manager-get-default-display
     gdk-display-manager-list-displays
@@ -144,6 +152,7 @@
     symbols->DragAction
     DragCancelReason->symbol
     symbol->DragCancelReason
+    GdkDragContext-gtype
     gdk-drag-context-get-actions
     gdk-drag-context-get-dest-window
     gdk-drag-context-get-device
@@ -158,18 +167,60 @@
     gdk-drag-context-set-hotspot
     DragProtocol->symbol
     symbol->DragProtocol
+    GdkDrawingContext-gtype
     gdk-drawing-context-get-cairo-context
     gdk-drawing-context-get-clip
     gdk-drawing-context-get-window
     gdk-drawing-context-is-valid
     EVENT_PROPAGATE
     EVENT_STOP
+    GdkEvent-gtype
+    gdk-event-new
+    gdk-events-get-angle
+    gdk-events-get-center
+    gdk-events-get-distance
+    gdk-event-copy
+    gdk-event-free
+    gdk-event-get-axis
+    gdk-event-get-button
+    gdk-event-get-click-count
+    gdk-event-get-coords
+    gdk-event-get-device
+    gdk-event-get-device-tool
+    gdk-event-get-event-sequence
+    gdk-event-get-event-type
+    gdk-event-get-keycode
+    gdk-event-get-keyval
+    gdk-event-get-pointer-emulated
+    gdk-event-get-root-coords
+    gdk-event-get-scancode
+    gdk-event-get-screen
+    gdk-event-get-scroll-deltas
+    gdk-event-get-scroll-direction
+    gdk-event-get-seat
+    gdk-event-get-source-device
+    gdk-event-get-state
+    gdk-event-get-time
+    gdk-event-get-window
+    gdk-event-is-scroll-stop-event
+    gdk-event-put
+    gdk-event-set-device
+    gdk-event-set-device-tool
+    gdk-event-set-screen
+    gdk-event-set-source-device
+    gdk-event-triggers-context-menu
+    gdk-event-get
+    gdk-event-handler-set
+    gdk-event-peek
+    gdk-event-request-motions
     EventMask->symbols
     symbols->EventMask
+    GdkEventSequence-gtype
     EventType->symbol
     symbol->EventType
     FilterReturn->symbol
     symbol->FilterReturn
+    GdkFrameClock-gtype
     gdk-frame-clock-begin-updating
     gdk-frame-clock-end-updating
     gdk-frame-clock-get-current-timings
@@ -181,6 +232,7 @@
     gdk-frame-clock-request-phase
     FrameClockPhase->symbols
     symbols->FrameClockPhase
+    GdkFrameTimings-gtype
     gdk-frame-timings-get-complete
     gdk-frame-timings-get-frame-counter
     gdk-frame-timings-get-frame-time
@@ -191,6 +243,7 @@
     gdk-frame-timings-unref
     FullscreenMode->symbol
     symbol->FullscreenMode
+    GdkGLContext-gtype
     gdk-gl-context-clear-current
     gdk-gl-context-get-current
     gdk-gl-context-get-debug-enabled
@@ -2491,6 +2544,7 @@
     KEY_zerosubscript
     KEY_zerosuperior
     KEY_zstroke
+    GdkKeymap-gtype
     gdk-keymap-get-default
     gdk-keymap-get-for-display
     gdk-keymap-add-virtual-modifiers
@@ -2511,6 +2565,7 @@
     symbol->ModifierIntent
     ModifierType->symbols
     symbols->ModifierType
+    GdkMonitor-gtype
     gdk-monitor-get-display
     gdk-monitor-get-geometry
     gdk-monitor-get-height-mm
@@ -2532,15 +2587,18 @@
     symbol->PropMode
     PropertyState->symbol
     symbol->PropertyState
+    GdkRGBA-gtype
     gdk-rgba-copy
     gdk-rgba-equal
     gdk-rgba-free
     gdk-rgba-hash
     gdk-rgba-parse
     gdk-rgba-to-string
+    GdkRectangle-gtype
     gdk-rectangle-equal
     gdk-rectangle-intersect
     gdk-rectangle-union
+    GdkScreen-gtype
     gdk-screen-get-default
     gdk-screen-height
     gdk-screen-height-mm
@@ -2578,6 +2636,7 @@
     gdk-screen-set-resolution
     ScrollDirection->symbol
     symbol->ScrollDirection
+    GdkSeat-gtype
     gdk-seat-get-capabilities
     gdk-seat-get-display
     gdk-seat-get-keyboard
@@ -2597,6 +2656,7 @@
     symbol->TouchpadGesturePhase
     VisibilityState->symbol
     symbol->VisibilityState
+    GdkVisual-gtype
     gdk-visual-get-best
     gdk-visual-get-best-depth
     gdk-visual-get-best-type
@@ -2619,6 +2679,7 @@
     symbols->WMDecoration
     WMFunction->symbols
     symbols->WMFunction
+    GdkWindow-gtype
     gdk-window-new
     gdk-window-at-pointer
     gdk-window-constrain-size
@@ -2913,7 +2974,14 @@
   ;;; end AnchorHints
 
   ;;; begin object AppLaunchContext
+  ;;; typename: GdkAppLaunchContext
+  (define-gtype-getter GdkAppLaunchContext-gtype "GdkAppLaunchContext")
   ;;; fields: ()
+  ;;; object type name: GdkAppLaunchContext
+  ;;; parent: "AppLaunchContext"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_app_launch_context_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-app-launch-context-new '*)
   (define-from-gdk gdk-app-launch-context-set-desktop void int32)
   (define-from-gdk gdk-app-launch-context-set-display void '*)
@@ -2961,6 +3029,8 @@
 
   (define CURRENT_TIME 0)
   ;;; begin struct Color
+  ;;; typename: GdkColor
+  (define-gtype-getter GdkColor-gtype "GdkColor")
   ;;; fields: ("pixel" "red" "green" "blue")
   (define-from-gdk gdk-color-copy '*)
   (define-from-gdk gdk-color-equal int '*)
@@ -2986,7 +3056,14 @@
   ;;; end CrossingMode
 
   ;;; begin object Cursor
+  ;;; typename: GdkCursor
+  (define-gtype-getter GdkCursor-gtype "GdkCursor")
   ;;; fields: ()
+  ;;; object type name: GdkCursor
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_cursor_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-cursor-new '* int32)
   (define-from-gdk gdk-cursor-new-for-display '* '* int32)
   (define-from-gdk gdk-cursor-new-from-name '* '* '*)
@@ -3005,7 +3082,14 @@
   ;;; end CursorType
 
   ;;; begin object Device
+  ;;; typename: GdkDevice
+  (define-gtype-getter GdkDevice-gtype "GdkDevice")
   ;;; fields: ()
+  ;;; object type name: GdkDevice
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_device_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-device-grab-info-libgtk-only int '* '* '* int)
   (define-from-gdk gdk-device-get-associated-device '*)
   (define-from-gdk gdk-device-get-axes uint32)
@@ -3038,7 +3122,14 @@
   ;;; end Device
 
   ;;; begin object DeviceManager
+  ;;; typename: GdkDeviceManager
+  (define-gtype-getter GdkDeviceManager-gtype "GdkDeviceManager")
   ;;; fields: ()
+  ;;; object type name: GdkDeviceManager
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_device_manager_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-device-manager-get-client-pointer '*)
   (define-from-gdk gdk-device-manager-get-display '*)
   (define-from-gdk gdk-device-manager-list-devices '* uint32)
@@ -3055,7 +3146,14 @@
   ;;; end DevicePadInterface
 
   ;;; begin object DeviceTool
+  ;;; typename: GdkDeviceTool
+  (define-gtype-getter GdkDeviceTool-gtype "GdkDeviceTool")
   ;;; fields: ()
+  ;;; object type name: GdkDeviceTool
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_device_tool_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-device-tool-get-hardware-id uint64)
   (define-from-gdk gdk-device-tool-get-serial uint64)
   (define-from-gdk gdk-device-tool-get-tool-type uint32)
@@ -3072,7 +3170,14 @@
   ;;; end DeviceType
 
   ;;; begin object Display
+  ;;; typename: GdkDisplay
+  (define-gtype-getter GdkDisplay-gtype "GdkDisplay")
   ;;; fields: ()
+  ;;; object type name: GdkDisplay
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_display_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-display-get-default '*)
   (define-from-gdk gdk-display-open '* '*)
   (define-from-gdk gdk-display-open-default-libgtk-only '*)
@@ -3124,7 +3229,14 @@
   ;;; end Display
 
   ;;; begin object DisplayManager
+  ;;; typename: GdkDisplayManager
+  (define-gtype-getter GdkDisplayManager-gtype "GdkDisplayManager")
   ;;; fields: ()
+  ;;; object type name: GdkDisplayManager
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_display_manager_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-display-manager-get '*)
   (define-from-gdk gdk-display-manager-get-default-display '*)
   (define-from-gdk gdk-display-manager-list-displays '*)
@@ -3143,7 +3255,14 @@
   ;;; end DragCancelReason
 
   ;;; begin object DragContext
+  ;;; typename: GdkDragContext
+  (define-gtype-getter GdkDragContext-gtype "GdkDragContext")
   ;;; fields: ()
+  ;;; object type name: GdkDragContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_drag_context_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-drag-context-get-actions uint32)
   (define-from-gdk gdk-drag-context-get-dest-window '*)
   (define-from-gdk gdk-drag-context-get-device '*)
@@ -3164,7 +3283,18 @@
   ;;; end DragProtocol
 
   ;;; begin object DrawingContext
+  ;;; typename: GdkDrawingContext
+  (define-gtype-getter GdkDrawingContext-gtype "GdkDrawingContext")
   ;;; fields: ()
+  ;;; object type name: GdkDrawingContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_drawing_context_get_type"
+  ;;; begin struct DrawingContextClass
+  ;;; fields: ()
+  ;;; end DrawingContextClass
+
+  ;;; ---------------
   (define-from-gdk gdk-drawing-context-get-cairo-context '*)
   (define-from-gdk gdk-drawing-context-get-clip '*)
   (define-from-gdk gdk-drawing-context-get-window '*)
@@ -3175,9 +3305,52 @@
   ;;; fields: ()
   ;;; end DrawingContextClass
 
-  (define EVENT_PROPAGATE 0)
-  (define EVENT_STOP 1)
-  ;;; (union "Event")
+  (define EVENT_PROPAGATE (unknown binary boolean))
+  (define EVENT_STOP (unknown binary boolean))
+  ;;; begin union Event
+  ;;; typename: GdkEvent
+  (define-gtype-getter GdkEvent-gtype "GdkEvent")
+  ;;; fields: ("type" "any" "expose" "visibility" "motion" "button" "touch" "scroll" "key" "crossing" "focus_change" "configure" "property" "selection" "owner_change" "proximity" "dnd" "window_state" "setting" "grab_broken" "touchpad_swipe" "touchpad_pinch" "pad_button" "pad_axis" "pad_group_mode")
+  (define-from-gdk gdk-event-new '* int32)
+  (define-from-gdk gdk-events-get-angle int '* double)
+  (define-from-gdk gdk-events-get-center int '* double double)
+  (define-from-gdk gdk-events-get-distance int '* double)
+  (define-from-gdk gdk-event-copy '*)
+  (define-from-gdk gdk-event-free void)
+  (define-from-gdk gdk-event-get-axis int uint32 double)
+  (define-from-gdk gdk-event-get-button int uint32)
+  (define-from-gdk gdk-event-get-click-count int uint32)
+  (define-from-gdk gdk-event-get-coords int double double)
+  (define-from-gdk gdk-event-get-device '*)
+  (define-from-gdk gdk-event-get-device-tool '*)
+  (define-from-gdk gdk-event-get-event-sequence '*)
+  (define-from-gdk gdk-event-get-event-type int32)
+  (define-from-gdk gdk-event-get-keycode int uint16)
+  (define-from-gdk gdk-event-get-keyval int uint32)
+  (define-from-gdk gdk-event-get-pointer-emulated int)
+  (define-from-gdk gdk-event-get-root-coords int double double)
+  (define-from-gdk gdk-event-get-scancode int32)
+  (define-from-gdk gdk-event-get-screen '*)
+  (define-from-gdk gdk-event-get-scroll-deltas int double double)
+  (define-from-gdk gdk-event-get-scroll-direction int uint32)
+  (define-from-gdk gdk-event-get-seat '*)
+  (define-from-gdk gdk-event-get-source-device '*)
+  (define-from-gdk gdk-event-get-state int uint32)
+  (define-from-gdk gdk-event-get-time uint32)
+  (define-from-gdk gdk-event-get-window '*)
+  (define-from-gdk gdk-event-is-scroll-stop-event int)
+  (define-from-gdk gdk-event-put void)
+  (define-from-gdk gdk-event-set-device void '*)
+  (define-from-gdk gdk-event-set-device-tool void '*)
+  (define-from-gdk gdk-event-set-screen void '*)
+  (define-from-gdk gdk-event-set-source-device void '*)
+  (define-from-gdk gdk-event-triggers-context-menu int)
+  (define-from-gdk gdk-event-get '*)
+  (define-from-gdk gdk-event-handler-set void '* '* '*)
+  (define-from-gdk gdk-event-peek '*)
+  (define-from-gdk gdk-event-request-motions void '*)
+  ;;; end Event
+
   ;;; begin struct EventAny
   ;;; fields: ("type" "window" "send_event")
   ;;; end EventAny
@@ -3256,6 +3429,8 @@
   ;;; end EventSelection
 
   ;;; begin struct EventSequence
+  ;;; typename: GdkEventSequence
+  (define-gtype-getter GdkEventSequence-gtype "GdkEventSequence")
   ;;; fields: ()
   ;;; end EventSequence
 
@@ -3294,7 +3469,18 @@
   ;;; end FilterReturn
 
   ;;; begin object FrameClock
+  ;;; typename: GdkFrameClock
+  (define-gtype-getter GdkFrameClock-gtype "GdkFrameClock")
   ;;; fields: ()
+  ;;; object type name: GdkFrameClock
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_frame_clock_get_type"
+  ;;; begin struct FrameClockClass
+  ;;; fields: ()
+  ;;; end FrameClockClass
+
+  ;;; ---------------
   (define-from-gdk gdk-frame-clock-begin-updating void)
   (define-from-gdk gdk-frame-clock-end-updating void)
   (define-from-gdk gdk-frame-clock-get-current-timings '*)
@@ -3319,6 +3505,8 @@
   ;;; end FrameClockPrivate
 
   ;;; begin struct FrameTimings
+  ;;; typename: GdkFrameTimings
+  (define-gtype-getter GdkFrameTimings-gtype "GdkFrameTimings")
   ;;; fields: ()
   (define-from-gdk gdk-frame-timings-get-complete int)
   (define-from-gdk gdk-frame-timings-get-frame-counter int64)
@@ -3336,7 +3524,14 @@
   ;;; end FullscreenMode
 
   ;;; begin object GLContext
+  ;;; typename: GdkGLContext
+  (define-gtype-getter GdkGLContext-gtype "GdkGLContext")
   ;;; fields: ()
+  ;;; object type name: GdkGLContext
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_gl_context_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-gl-context-clear-current void)
   (define-from-gdk gdk-gl-context-get-current '*)
   (define-from-gdk gdk-gl-context-get-debug-enabled int)
@@ -5678,7 +5873,14 @@
   (define KEY_zerosuperior 16785520)
   (define KEY_zstroke 16777654)
   ;;; begin object Keymap
+  ;;; typename: GdkKeymap
+  (define-gtype-getter GdkKeymap-gtype "GdkKeymap")
   ;;; fields: ()
+  ;;; object type name: GdkKeymap
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_keymap_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-keymap-get-default '*)
   (define-from-gdk gdk-keymap-get-for-display '* '*)
   (define-from-gdk gdk-keymap-add-virtual-modifiers void uint32)
@@ -5719,7 +5921,18 @@
   ;;; end ModifierType
 
   ;;; begin object Monitor
+  ;;; typename: GdkMonitor
+  (define-gtype-getter GdkMonitor-gtype "GdkMonitor")
   ;;; fields: ()
+  ;;; object type name: GdkMonitor
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_monitor_get_type"
+  ;;; begin struct MonitorClass
+  ;;; fields: ()
+  ;;; end MonitorClass
+
+  ;;; ---------------
   (define-from-gdk gdk-monitor-get-display '*)
   (define-from-gdk gdk-monitor-get-geometry void '*)
   (define-from-gdk gdk-monitor-get-height-mm int32)
@@ -5764,6 +5977,8 @@
   ;;; end PropertyState
 
   ;;; begin struct RGBA
+  ;;; typename: GdkRGBA
+  (define-gtype-getter GdkRGBA-gtype "GdkRGBA")
   ;;; fields: ("red" "green" "blue" "alpha")
   (define-from-gdk gdk-rgba-copy '*)
   (define-from-gdk gdk-rgba-equal int '*)
@@ -5774,6 +5989,8 @@
   ;;; end RGBA
 
   ;;; begin struct Rectangle
+  ;;; typename: GdkRectangle
+  (define-gtype-getter GdkRectangle-gtype "GdkRectangle")
   ;;; fields: ("x" "y" "width" "height")
   (define-from-gdk gdk-rectangle-equal int '*)
   (define-from-gdk gdk-rectangle-intersect int '* '*)
@@ -5781,7 +5998,14 @@
   ;;; end Rectangle
 
   ;;; begin object Screen
+  ;;; typename: GdkScreen
+  (define-gtype-getter GdkScreen-gtype "GdkScreen")
   ;;; fields: ()
+  ;;; object type name: GdkScreen
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_screen_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-screen-get-default '*)
   (define-from-gdk gdk-screen-height int32)
   (define-from-gdk gdk-screen-height-mm int32)
@@ -5825,7 +6049,14 @@
   ;;; end ScrollDirection
 
   ;;; begin object Seat
+  ;;; typename: GdkSeat
+  (define-gtype-getter GdkSeat-gtype "GdkSeat")
   ;;; fields: ("parent_instance")
+  ;;; object type name: GdkSeat
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_seat_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-seat-get-capabilities uint32)
   (define-from-gdk gdk-seat-get-display '*)
   (define-from-gdk gdk-seat-get-keyboard '*)
@@ -5876,7 +6107,14 @@
   ;;; end VisibilityState
 
   ;;; begin object Visual
+  ;;; typename: GdkVisual
+  (define-gtype-getter GdkVisual-gtype "GdkVisual")
   ;;; fields: ()
+  ;;; object type name: GdkVisual
+  ;;; parent: "Object"
+  ;;; vfuncs: ()
+  ;;; type-init: "gdk_visual_get_type"
+  ;;; ---------------
   (define-from-gdk gdk-visual-get-best '*)
   (define-from-gdk gdk-visual-get-best-depth int32)
   (define-from-gdk gdk-visual-get-best-type uint32)
@@ -5918,7 +6156,18 @@
   ;;; end WMFunction
 
   ;;; begin object Window
+  ;;; typename: GdkWindow
+  (define-gtype-getter GdkWindow-gtype "GdkWindow")
   ;;; fields: ()
+  ;;; object type name: GdkWindow
+  ;;; parent: "Object"
+  ;;; vfuncs: ("create_surface" "from_embedder" "to_embedder")
+  ;;; type-init: "gdk_window_get_type"
+  ;;; begin struct WindowClass
+  ;;; fields: ("parent_class" "pick_embedded_child" "to_embedder" "from_embedder" "create_surface" "_gdk_reserved1" "_gdk_reserved2" "_gdk_reserved3" "_gdk_reserved4" "_gdk_reserved5" "_gdk_reserved6" "_gdk_reserved7" "_gdk_reserved8")
+  ;;; end WindowClass
+
+  ;;; ---------------
   (define-from-gdk gdk-window-new '* '* '* uint32)
   (define-from-gdk gdk-window-at-pointer '* int32 int32)
   (define-from-gdk gdk-window-constrain-size void '* uint32 int32 int32 int32 int32)
